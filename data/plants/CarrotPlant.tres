@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://cutomResources/plant.gd" type="Script" id=1]
+[ext_resource path="res://data/items/crops/Carrot.tres" type="Resource" id=2]
+[ext_resource path="res://assets/plants/carrot/carrot1.tres" type="Texture" id=3]
+[ext_resource path="res://assets/plants/carrot/carrot2.tres" type="Texture" id=4]
+[ext_resource path="res://assets/plants/carrot/carrot0.tres" type="Texture" id=5]
+[ext_resource path="res://assets/plants/carrot/carrot3.tres" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+name = "Carrot"
+growthTime = 3
+harvestAmount = 1
+harvest = ExtResource( 2 )
+textures = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ) ]

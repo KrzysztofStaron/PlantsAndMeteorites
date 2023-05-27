@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/ui/UI_5.png" type="Texture" id=1]
+[ext_resource path="res://scenes/hoverEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/items/stone.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/font.tres" type="DynamicFont" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 81, 21, 18, 19 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 59, 21, 18, 19 )
+
+[node name="quickSlot" type="TextureButton"]
+anchor_right = 0.034
+anchor_bottom = 0.078
+margin_right = 0.119999
+margin_bottom = -0.04
+toggle_mode = true
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 2 )
+stretch_mode = 2
+
+[node name="hover" parent="." instance=ExtResource( 2 )]
+hoverColor = Color( 0.784314, 0.784314, 0.784314, 1 )
+
+[node name="icon" type="TextureRect" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 14.0
+margin_bottom = 14.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
+[node name="amount" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 47.0
+margin_bottom = 48.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+align = 1

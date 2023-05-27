@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://data/items/materials/stone.tres" type="Resource" id=1]
+[ext_resource path="res://cutomResources/drop/drop.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+item = ExtResource( 1 )
+amount = 1

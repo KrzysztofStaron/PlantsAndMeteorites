@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/hoverEffect.gd" type="Script" id=1]
+
+[node name="hover" type="Tween"]
+script = ExtResource( 1 )
+hoverColor = Color( 0.392157, 0.392157, 0.392157, 1 )
+normalColor = Color( 1, 1, 1, 1 )

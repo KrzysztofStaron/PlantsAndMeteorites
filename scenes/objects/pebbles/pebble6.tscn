@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/objects/resourceSource/resourceSource.gd" type="Script" id=1]
+[ext_resource path="res://assets/objects/atlas.png" type="Texture" id=2]
+[ext_resource path="res://data/drops/pebbleDrop.tres" type="Resource" id=3]
+[ext_resource path="res://assets/objects/outline.tres" type="Material" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.5, 5 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 8, 38, 17, 12 )
+
+[node name="pebble" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource( 1 )
+objectName = "Pebble6"
+drawOutline = true
+mainDrop = ExtResource( 3 )
+durability = 3
+flags = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 4 )
+texture = SubResource( 1 )
