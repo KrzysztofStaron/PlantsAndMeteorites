@@ -16,8 +16,8 @@ region = Rect2( 59, 21, 18, 19 )
 [node name="quickSlot" type="TextureButton"]
 anchor_right = 0.034
 anchor_bottom = 0.078
-margin_right = 0.119999
-margin_bottom = -0.04
+margin_right = 7.12
+margin_bottom = 4.96
 focus_mode = 0
 toggle_mode = true
 enabled_focus_mode = 0
@@ -29,10 +29,10 @@ stretch_mode = 2
 hoverColor = Color( 0.784314, 0.784314, 0.784314, 1 )
 
 [node name="icon" type="TextureRect" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 14.0
-margin_bottom = 14.0
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 16.0
+margin_bottom = 16.0
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 1
