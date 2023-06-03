@@ -23,6 +23,7 @@ func mine():
 			dropScene.position = position + Vector2(int(rand_range(-dropRadius, dropRadius)), int(rand_range(-dropRadius, dropRadius)))
 			randomize()
 			dropScene.item = mainDrop.item
+			dropScene.pickable = true
 			get_parent().add_child(dropScene)
 			
 		queue_free()

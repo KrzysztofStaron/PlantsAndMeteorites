@@ -2,14 +2,23 @@ extends TextureRect
 
 var inv : Array
 
+func drop():
+	var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
+	dropScene.position = GameManager.player.position + Vector2(0, 18)
+	dropScene.item = Inventory.getSelectedItem()
+	Inventory.inventory[Inventory.selectedItemIndex] = null
+	get_tree().get_root().get_node("main").add_child(dropScene)
+
 func _ready():
 	inv = Inventory.inventory
 
 func _input(event):
 	if event is InputEventKey:
 		for slot in range(1,len(Inventory.inventory)+1):
-			if Input.is_action_just_pressed("slot"+str(slot)):
+			if event.is_action_pressed("slot"+str(slot)):
 				updateSelection(slot - 1)
+		if event.is_action_pressed("dropItem"):
+			drop()
 		
 func _process(delta):
 	for slotIndex in range(0, 4):
@@ -19,7 +28,7 @@ func _process(delta):
 		else:
 			slot.get_node("icon").texture = inv[slotIndex].texture
 
-		if inv[slotIndex] is CountableItem:
+		if inv[slotIndex] is CountableItem and inv[slotIndex].quantity > 1:
 			slot.get_node("amount").text = str(inv[slotIndex].quantity)
 		else:
 			slot.get_node("amount").text = ""

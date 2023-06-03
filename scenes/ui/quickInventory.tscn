@@ -6,7 +6,7 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 102, 0, 26, 103 )
+region = Rect2( 102, 0, 26, 128 )
 
 [node name="quickInventory" type="TextureRect"]
 anchor_left = 0.916
@@ -18,38 +18,38 @@ texture = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="VContainer" type="VBoxContainer" parent="."]
-margin_left = 5.99999
-margin_top = 3.0
-margin_right = 24.0
-margin_bottom = 88.0
-custom_constants/separation = 3
+margin_left = 2.99999
+margin_top = 2.0
+margin_right = 25.0
+margin_bottom = 100.0
+custom_constants/separation = 1
 
 [node name="slot0" parent="VContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 18.0
-margin_bottom = 19.0
+margin_right = 22.0
+margin_bottom = 23.0
 
 [node name="slot1" parent="VContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 22.0
-margin_right = 18.0
-margin_bottom = 41.0
+margin_top = 24.0
+margin_right = 22.0
+margin_bottom = 47.0
 
 [node name="slot2" parent="VContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 44.0
-margin_right = 18.0
-margin_bottom = 63.0
+margin_top = 48.0
+margin_right = 22.0
+margin_bottom = 71.0
 
 [node name="slot3" parent="VContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 66.0
-margin_right = 18.0
-margin_bottom = 85.0
+margin_top = 72.0
+margin_right = 22.0
+margin_bottom = 95.0
 
 [connection signal="pressed" from="VContainer/slot0" to="." method="_on_slot_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="VContainer/slot1" to="." method="_on_slot_pressed" binds= [ 1 ]]

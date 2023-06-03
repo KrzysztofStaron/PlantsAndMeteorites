@@ -18,6 +18,6 @@ func _process(delta):
 	else:
 		oxygen -= delta
 		if oxygen <= 0:
-			print("udusiłeś sie kurwo")
-		
-	$"../UI/oxygen".material.set_shader_param("persent", oxygen/maxOxygen)
+			print("udusiłeś sie")
+
+	$"../UI/oxygen/fill".material.set_shader_param("persent", oxygen/maxOxygen)

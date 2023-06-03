@@ -9,4 +9,5 @@ script = ExtResource( 1 )
 name = "CarrotSeed"
 type = "seed"
 texture = ExtResource( 3 )
+quantity = 1
 crop = ExtResource( 2 )

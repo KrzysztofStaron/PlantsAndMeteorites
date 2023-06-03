@@ -9,5 +9,6 @@ script = ExtResource( 2 )
 name = "Soil"
 type = "building"
 texture = ExtResource( 3 )
+quantity = 1
 scene = ExtResource( 1 )
 buildingTime = 0.0

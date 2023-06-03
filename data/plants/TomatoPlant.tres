@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://cutomResources/plant.gd" type="Script" id=1]
+[ext_resource path="res://data/items/crops/Tomato.tres" type="Resource" id=2]
+[ext_resource path="res://assets/plants/tomato/tomato3.tres" type="Texture" id=3]
+[ext_resource path="res://assets/plants/tomato/tomato0.tres" type="Texture" id=4]
+[ext_resource path="res://assets/plants/tomato/tomato1.tres" type="Texture" id=5]
+[ext_resource path="res://assets/plants/tomato/tomato2.tres" type="Texture" id=6]
+
+[resource]
+script = ExtResource( 1 )
+name = "Tomato"
+growthTime = 3
+harvestAmount = 1
+harvest = ExtResource( 2 )
+textures = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ) ]

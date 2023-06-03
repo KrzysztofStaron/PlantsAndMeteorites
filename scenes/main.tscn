@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -11,10 +11,15 @@
 [ext_resource path="res://assets/objects/soil/soil.png" type="Texture" id=9]
 [ext_resource path="res://scripts/objects/soil/soiltexture.gd" type="Script" id=10]
 [ext_resource path="res://scenes/objects/buildings/oxygenMachine.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/ui/slider.gdshader" type="Shader" id=12]
+[ext_resource path="res://assets/ui/oxygen/Oxygen_Icon_1.png" type="Texture" id=12]
 [ext_resource path="res://scenes/objects/steamRock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/ui/pause.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/ui/quickInventory.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/ui/oxygen/Oxygen_Icon_2.png" type="Texture" id=16]
+[ext_resource path="res://scenes/droppedItem.tscn" type="PackedScene" id=17]
+[ext_resource path="res://data/items/seeds/PotatoSeed.tres" type="Resource" id=18]
+[ext_resource path="res://data/items/seeds/TomatoSeed.tres" type="Resource" id=19]
+[ext_resource path="res://assets/ui/slider.gdshader" type="Shader" id=20]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -41,8 +46,8 @@ shader_param/SCALE = 0.5
 shader_param/SOFTNESS = 1.2
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 12 )
-shader_param/persent = 100.0
+shader = ExtResource( 20 )
+shader_param/persent = 1.0
 
 [sub_resource type="TileSet" id=1]
 0/name = "ground.png 0"
@@ -735,19 +740,20 @@ margin_top = 152.0
 margin_right = 48.0
 margin_bottom = 166.0
 
-[node name="oxygen" type="Panel" parent="UI"]
-visible = false
-material = SubResource( 5 )
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 32.0
-margin_bottom = 56.0
+[node name="oxygen" type="TextureRect" parent="UI"]
+margin_left = -11.0
+margin_top = -4.0
+margin_right = 53.0
+margin_bottom = 60.0
+texture = ExtResource( 16 )
 
-[node name="Panel" type="Panel" parent="UI/oxygen"]
-modulate = Color( 0, 0, 0, 1 )
-show_behind_parent = true
-margin_right = 16.0
-margin_bottom = 40.0
+[node name="fill" type="TextureRect" parent="UI/oxygen"]
+material = SubResource( 5 )
+margin_left = 28.0
+margin_top = 20.0
+margin_right = 33.0
+margin_bottom = 49.0
+texture = ExtResource( 12 )
 
 [node name="pause" parent="UI" instance=ExtResource( 14 )]
 visible = false
@@ -811,3 +817,11 @@ position = Vector2( 208, 96 )
 
 [node name="SteamRock" parent="." instance=ExtResource( 13 )]
 position = Vector2( 80, 104 )
+
+[node name="DroppedItem" parent="." instance=ExtResource( 17 )]
+position = Vector2( 86, 27 )
+item = ExtResource( 18 )
+
+[node name="DroppedItem2" parent="." instance=ExtResource( 17 )]
+position = Vector2( 116, 27 )
+item = ExtResource( 19 )

@@ -4,7 +4,7 @@ onready var inventory := [
 	preload("res://data/items/seeds/CarrotSeed.tres"),
 	preload("res://data/items/buildings/soil.tres"),
 	preload("res://data/items/tools/wateringCan.tres"),
-	preload("res://data/items/tools/drill.tres"),
+	preload("res://data/items/seeds/CucumberSeed.tres"),
 ]
 
 var selectedItemIndex := 0
