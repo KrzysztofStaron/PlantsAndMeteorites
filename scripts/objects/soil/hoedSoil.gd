@@ -68,6 +68,12 @@ func isFullyGrown() -> bool:
 		return false
 
 func destroy():
+	if not Inventory.addToinventory(load("res://data/items/buildings/soil.tres")):
+		var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
+		dropScene.position = position
+		dropScene.item = load("res://data/items/buildings/soil.tres")
+		get_parent().add_child(dropScene)
+
 	print("destroyed")
 	get_parent().updateTexture(position, true)
 	queue_free()
