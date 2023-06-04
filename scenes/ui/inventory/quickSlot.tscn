@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/ui/UI_5.png" type="Texture" id=1]
 [ext_resource path="res://scenes/hoverEffect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/items/stone.png" type="Texture" id=3]
 [ext_resource path="res://assets/ui/font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scripts/inventory/quickSlot.gd" type="Script" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -20,10 +21,13 @@ margin_right = 7.12
 margin_bottom = 4.96
 focus_mode = 0
 toggle_mode = true
+action_mode = 0
 enabled_focus_mode = 0
 texture_normal = SubResource( 1 )
 texture_pressed = SubResource( 2 )
+texture_disabled = SubResource( 2 )
 stretch_mode = 2
+script = ExtResource( 5 )
 
 [node name="hover" parent="." instance=ExtResource( 2 )]
 hoverColor = Color( 0.784314, 0.784314, 0.784314, 1 )
@@ -46,3 +50,6 @@ rect_scale = Vector2( 0.3, 0.3 )
 custom_fonts/font = ExtResource( 4 )
 text = "0"
 align = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_quickSlot_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_quickSlot_mouse_exited"]

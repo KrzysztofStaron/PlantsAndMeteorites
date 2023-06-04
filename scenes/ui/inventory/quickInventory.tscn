@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/ui/UI_5.png" type="Texture" id=1]
-[ext_resource path="res://scenes/ui/quickSlot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ui/inventory/quickSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scripts/quickInventory.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
