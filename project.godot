@@ -117,7 +117,6 @@ gdscript/warnings/unused_argument=false
 
 window/size/width=320
 window/size/height=180
-window/size/fullscreen=true
 window/size/test_width=960
 window/size/test_height=540
 window/dpi/allow_hidpi=true
@@ -243,12 +242,18 @@ pickup={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+cancelDrop={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [layer_names]
 
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Object"
 2d_physics/layer_5="Oxygen"
+2d_physics/layer_6="DroppedItem"
 
 [physics]
 

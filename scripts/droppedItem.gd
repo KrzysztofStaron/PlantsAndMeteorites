@@ -2,7 +2,10 @@ extends Area2D
 
 export var item : Resource # InventoryItem
 
+var spawnDate : int
+
 func _ready():
+	spawnDate = OS.get_unix_time()
 	$Sprite.texture = item.texture
 
 func _on_DroppedItem_body_entered(body):
@@ -10,3 +13,8 @@ func _on_DroppedItem_body_entered(body):
 		if Inventory.addToinventory(item):
 			queue_free()
 
+func _on_DroppedItem_area_entered(area):
+	if area.item.name == item.name and area.spawnDate < spawnDate and position.distance_to(area.position) < 2:
+		area.item.quantity += item.quantity
+		print("free")
+		queue_free()
