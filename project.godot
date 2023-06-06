@@ -117,6 +117,7 @@ gdscript/warnings/unused_argument=false
 
 window/size/width=320
 window/size/height=180
+window/size/fullscreen=true
 window/size/test_width=960
 window/size/test_height=540
 window/dpi/allow_hidpi=true
@@ -254,6 +255,7 @@ cancelDrop={
 2d_physics/layer_4="Object"
 2d_physics/layer_5="Oxygen"
 2d_physics/layer_6="DroppedItem"
+2d_physics/layer_7="ItemSlot"
 
 [physics]
 
