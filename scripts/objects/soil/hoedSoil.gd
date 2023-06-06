@@ -87,6 +87,10 @@ func harvest():
 		var newItem : CountableItem = crop.harvest
 		newItem.quantity = crop.harvestAmount
 		if Inventory.addToinventory(newItem):
+			var pickup : Node = preload("res://scenes/objects/soil/pickup.tscn").instance()
+			pickup.position = position
+			get_parent().add_child(pickup)
+			
 			growthDays = 0
 			crop = null
 			$crop.texture = null
