@@ -1,7 +1,5 @@
 extends TextureRect
-
 var inv : Array
-
 var dropping := false
 
 func drop(num := 0):
@@ -30,8 +28,9 @@ func _input(event):
 		for slot in range(1,len(Inventory.inventory)+1):
 			if event.is_action_pressed("slot"+str(slot)):
 				updateSelection(slot - 1)
-				$Label.rect_position.y = get_node("VContainer/slot"+str(slot-1)).rect_position.y - 2
-
+				# Label Position
+				$Label.rect_position.y = get_node("VContainer/slot"+str(slot-1)).rect_position.y - 4
+		# Dropping
 		if event.is_action_pressed("dropItem") and Inventory.getSelectedItemType() and get_tree().get_root().get_node("main/pointer").isInReach():
 			if Inventory.getSelectedItem() is CountableItem:		
 				$Timer.start(1.0)
@@ -50,6 +49,7 @@ func _process(delta):
 			$Label.hide()
 		else:
 			$Label.text = str(timeToInt()) + "/" + str(Inventory.getSelectedItem().quantity)
+			$Label.rect_position.y = get_node("VContainer/slot"+str(Inventory.selectedItemIndex)).rect_position.y
 			if timeToInt() == Inventory.getSelectedItem().quantity:
 				drop(Inventory.getSelectedItem().quantity)
 	

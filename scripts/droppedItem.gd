@@ -15,6 +15,6 @@ func _on_DroppedItem_body_entered(body):
 
 func _on_DroppedItem_area_entered(area):
 	if area.item.name == item.name and area.spawnDate < spawnDate and position.distance_to(area.position) < 2:
-		area.item.quantity += item.quantity
+		item.quantity += area.item.quantity
 		print("free")
-		queue_free()
+		area.queue_free()

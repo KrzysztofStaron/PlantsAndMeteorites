@@ -10,7 +10,7 @@ onready var inventory := [
 var selectedItemIndex := 0
 
 func _ready():
-	inventory[3].quantity = 5
+	inventory[3].quantity = 90
 
 func swap(firstIndex : int, secIndex : int):
 	var copyOfFirst : InventoryItem = inventory[firstIndex]
