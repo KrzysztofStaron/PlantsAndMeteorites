@@ -1,16 +1,13 @@
 extends Node
 
 onready var inventory := [
-	preload("res://data/items/seeds/CarrotSeed.tres"),
+	null,
 	preload("res://data/items/tools/drill.tres"),
 	preload("res://data/items/tools/wateringCan.tres"),
-	preload("res://data/items/seeds/CucumberSeed.tres"),
+	preload("res://data/items/tools/hoe.tres"),
 ]
 
 var selectedItemIndex := 0
-
-func _ready():
-	inventory[3].quantity = 90
 
 func swap(firstIndex : int, secIndex : int):
 	var copyOfFirst : InventoryItem = inventory[firstIndex]

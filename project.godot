@@ -117,7 +117,6 @@ gdscript/warnings/unused_argument=false
 
 window/size/width=320
 window/size/height=180
-window/size/fullscreen=true
 window/size/test_width=960
 window/size/test_height=540
 window/dpi/allow_hidpi=true

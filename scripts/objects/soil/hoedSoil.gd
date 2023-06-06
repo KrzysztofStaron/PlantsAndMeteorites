@@ -6,6 +6,10 @@ export var growthDays : int
 export var watered : bool
 
 func _ready():
+	show()
+	
+func updateTexture():
+	$appear.queue_free()
 	get_parent().updateTexture(position)
 	
 func interact_right():

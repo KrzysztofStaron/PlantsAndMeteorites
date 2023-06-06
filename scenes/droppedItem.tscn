@@ -17,4 +17,3 @@ shape = SubResource( 1 )
 scale = Vector2( 0.75, 0.75 )
 
 [connection signal="area_entered" from="." to="." method="_on_DroppedItem_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_DroppedItem_body_entered"]
