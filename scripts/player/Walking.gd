@@ -2,7 +2,7 @@ extends State
 
 export var speed := 50.0
 
-enum {DOWN, RIGHT, UP, LEFT}
+enum {DOWN, DOWN_LEFT, LEFT, UP_LEFT, UP, UP_RIGHT, RIGHT, DOWN_RIGHT}
 
 func handle_input(_event: InputEvent) -> void:
 	pass
@@ -18,13 +18,24 @@ func update(_delta : float) -> void:
 
 	if dir:
 		if dir.x < 0:
-			owner.get_node("Sprite").frame = LEFT
+			if dir.y < 0:
+				owner.get_node("Sprite").frame = UP_LEFT
+			elif dir.y > 0:
+				owner.get_node("Sprite").frame = DOWN_LEFT
+			else:	
+				owner.get_node("Sprite").frame = LEFT
 		elif dir.x > 0:
-			owner.get_node("Sprite").frame = RIGHT
-		elif dir.y < 0:
-			owner.get_node("Sprite").frame = UP
+			if dir.y < 0:
+				owner.get_node("Sprite").frame = UP_RIGHT
+			elif dir.y > 0:
+				owner.get_node("Sprite").frame = DOWN_RIGHT
+			else:	
+				owner.get_node("Sprite").frame = RIGHT
 		else:
-			owner.get_node("Sprite").frame = DOWN
+			if dir.y < 0:
+				owner.get_node("Sprite").frame = UP
+			else:
+				owner.get_node("Sprite").frame = DOWN
 
 		(owner as KinematicBody2D).move_and_slide(dir * speed)
 	else:
