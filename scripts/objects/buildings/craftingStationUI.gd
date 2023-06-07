@@ -26,7 +26,7 @@ func _process(delta):
 				print(makingCounter)
 				var percent := 1.0/makingTime
 				var tween : Tween = get_node("processTween")
-				tween.interpolate_property($slider/fill.get_material(), "shader_param/persent", percent * makingCounter, percent * (makingCounter+1), 0.3, Tween.TRANS_EXPO, Tween.EASE_IN)
+				tween.interpolate_property($slider/fill.get_material(), "shader_param/persent", percent * makingCounter, percent * (makingCounter+1), 0.3, Tween.TRANS_EXPO, Tween.EASE_OUT)
 				tween.start()
 				makingCounter += 1
 		else:
