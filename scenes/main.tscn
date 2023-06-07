@@ -803,7 +803,6 @@ margin_bottom = 25.04
 [node name="draggedItem" parent="UI" instance=ExtResource( 21 )]
 
 [node name="craftingStationUI" parent="UI" instance=ExtResource( 31 )]
-pause_mode = 2
 visible = false
 margin_left = 125.0
 margin_top = 30.0
@@ -817,6 +816,7 @@ margin_left = -125.0
 margin_top = -30.0
 margin_right = 195.0
 margin_bottom = 150.0
+mouse_filter = 2
 
 [node name="grid" type="TileMap" parent="."]
 z_index = -5

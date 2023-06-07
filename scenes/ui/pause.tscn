@@ -5,7 +5,6 @@
 [ext_resource path="res://scripts/pause.gd" type="Script" id=3]
 [ext_resource path="res://scenes/hoverEffect.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
 region = Rect2( 59, 42, 9, 7 )

@@ -1,5 +1,6 @@
 extends Node
 
+export var canPause = true
 export var day : int
 var player : Player
 

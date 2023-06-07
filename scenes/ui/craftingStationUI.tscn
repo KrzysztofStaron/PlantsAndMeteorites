@@ -80,10 +80,11 @@ animations = [ {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": true,
 "name": "default",
-"speed": 11.0
+"speed": 12.0
 } ]
 
 [node name="craftingStationUI" type="TextureRect"]
+pause_mode = 2
 margin_left = 110.0
 margin_top = 22.0
 margin_right = 209.0
@@ -117,8 +118,6 @@ texture_pressed = SubResource( 5 )
 visible = false
 position = Vector2( 38, 47 )
 frames = SubResource( 18 )
-frame = 2
-playing = true
 
 [node name="items" type="GridContainer" parent="."]
 margin_left = 6.0
@@ -171,6 +170,11 @@ margin_top = 44.0
 margin_right = 64.0
 margin_bottom = 64.0
 
+[node name="processTween" type="Tween" parent="."]
+
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="pressed" from="craft" to="." method="_on_craft_pressed"]
+[connection signal="tween_completed" from="processTween" to="." method="_on_processTween_tween_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
