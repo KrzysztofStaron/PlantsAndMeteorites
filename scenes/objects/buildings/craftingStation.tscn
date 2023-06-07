@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/objects/buildings/CraftingStation.png" type="Texture" id=1]
 [ext_resource path="res://scripts/objects/buildings/craftingStation.gd" type="Script" id=2]
@@ -16,6 +16,17 @@ extents = Vector2( 16, 7.5 )
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
 region = Rect2( 18, 0, 32, 16 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec4 text = texture(SCREEN_TEXTURE, SCREEN_UV);
+	COLOR = text;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -74,7 +85,7 @@ offset = Vector2( 8, 0 )
 script = ExtResource( 3 )
 
 [node name="TextureRect" type="TextureRect" parent="Sprite"]
-visible = false
+material = SubResource( 8 )
 margin_left = -8.0
 margin_top = -8.0
 margin_right = 24.0

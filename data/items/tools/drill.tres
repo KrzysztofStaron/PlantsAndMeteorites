@@ -1,9 +1,11 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=3 format=2]
 
 [ext_resource path="res://cutomResources/inventoryItems/tool.gd" type="Script" id=1]
+[ext_resource path="res://assets/items/drill.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
 name = "Drill"
 type = "tool"
+texture = ExtResource( 2 )
 toolType = 1
