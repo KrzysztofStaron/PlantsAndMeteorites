@@ -33,18 +33,18 @@ func _process(delta):
 			used = false
 
 		if makingCounter == makingTime:
-			$Timer.start(0.3)
 			procesing = false
-			$hammer.frame = 9
-			$hammer.playing = false
 
 
 func _on_processTween_tween_completed(object, key):
 	pass # Replace with function body.
 
-
-func _on_Timer_timeout():
-	$hammer.hide()
-	$items.show()
-	makingCounter = 0
-	$slider/fill.get_material().set_shader_param("persent", 0.0)
+func _on_hammer_animation_finished():
+	if makingCounter == makingTime:
+		procesing = false
+		$hammer.frame = 9
+		$hammer.playing = false
+		$hammer.hide()
+		$items.show()
+		makingCounter = 0
+		$slider/fill.get_material().set_shader_param("persent", 0.0)

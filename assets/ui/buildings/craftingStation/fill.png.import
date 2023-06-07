@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/craftingStation2.png-d4d77f4eb8db0cd2bebe227369823f4b.stex"
+path="res://.import/fill.png-783a4a580e53723ca563c6bfed55a7ae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/craftingStation/craftingStation2.png"
-dest_files=[ "res://.import/craftingStation2.png-d4d77f4eb8db0cd2bebe227369823f4b.stex" ]
+source_file="res://assets/ui/buildings/craftingStation/fill.png"
+dest_files=[ "res://.import/fill.png-783a4a580e53723ca563c6bfed55a7ae.stex" ]
 
 [params]
 

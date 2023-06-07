@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fill.png-3f5705881ca8555fcd09dd14254c6d27.stex"
+path="res://.import/Working_Progress_Build_.png-5133f1fbed5478fdd35121dd79574d6e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/fill.png"
-dest_files=[ "res://.import/fill.png-3f5705881ca8555fcd09dd14254c6d27.stex" ]
+source_file="res://assets/ui/buildings/craftingStation/Working_Progress_Build_.png"
+dest_files=[ "res://.import/Working_Progress_Build_.png-5133f1fbed5478fdd35121dd79574d6e.stex" ]
 
 [params]
 

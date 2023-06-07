@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Oxygen_Icon_1.png-b41dfd1ea0efb10331d0f9fe43cc6136.stex"
+path="res://.import/craftingStation.png-0836b01671515774783b92a7a81bb1f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/oxygen/Oxygen_Icon_1.png"
-dest_files=[ "res://.import/Oxygen_Icon_1.png-b41dfd1ea0efb10331d0f9fe43cc6136.stex" ]
+source_file="res://assets/ui/buildings/craftingStation/craftingStation.png"
+dest_files=[ "res://.import/craftingStation.png-0836b01671515774783b92a7a81bb1f9.stex" ]
 
 [params]
 

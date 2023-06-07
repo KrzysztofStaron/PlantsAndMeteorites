@@ -1,17 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/objects/buildings/CraftingStation.png" type="Texture" id=1]
 [ext_resource path="res://scripts/objects/buildings/craftingStation.gd" type="Script" id=2]
 [ext_resource path="res://scripts/objects/ZindexManager.gd" type="Script" id=3]
 [ext_resource path="res://assets/objects/buildings/Building_Progress_animation - Copy - Copy.png" type="Texture" id=4]
-[ext_resource path="res://assets/objects/buildings/Building_Progress_animation - Copy.png" type="Texture" id=5]
-[ext_resource path="res://assets/objects/buildings/Building_Progress_animation.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 7.5 )
+
+[sub_resource type="ShaderMaterial" id=6]
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 4 ) ]
+"values": [ null ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -46,13 +46,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+"values": [ null, null, null ]
 }
 
 [node name="craftingStation" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 4
 script = ExtResource( 2 )
+objectName = "Crafting Station"
 
 [node name="tilecollision" type="Area2D" parent="."]
 position = Vector2( 8, 0 )
@@ -67,6 +68,7 @@ position = Vector2( 8, 0.5 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 6 )
 texture = SubResource( 3 )
 offset = Vector2( 8, 0 )
 script = ExtResource( 3 )

@@ -11,11 +11,11 @@
 [ext_resource path="res://assets/objects/soil/soil.png" type="Texture" id=9]
 [ext_resource path="res://scripts/objects/soil/soiltexture.gd" type="Script" id=10]
 [ext_resource path="res://scenes/objects/buildings/oxygenMachine.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/ui/oxygen/Oxygen_Icon_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/ui/buildings/oxygen/Oxygen_Icon_1.png" type="Texture" id=12]
 [ext_resource path="res://scenes/objects/steamRock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/ui/pause.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/ui/inventory/quickInventory.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/ui/oxygen/Oxygen_Icon_2.png" type="Texture" id=16]
+[ext_resource path="res://assets/ui/buildings/oxygen/Oxygen_Icon_2.png" type="Texture" id=16]
 [ext_resource path="res://scenes/droppedItem.tscn" type="PackedScene" id=17]
 [ext_resource path="res://assets/items/potato/potatoSeed.png" type="Texture" id=18]
 [ext_resource path="res://assets/items/tomato/tomatoSeed.png" type="Texture" id=19]
@@ -828,6 +828,7 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
+frame = 0
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
