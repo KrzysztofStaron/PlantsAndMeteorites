@@ -1,9 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/ui/UI_4.png" type="Texture" id=1]
-[ext_resource path="res://assets/ui/UI_3.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/pause/UI_4.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/pause/UI_3.png" type="Texture" id=2]
 [ext_resource path="res://scripts/pause.gd" type="Script" id=3]
 [ext_resource path="res://scenes/hoverEffect.tscn" type="PackedScene" id=4]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )

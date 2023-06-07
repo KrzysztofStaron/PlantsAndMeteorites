@@ -29,7 +29,9 @@ func mine():
 
 func interact_left():
 	var item = Inventory.getSelectedItem()
-	if item.type != "tool":
+	if item == null:
+		pass
+	elif item.type != "tool":
 		pass
 	else:
 		match item.toolType:

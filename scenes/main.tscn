@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -21,7 +21,7 @@
 [ext_resource path="res://assets/items/tomato/tomatoSeed.png" type="Texture" id=19]
 [ext_resource path="res://assets/ui/slider.gdshader" type="Shader" id=20]
 [ext_resource path="res://scenes/ui/inventory/draggedItem.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/objects/soil/hoedSoil.tscn" type="PackedScene" id=22]
+[ext_resource path="res://scenes/objects/buildings/soil/hoedSoil.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/objects/buildings/craftingStation.tscn" type="PackedScene" id=23]
 [ext_resource path="res://data/plants/CarrotPlant.tres" type="Resource" id=24]
 [ext_resource path="res://cutomResources/inventoryItems/seed.gd" type="Script" id=25]
@@ -30,6 +30,7 @@
 [ext_resource path="res://data/plants/TomatoPlant.tres" type="Resource" id=28]
 [ext_resource path="res://data/plants/CucumberPlant.tres" type="Resource" id=29]
 [ext_resource path="res://assets/items/cucumber/cucumberSeed.png" type="Texture" id=30]
+[ext_resource path="res://scenes/ui/craftingStationUI.tscn" type="PackedScene" id=31]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -801,6 +802,22 @@ margin_bottom = 25.04
 
 [node name="draggedItem" parent="UI" instance=ExtResource( 21 )]
 
+[node name="craftingStationUI" parent="UI" instance=ExtResource( 31 )]
+pause_mode = 2
+visible = false
+margin_left = 125.0
+margin_top = 30.0
+margin_right = 224.0
+margin_bottom = 127.0
+
+[node name="dark" type="Panel" parent="UI/craftingStationUI"]
+self_modulate = Color( 0, 0, 0, 0.588235 )
+show_behind_parent = true
+margin_left = -125.0
+margin_top = -30.0
+margin_right = 195.0
+margin_bottom = 150.0
+
 [node name="grid" type="TileMap" parent="."]
 z_index = -5
 tile_set = SubResource( 1 )
@@ -811,7 +828,6 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
-frame = 0
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")

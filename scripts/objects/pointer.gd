@@ -65,7 +65,7 @@ func interact_left(interacted : object, type : String):
 		"tool":
 			match Inventory.getSelectedItem().toolType:
 				Tool.WateringCan:
-					var water : Node = preload("res://scenes/objects/soil/water.tscn").instance()
+					var water : Node = preload("res://scenes/objects/buildings/soil/water.tscn").instance()
 					water.position = position
 					get_parent().add_child(water)
 		"building":

@@ -72,13 +72,17 @@ func isFullyGrown() -> bool:
 		return false
 
 func destroy():
+	var destroy : Node = preload("res://scenes/objects/buildings/soil/destroy.tscn").instance()
+	destroy.position = position
+	destroy.emitting = true
+	get_parent().add_child(destroy)
+
 	if not Inventory.addToinventory(load("res://data/items/buildings/soil.tres")):
 		var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
 		dropScene.position = position
 		dropScene.item = load("res://data/items/buildings/soil.tres")
 		get_parent().add_child(dropScene)
 
-	print("destroyed")
 	get_parent().updateTexture(position, true)
 	queue_free()
 
@@ -91,7 +95,7 @@ func harvest():
 		var newItem : CountableItem = crop.harvest
 		newItem.quantity = crop.harvestAmount
 		if Inventory.addToinventory(newItem):
-			var pickup : Node = preload("res://scenes/objects/soil/pickup.tscn").instance()
+			var pickup : Node = preload("res://scenes/objects/buildings/soil/pickup.tscn").instance()
 			pickup.position = position
 			get_parent().add_child(pickup)
 			

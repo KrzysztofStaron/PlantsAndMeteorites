@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://scenes/objects/soil/hoedSoil.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/objects/buildings/soil/hoedSoil.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=2]
 [ext_resource path="res://assets/items/dirt.png" type="Texture" id=3]
 
