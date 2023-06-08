@@ -1,4 +1,4 @@
-extends object
+extends Building
 class_name Soil
 
 export var crop : Resource

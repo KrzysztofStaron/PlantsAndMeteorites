@@ -2,25 +2,42 @@
 
 [ext_resource path="res://assets/objects/buildings/Building_Progress_animation - Copy - Copy.png" type="Texture" id=1]
 
-[sub_resource type="Shader" id=12]
+[sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
 
-uniform sampler2D anim;
+uniform sampler2D mask_texture;
+uniform float rect_size : hint_range(0.0, 5.0) = 1.0;
+uniform float ratio_width : hint_range(0.0, 3.0) = 1.0;
+uniform float ratio_height : hint_range(0.0, 3.0) = 1.0;
+uniform float location_x : hint_range(-1.0, 2.0) = 0.0;
+uniform float location_y : hint_range(-1.0, 2.0) = 0.0;
+uniform bool show = false;
 
 void fragment() {
-	vec4 text = texture(TEXTURE, UV);
-	if (text.a != 0.0) {
-		vec4 effect = texture(anim, UV * 3.0);
-		if (effect.a != 0.0) {
+	float ratio = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
+    vec4 color = texture(TEXTURE, UV);
+	if (!show) {
+		COLOR = color;
+	} else {
+		vec4 effect = texture(mask_texture, (UV - vec2(location_x,location_y)) / vec2(ratio_width,ratio_height) / rect_size);
+	
+		if (effect.a == 0.0) {
+		    COLOR = color;	
+		} else if (color.a != 0.0) {
 			COLOR = effect;
 		} else {
-			COLOR = text;	
+			COLOR.a = 0.0
 		}
-	} else {
-		COLOR = text
 	}
 }"
 
 [resource]
-shader = SubResource( 12 )
-shader_param/anim = ExtResource( 1 )
+resource_local_to_scene = true
+shader = SubResource( 6 )
+shader_param/rect_size = 0.25
+shader_param/ratio_width = 0.5
+shader_param/ratio_height = 1.0
+shader_param/location_x = 0.0
+shader_param/location_y = 0.0
+shader_param/show = false
+shader_param/mask_texture = ExtResource( 1 )

@@ -83,10 +83,10 @@ func interact_right(interacted : object, type : String):
 		interacted.interact_right()
 
 func build():
-	var hoedSoil : Node = Inventory.getSelectedItem().scene.instance()
-	hoedSoil.position = position
-	get_node("../soil").add_child(hoedSoil)
-	
+	var building : Node = Inventory.getSelectedItem().scene.instance()
+	building.position = position
+	get_node("../soil").add_child(building)
+	building.startBuilding(Inventory.getSelectedItem().buildingTime)
 	Inventory.removeAmount()
 
 

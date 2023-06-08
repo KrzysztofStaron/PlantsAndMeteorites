@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://scenes/objects/pebbles/pebble1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/objects/soil/soil.png" type="Texture" id=9]
 [ext_resource path="res://scripts/objects/soil/soiltexture.gd" type="Script" id=10]
-[ext_resource path="res://scenes/objects/buildings/oxygenMachine.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/ui/buildings/oxygen/Oxygen_Icon_1.png" type="Texture" id=12]
 [ext_resource path="res://scenes/objects/steamRock.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/ui/pause.tscn" type="PackedScene" id=14]
@@ -828,7 +827,6 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
-frame = 0
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
@@ -894,8 +892,9 @@ position = Vector2( 184, 56 )
 [node name="hoedSoil8" parent="soil" instance=ExtResource( 22 )]
 position = Vector2( 200, 56 )
 
-[node name="oxygenMachine" parent="." instance=ExtResource( 11 )]
-position = Vector2( 208, 96 )
+[node name="craftingStation" parent="." instance=ExtResource( 23 )]
+position = Vector2( 152, 120 )
+builded = true
 
 [node name="SteamRock" parent="." instance=ExtResource( 13 )]
 position = Vector2( 80, 104 )
@@ -915,6 +914,3 @@ item = SubResource( 6 )
 [node name="DroppedItem4" parent="." instance=ExtResource( 17 )]
 position = Vector2( 88, 40 )
 item = SubResource( 9 )
-
-[node name="craftingStation" parent="." instance=ExtResource( 23 )]
-position = Vector2( 152, 120 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/oxygenMachine.png-79e8b76c5ea45bea773eeb6913a761ac.stex"
+path="res://.import/oxygenMachine.png-6bbf0a6a7f5e08681ea84eb3a135d9da.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/buildings/oxygenMachine.png"
-dest_files=[ "res://.import/oxygenMachine.png-79e8b76c5ea45bea773eeb6913a761ac.stex" ]
+source_file="res://assets/objects/buildings/oxygenMachine/oxygenMachine.png"
+dest_files=[ "res://.import/oxygenMachine.png-6bbf0a6a7f5e08681ea84eb3a135d9da.stex" ]
 
 [params]
 

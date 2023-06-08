@@ -1,7 +1,7 @@
 extends Node
 
 onready var inventory := [
-	null,
+	preload("res://data/items/buildings/OxygenMachine.tres"),
 	preload("res://data/items/tools/drill.tres"),
 	preload("res://data/items/tools/wateringCan.tres"),
 	preload("res://data/items/tools/hoe.tres"),
