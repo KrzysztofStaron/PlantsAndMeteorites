@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=1]
+[ext_resource path="res://scenes/objects/buildings/craftingStation.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/objects/buildings/CraftingStation.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 18, 0, 32, 15 )
+
+[resource]
+script = ExtResource( 1 )
+name = "CrafingStation"
+type = "building"
+texture = SubResource( 1 )
+quantity = 1
+scene = ExtResource( 2 )
+buildingTime = 3.0

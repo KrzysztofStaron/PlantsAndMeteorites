@@ -19,6 +19,7 @@ func startBuilding(buildTime : float) -> void:
 
 func build() -> void:
 	emit_signal("build")
+	builded = true
 	print("build")
 	
 	for buildStuf in $Sprite.get_children():
