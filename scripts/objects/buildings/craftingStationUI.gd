@@ -36,9 +36,6 @@ func _process(delta):
 			procesing = false
 
 
-func _on_processTween_tween_completed(object, key):
-	pass # Replace with function body.
-
 func _on_hammer_animation_finished():
 	if makingCounter == makingTime:
 		procesing = false
