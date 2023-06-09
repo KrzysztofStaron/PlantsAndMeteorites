@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cucumber.png-6398692ccab676cac657cf532d0440f1.stex"
+path="res://.import/stone.png-c2d62ef87682612c77ccc652b6d5b746.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/cucumber/cucumber.png"
-dest_files=[ "res://.import/cucumber.png-6398692ccab676cac657cf532d0440f1.stex" ]
+source_file="res://assets/items/material/stone.png"
+dest_files=[ "res://.import/stone.png-c2d62ef87682612c77ccc652b6d5b746.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

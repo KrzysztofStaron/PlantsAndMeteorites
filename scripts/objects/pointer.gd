@@ -84,7 +84,7 @@ func interact_right(interacted : object, type : String):
 
 func build():
 	var building : Node = Inventory.getSelectedItem().scene.instance()
-	building.position = position
+	building.position = position + Vector2(Inventory.getSelectedItem().offset, Inventory.getSelectedItem().offset)
 	get_node("../soil").add_child(building)
 	building.startBuilding(Inventory.getSelectedItem().buildingTime)
 	Inventory.removeAmount()

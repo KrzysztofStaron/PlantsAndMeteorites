@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/carrot.png-d62b8e579dc3ec50120566132ff83e06.stex"
+path="res://.import/iron.png-3e6ab52dae7bf1d331207753c919aaf3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/carrot/carrot.png"
-dest_files=[ "res://.import/carrot.png-d62b8e579dc3ec50120566132ff83e06.stex" ]
+source_file="res://assets/items/material/iron.png"
+dest_files=[ "res://.import/iron.png-3e6ab52dae7bf1d331207753c919aaf3.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

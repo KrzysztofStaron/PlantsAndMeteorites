@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://assets/ui/buildings/craftingStation/craftingStation.png" type="Texture" id=1]
 [ext_resource path="res://assets/ui/buildings/craftingStation/fill.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/ui/buildings/craftingStation/Working_Progress_Build_.png" type="Texture" id=4]
 [ext_resource path="res://scenes/ui/craftingItem.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/objects/buildings/craftingStationUI.gd" type="Script" id=6]
+[ext_resource path="res://data/recipies/wall.tres" type="Resource" id=7]
+[ext_resource path="res://data/recipies/floor.tres" type="Resource" id=8]
+[ext_resource path="res://scenes/ui/require.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -112,7 +115,7 @@ margin_top = 99.0
 margin_right = 93.0
 margin_bottom = 114.0
 texture_normal = SubResource( 4 )
-texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 5 )
 
 [node name="hammer" type="AnimatedSprite" parent="."]
 visible = false
@@ -129,10 +132,12 @@ custom_constants/hseparation = 2
 columns = 3
 
 [node name="craftingItem" parent="items" instance=ExtResource( 5 )]
+recipe = ExtResource( 7 )
 
 [node name="craftingItem2" parent="items" instance=ExtResource( 5 )]
 margin_left = 22.0
 margin_right = 42.0
+recipe = ExtResource( 8 )
 
 [node name="craftingItem3" parent="items" instance=ExtResource( 5 )]
 margin_left = 44.0
@@ -165,6 +170,58 @@ margin_right = 42.0
 margin_bottom = 64.0
 
 [node name="craftingItem9" parent="items" instance=ExtResource( 5 )]
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="require" type="GridContainer" parent="."]
+visible = false
+margin_left = 6.0
+margin_top = 15.0
+margin_right = 71.0
+margin_bottom = 79.0
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 3
+
+[node name="require" parent="require" instance=ExtResource( 9 )]
+
+[node name="require2" parent="require" instance=ExtResource( 9 )]
+margin_left = 22.0
+margin_right = 42.0
+
+[node name="require3" parent="require" instance=ExtResource( 9 )]
+margin_left = 44.0
+margin_right = 64.0
+
+[node name="require4" parent="require" instance=ExtResource( 9 )]
+margin_top = 22.0
+margin_bottom = 42.0
+
+[node name="require5" parent="require" instance=ExtResource( 9 )]
+margin_left = 22.0
+margin_top = 22.0
+margin_right = 42.0
+margin_bottom = 42.0
+
+[node name="require6" parent="require" instance=ExtResource( 9 )]
+margin_left = 44.0
+margin_top = 22.0
+margin_right = 64.0
+margin_bottom = 42.0
+
+[node name="require7" parent="require" instance=ExtResource( 9 )]
+margin_top = 44.0
+margin_bottom = 64.0
+
+[node name="require8" parent="require" instance=ExtResource( 9 )]
+margin_left = 22.0
+margin_top = 44.0
+margin_right = 42.0
+margin_bottom = 64.0
+
+[node name="require9" parent="require" instance=ExtResource( 9 )]
 margin_left = 44.0
 margin_top = 44.0
 margin_right = 64.0

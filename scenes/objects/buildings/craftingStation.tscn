@@ -43,7 +43,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=7]
 resource_local_to_scene = true
 shader = SubResource( 6 )
-shader_param/rect_size = 1.0
+shader_param/rect_size = 0.5
 shader_param/ratio_width = 0.5
 shader_param/ratio_height = 1.0
 shader_param/location_x = 0.25

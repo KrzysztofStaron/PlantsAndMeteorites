@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tomato.png-a5ff70428874bf97fdf19faa3d6e41e2.stex"
+path="res://.import/wall.png-2351f3dc59ba995a36defad3b58c1cfb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/tomato/tomato.png"
-dest_files=[ "res://.import/tomato.png-a5ff70428874bf97fdf19faa3d6e41e2.stex" ]
+source_file="res://assets/items/buildings/wall.png"
+dest_files=[ "res://.import/wall.png-2351f3dc59ba995a36defad3b58c1cfb.stex" ]
 
 [params]
 

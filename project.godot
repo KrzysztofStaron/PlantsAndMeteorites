@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/player/player.gd"
 }, {
+"base": "Resource",
+"class": "Recipe",
+"language": "GDScript",
+"path": "res://cutomResources/recipe.gd"
+}, {
 "base": "CountableItem",
 "class": "Seed",
 "language": "GDScript",
@@ -87,6 +92,7 @@ _global_script_class_icons={
 "InventoryItem": "",
 "Plant": "",
 "Player": "",
+"Recipe": "",
 "Seed": "",
 "Soil": "",
 "State": "",

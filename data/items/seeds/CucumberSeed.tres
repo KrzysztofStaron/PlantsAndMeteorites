@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://cutomResources/inventoryItems/seed.gd" type="Script" id=1]
-[ext_resource path="res://assets/items/cucumber/cucumberSeed.png" type="Texture" id=2]
+[ext_resource path="res://assets/items/plants/cucumber/cucumberSeed.png" type="Texture" id=2]
 [ext_resource path="res://data/plants/CucumberPlant.tres" type="Resource" id=3]
 
 [resource]

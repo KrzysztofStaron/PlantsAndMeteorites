@@ -2,16 +2,37 @@ extends TextureRect
 
 export var procesing := false
 export var makingTime := 6
-var makingCounter := 0 
+var makingCounter := 0
 var used := false
 
+var selected : Resource
+var stationPos : Vector2
+
 func _on_craft_pressed():
-	$hammer.show()
-	$items.hide()
-	$hammer.frame = 0
-	$hammer.playing = true
+	for item in $items.get_children():
+		if item.pressed:
+			selected = item.recipe.item
+			makingTime = item.recipe.time
 	
-	procesing = true
+			var failed := false
+			for i in len(item.recipe.require):
+				if not Inventory.hasItem(item.recipe.require[i].name, item.recipe.amounts[i]):
+					failed = true
+			
+			if !failed:
+				for i in len(item.recipe.require):
+					Inventory.removeAmountByName(item.recipe.require[i].name, item.recipe.amounts[i])
+				
+				$craft.hide()
+				$hammer.show()
+				$require.hide()
+				$hammer.frame = 0
+				$hammer.playing = true
+				
+				procesing = true
+	
+	for child in $items.get_children():
+		child.pressed = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
@@ -38,6 +59,12 @@ func _process(delta):
 
 func _on_hammer_animation_finished():
 	if makingCounter == makingTime:
+		if not Inventory.addToinventory(selected, true):
+			var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
+			dropScene.position = stationPos
+			dropScene.item = selected.duplicate()
+			get_tree().get_root().get_node("main").add_child(dropScene)
+		
 		procesing = false
 		$hammer.frame = 9
 		$hammer.playing = false

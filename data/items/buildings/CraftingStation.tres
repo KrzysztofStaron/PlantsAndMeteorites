@@ -16,3 +16,4 @@ texture = SubResource( 1 )
 quantity = 1
 scene = ExtResource( 2 )
 buildingTime = 3.0
+offset = 0

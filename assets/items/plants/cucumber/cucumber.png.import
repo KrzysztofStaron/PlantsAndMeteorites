@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/waterSprayer.png-8fb3bd51acfe26a955ce7e512cbd55a1.stex"
+path="res://.import/cucumber.png-7369dab87eda40e1f7a0c7dd69a319d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/waterSprayer.png"
-dest_files=[ "res://.import/waterSprayer.png-8fb3bd51acfe26a955ce7e512cbd55a1.stex" ]
+source_file="res://assets/items/plants/cucumber/cucumber.png"
+dest_files=[ "res://.import/cucumber.png-7369dab87eda40e1f7a0c7dd69a319d7.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

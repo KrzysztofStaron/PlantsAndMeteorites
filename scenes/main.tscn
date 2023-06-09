@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -17,20 +17,24 @@
 [ext_resource path="res://scenes/ui/inventory/quickInventory.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/ui/buildings/oxygen/Oxygen_Icon_2.png" type="Texture" id=16]
 [ext_resource path="res://scenes/droppedItem.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/items/potato/potatoSeed.png" type="Texture" id=18]
-[ext_resource path="res://assets/items/tomato/tomatoSeed.png" type="Texture" id=19]
+[ext_resource path="res://assets/items/plants/potato/potatoSeed.png" type="Texture" id=18]
+[ext_resource path="res://assets/items/plants/tomato/tomatoSeed.png" type="Texture" id=19]
 [ext_resource path="res://assets/ui/slider.gdshader" type="Shader" id=20]
 [ext_resource path="res://scenes/ui/inventory/draggedItem.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/objects/buildings/soil/hoedSoil.tscn" type="PackedScene" id=22]
 [ext_resource path="res://scenes/objects/buildings/craftingStation.tscn" type="PackedScene" id=23]
 [ext_resource path="res://data/plants/CarrotPlant.tres" type="Resource" id=24]
 [ext_resource path="res://cutomResources/inventoryItems/seed.gd" type="Script" id=25]
-[ext_resource path="res://assets/items/carrot/carrotSeed.png" type="Texture" id=26]
+[ext_resource path="res://assets/items/plants/carrot/carrotSeed.png" type="Texture" id=26]
 [ext_resource path="res://data/plants/PotatoPlant.tres" type="Resource" id=27]
 [ext_resource path="res://data/plants/TomatoPlant.tres" type="Resource" id=28]
 [ext_resource path="res://data/plants/CucumberPlant.tres" type="Resource" id=29]
-[ext_resource path="res://assets/items/cucumber/cucumberSeed.png" type="Texture" id=30]
+[ext_resource path="res://assets/items/plants/cucumber/cucumberSeed.png" type="Texture" id=30]
 [ext_resource path="res://scenes/ui/craftingStationUI.tscn" type="PackedScene" id=31]
+[ext_resource path="res://data/items/buildings/OxygenMachine.tres" type="Resource" id=32]
+[ext_resource path="res://cutomResources/inventoryItems/countableItem.gd" type="Script" id=33]
+[ext_resource path="res://assets/items/material/iron.png" type="Texture" id=34]
+[ext_resource path="res://assets/items/material/stone.png" type="Texture" id=35]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -768,6 +772,20 @@ texture = ExtResource( 30 )
 quantity = 10
 crop = ExtResource( 29 )
 
+[sub_resource type="Resource" id=10]
+script = ExtResource( 33 )
+name = "Iron"
+type = "item"
+texture = ExtResource( 34 )
+quantity = 8
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 33 )
+name = "Stone"
+type = "item"
+texture = ExtResource( 35 )
+quantity = 10
+
 [node name="main" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -828,6 +846,7 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
+frame = 0
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
@@ -917,5 +936,17 @@ position = Vector2( 88, 40 )
 item = SubResource( 9 )
 
 [node name="DroppedItem5" parent="." instance=ExtResource( 17 )]
-position = Vector2( 72, 144 )
+position = Vector2( 32, 72 )
 item = ExtResource( 11 )
+
+[node name="DroppedItem6" parent="." instance=ExtResource( 17 )]
+position = Vector2( 32, 96 )
+item = ExtResource( 32 )
+
+[node name="DroppedItem7" parent="." instance=ExtResource( 17 )]
+position = Vector2( 72, 88 )
+item = SubResource( 10 )
+
+[node name="DroppedItem8" parent="." instance=ExtResource( 17 )]
+position = Vector2( 56, 136 )
+item = SubResource( 11 )

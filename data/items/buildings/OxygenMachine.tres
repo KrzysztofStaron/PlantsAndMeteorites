@@ -12,3 +12,4 @@ texture = ExtResource( 3 )
 quantity = 1
 scene = ExtResource( 2 )
 buildingTime = 2.0
+offset = 8

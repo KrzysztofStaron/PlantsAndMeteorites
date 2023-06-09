@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/drill.png-e6b33ca1b5c86fa6ef7223c635a129f9.stex"
+path="res://.import/potatoSeed.png-0f0bbbf0c972f143046380dc2b62432f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/drill.png"
-dest_files=[ "res://.import/drill.png-e6b33ca1b5c86fa6ef7223c635a129f9.stex" ]
+source_file="res://assets/items/plants/potato/potatoSeed.png"
+dest_files=[ "res://.import/potatoSeed.png-0f0bbbf0c972f143046380dc2b62432f.stex" ]
 
 [params]
 
