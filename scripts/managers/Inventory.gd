@@ -9,6 +9,14 @@ onready var inventory := [
 
 var selectedItemIndex := 0
 
+func countShit(shitName : String) -> int:
+	var shitCount := 0 
+	for item in inventory:
+		if item.name == shitName:
+			shitCount += item.quantity
+			
+	return shitCount
+	
 func hasItem(name : String, amount := 1) -> bool:
 	for item in inventory:
 		if item == null:
