@@ -228,22 +228,6 @@ margin_top = 22.0
 margin_right = 64.0
 margin_bottom = 42.0
 
-[node name="require7" parent="require" instance=ExtResource( 9 )]
-margin_top = 44.0
-margin_bottom = 64.0
-
-[node name="require8" parent="require" instance=ExtResource( 9 )]
-margin_left = 22.0
-margin_top = 44.0
-margin_right = 42.0
-margin_bottom = 64.0
-
-[node name="require9" parent="require" instance=ExtResource( 9 )]
-margin_left = 44.0
-margin_top = 44.0
-margin_right = 64.0
-margin_bottom = 64.0
-
 [node name="processTween" type="Tween" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
