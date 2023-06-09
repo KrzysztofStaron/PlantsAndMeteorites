@@ -8,6 +8,8 @@ func _ready():
 
 func _pressed():
 	if recipe != null:
+		$"../../amountSlider".show()
+		$"../../amountSlider/number".text = "1"
 		$"..".hide()
 		$"../../require".show()
 		for require in $"../../require".get_children():
@@ -19,5 +21,12 @@ func _pressed():
 			$"../../require".get_children()[i].get_node("amount").text = str(recipe.amounts[i])
 				
 		$"../../craft".show()
+		
+		var numberOfItem := -1
+		for i in len(recipe.require):
+			if numberOfItem > Inventory.countShit(recipe.require[i].name) / recipe.amounts[i] or numberOfItem == -1:
+				numberOfItem = Inventory.countShit(recipe.require[i].name) / recipe.amounts[i]
+				
+		$"../../amountSlider".max_value = numberOfItem
 	else:
 		pressed = false

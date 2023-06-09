@@ -11,24 +11,25 @@ var stationPos : Vector2
 func _on_craft_pressed():
 	for item in $items.get_children():
 		if item.pressed:
-			selected = item.recipe.item
-			makingTime = item.recipe.time
+			selected = item.recipe.item.duplicate()
+			makingTime = item.recipe.time * $amountSlider.value
 	
 			var failed := false
 			for i in len(item.recipe.require):
 				if not Inventory.hasItem(item.recipe.require[i].name, item.recipe.amounts[i]):
 					failed = true
+				
 			
 			if !failed:
 				for i in len(item.recipe.require):
-					Inventory.removeAmountByName(item.recipe.require[i].name, item.recipe.amounts[i])
+					Inventory.removeAmountByName(item.recipe.require[i].name, item.recipe.amounts[i] * $amountSlider.value)
 				
 				$craft.hide()
 				$hammer.show()
 				$require.hide()
 				$hammer.frame = 0
 				$hammer.playing = true
-				
+				$amountSlider.hide()
 				procesing = true
 	
 	for child in $items.get_children():
@@ -59,16 +60,34 @@ func _process(delta):
 
 func _on_hammer_animation_finished():
 	if makingCounter == makingTime:
-		if not Inventory.addToinventory(selected, true):
-			var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
-			dropScene.position = stationPos
-			dropScene.item = selected.duplicate()
-			get_tree().get_root().get_node("main").add_child(dropScene)
+		var oldSelected := selected
+		oldSelected.quantity = $amountSlider.value
+		
+		if not Inventory.addToinventory(oldSelected, true):
+			for x in oldSelected.quantity:
+				var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
+				dropScene.position = stationPos
+				dropScene.item = selected.duplicate()
+				get_tree().get_root().get_node("main").add_child(dropScene)
 		
 		procesing = false
 		$hammer.frame = 9
 		$hammer.playing = false
 		$hammer.hide()
 		$items.show()
+		$amountSlider.hide()
+		$amountSlider/number.text = ""
 		makingCounter = 0
 		$slider/fill.get_material().set_shader_param("persent", 0.0)
+
+
+func _on_amountSlider_value_changed(value):
+	$amountSlider/number.text = str(value)
+	for require in len($require.get_children()):
+		if not $require.get_children()[require].visible:
+			break
+		else:
+			for itemIndex in len($items.get_children()):
+				var item : Node = $items.get_children()[itemIndex]
+				if item.pressed:
+					$require.get_children()[require].get_node("amount").text = str(item.recipe.amounts[require] * value)

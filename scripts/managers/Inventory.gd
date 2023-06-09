@@ -12,7 +12,9 @@ var selectedItemIndex := 0
 func countShit(shitName : String) -> int:
 	var shitCount := 0 
 	for item in inventory:
-		if item.name == shitName:
+		if item == null:
+			pass
+		elif item.name == shitName:
 			shitCount += item.quantity
 			
 	return shitCount
