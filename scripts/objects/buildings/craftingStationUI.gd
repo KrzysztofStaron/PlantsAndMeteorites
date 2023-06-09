@@ -60,7 +60,7 @@ func _process(delta):
 
 func _on_hammer_animation_finished():
 	if makingCounter == makingTime:
-		var oldSelected := selected
+		var oldSelected := selected.duplicate()
 		oldSelected.quantity = $amountSlider.value
 		
 		if not Inventory.addToinventory(oldSelected, true):
