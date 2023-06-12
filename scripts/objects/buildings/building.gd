@@ -3,6 +3,7 @@ class_name Building
 signal build
 
 export var builded := false
+export var path := "../"
 
 func _ready():
 	if builded:
@@ -21,9 +22,9 @@ func build() -> void:
 	emit_signal("build")
 	builded = true
 	print("build")
-	
-	for buildStuf in $Sprite.get_children():
-		if buildStuf.name == "buildTimer":
-			buildStuf.queue_free()
-		elif buildStuf.name == "building":
-			buildStuf.play("stop")
+	if get_node_or_null("Sprite"):
+		for buildStuf in $Sprite.get_children():
+			if buildStuf.name == "buildTimer":
+				buildStuf.queue_free()
+			elif buildStuf.name == "building":
+				buildStuf.play("stop")

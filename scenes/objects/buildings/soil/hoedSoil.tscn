@@ -60,6 +60,7 @@ tracks/1/keys = {
 z_index = -1
 script = ExtResource( 1 )
 objectName = "Soil"
+path = "../soil"
 
 [node name="tilecollision" type="Area2D" parent="."]
 collision_layer = 8
