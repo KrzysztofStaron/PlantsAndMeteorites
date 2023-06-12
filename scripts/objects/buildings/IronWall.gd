@@ -6,3 +6,12 @@ func build():
 	
 	tileMap.set_cellv(tilePosition, 0)
 	tileMap.update_bitmask_area(tilePosition)
+
+func interact_left():
+	var item = Inventory.getSelectedItem()
+	if item == null:
+		return
+
+	if item.type == "tool" and item.toolType == Tool.Hammer:
+		pass
+

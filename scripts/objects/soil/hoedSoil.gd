@@ -26,7 +26,7 @@ func interact_left():
 				Inventory.removeAmount()
 		"tool":
 			match item.toolType:
-				Tool.Hoe:
+				Tool.Hammer:
 					digUp()
 				Tool.Drill:
 					destroy()
