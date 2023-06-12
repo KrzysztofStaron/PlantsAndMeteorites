@@ -16,11 +16,11 @@ func startBuilding(buildTime : float) -> void:
 		
 		get_node("Sprite/building").play("building")
 	else:
+		emit_signal("build")
+		builded = true
 		build()
 
 func build() -> void:
-	emit_signal("build")
-	builded = true
 	print("build")
 	if get_node_or_null("Sprite"):
 		for buildStuf in $Sprite.get_children():

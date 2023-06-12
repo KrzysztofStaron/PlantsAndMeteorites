@@ -1,6 +1,6 @@
 extends Building
 
-func _ready():
+func build():
 	var tileMap : TileMap = get_parent()
 	var tilePosition : Vector2 = tileMap.world_to_map(position)
 	
