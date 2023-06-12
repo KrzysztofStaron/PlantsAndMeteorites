@@ -36,7 +36,7 @@
 [ext_resource path="res://assets/items/material/iron.png" type="Texture" id=34]
 [ext_resource path="res://assets/items/material/stone.png" type="Texture" id=35]
 [ext_resource path="res://assets/objects/buildings/IronWall.png" type="Texture" id=36]
-[ext_resource path="res://scenes/objects/buildings/IronWall.tscn" type="PackedScene" id=37]
+[ext_resource path="res://scenes/objects/buildings/IronWall/IronWall.tscn" type="PackedScene" id=37]
 [ext_resource path="res://assets/items/buildings/wall.png" type="Texture" id=38]
 [ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=39]
 
@@ -1300,6 +1300,7 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
+frame = 0
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
