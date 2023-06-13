@@ -11,15 +11,20 @@ func _ready():
 
 func startBuilding(buildTime : float) -> void:
 	if buildTime > 0:
-		get_node("Sprite/buildTimer").connect("timeout", self, "build")
+		get_node("Sprite/buildTimer").connect("timeout", self, "o_build")
 		get_node("Sprite/buildTimer").start(buildTime)
 		
 		get_node("Sprite/building").play("building")
 	else:
-		emit_signal("build")
-		builded = true
-		build()
+		o_build()
 
+
+# Original build() call
+func o_build() -> void:
+	builded = true
+	emit_signal("build")
+	build()
+	
 func build() -> void:
 	print("build")
 	if get_node_or_null("Sprite"):

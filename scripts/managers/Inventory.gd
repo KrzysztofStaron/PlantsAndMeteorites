@@ -38,16 +38,20 @@ func addToinventory(item : InventoryItem, update := false) -> bool:
 	var exist := false
 	if item is CountableItem:
 		for x in len(inventory):
-			if inventory[x] != null:
-				if inventory[x].name == item.name:
-					inventory[x].quantity += item.quantity
-					if update:
-						if inventory[x].quantity > 1:
-							get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
-						else:
-							get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = ""
+			if inventory[x] == null:
+				pass
+			elif inventory[x].name != item.name:
+				pass
+			else:
+				inventory[x].quantity += item.quantity
+				if !update:
+					pass
+				elif inventory[x].quantity > 1:
+					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
+				else:
+					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = ""
 				
-					return true
+				return true
 	
 	for x in len(inventory):
 		if inventory[x] == null:

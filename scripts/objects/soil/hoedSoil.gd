@@ -77,11 +77,10 @@ func destroy():
 	destroy.emitting = true
 	get_parent().add_child(destroy)
 
-	if not Inventory.addToinventory(load("res://data/items/buildings/soil.tres")):
-		var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
-		dropScene.position = position
-		dropScene.item = load("res://data/items/buildings/soil.tres")
-		get_parent().add_child(dropScene)
+	var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
+	dropScene.position = position
+	dropScene.item = load("res://data/items/buildings/soil.tres")
+	get_parent().add_child(dropScene)
 
 	get_parent().updateTexture(position, true)
 	queue_free()
