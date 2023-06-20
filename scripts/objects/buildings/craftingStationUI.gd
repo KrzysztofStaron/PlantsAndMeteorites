@@ -35,6 +35,7 @@ func _on_craft_pressed():
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
+		$back.hide()
 		$require.hide()
 		$amountSlider.hide()
 		$items.show()
@@ -65,6 +66,11 @@ func _on_hammer_animation_finished():
 	if makingCounter == makingTime:
 		var oldSelected := selected.duplicate()
 		oldSelected.quantity = $amountSlider.value
+		if $"../addictionalSlot/buildingSlot".item == null:
+			pass
+		if $"../addictionalSlot/buildingSlot".item.name == oldSelected.name:
+			oldSelected.quantity += $"../addictionalSlot/buildingSlot".item.quantity
+		
 		$"../addictionalSlot/buildingSlot".setItem(oldSelected)
 		
 		procesing = false
@@ -88,3 +94,14 @@ func _on_amountSlider_value_changed(value):
 				var item : Node = $items.get_children()[itemIndex]
 				if item.pressed:
 					$require.get_children()[require].get_node("amount").text = str(item.recipe.amounts[require] * value)
+
+
+func _on_back_pressed():
+	$items.show()
+	$require.hide()
+	$back.hide()
+	$craft.hide()
+	$amountSlider.hide()
+	
+	for child in $items.get_children():
+		child.pressed = false

@@ -86,7 +86,7 @@ texture = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )
 frames = SubResource( 14 )
-frame = 6
+frame = 4
 playing = true
 script = ExtResource( 4 )
 yOffset = -15.0

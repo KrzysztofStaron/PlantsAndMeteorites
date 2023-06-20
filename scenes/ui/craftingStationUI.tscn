@@ -107,7 +107,6 @@ use_mipmaps = true
 font_data = ExtResource( 13 )
 
 [node name="ui" type="CanvasLayer"]
-visible = false
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color( 0, 0, 0, 0.509804 )
@@ -127,10 +126,10 @@ stretch_mode = 3
 
 [node name="buildingSlot" parent="addictionalSlot" instance=ExtResource( 14 )]
 margin_left = 39.0
-margin_top = 51.0
-margin_right = 56.648
-margin_bottom = 64.016
-debug = true
+margin_top = 52.0
+margin_right = 57.77
+margin_bottom = 68.838
+storage = false
 
 [node name="craftingStationUI" type="TextureRect" parent="."]
 margin_left = 110.0
@@ -303,7 +302,15 @@ custom_fonts/font = SubResource( 23 )
 align = 1
 valign = 1
 
+[node name="back" type="Button" parent="craftingStationUI"]
+visible = false
+margin_left = -41.0
+margin_top = 93.0
+margin_bottom = 113.0
+text = "back"
+
 [connection signal="pressed" from="craftingStationUI/craft" to="craftingStationUI" method="_on_craft_pressed"]
 [connection signal="animation_finished" from="craftingStationUI/hammer" to="craftingStationUI" method="_on_hammer_animation_finished"]
 [connection signal="timeout" from="craftingStationUI/Timer" to="craftingStationUI" method="_on_Timer_timeout"]
 [connection signal="value_changed" from="craftingStationUI/amountSlider" to="craftingStationUI" method="_on_amountSlider_value_changed"]
+[connection signal="pressed" from="craftingStationUI/back" to="craftingStationUI" method="_on_back_pressed"]

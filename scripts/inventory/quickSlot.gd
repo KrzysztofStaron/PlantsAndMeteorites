@@ -1,6 +1,7 @@
 extends TextureButton
 class_name quickInventorySlot
 
+export var storage := true
 export var debug := false
 export var index : int
 var touch := false
@@ -19,8 +20,7 @@ func _input(event):
 	elif getItem() == null:
 		pass
 	elif len(get_tree().get_root().get_node("main/drag/draggedItem/detector").get_overlapping_areas()) == 0:
-		if flag and debug:
-			print("no u")
+		pass
 	elif get_tree().get_root().get_node("main/drag/draggedItem/detector").get_overlapping_areas()[0].get_parent() != self:
 		pass
 	elif flag:
@@ -45,8 +45,15 @@ func _input(event):
 			if len(get_tree().get_root().get_node("main/drag/draggedItem/detector").get_overlapping_areas()):
 				var original := getItem()
 				var slot : Node = get_tree().get_root().get_node("main/drag/draggedItem/detector").get_overlapping_areas()[0].get_parent()
-				setItem(slot.getItem())
-				slot.setItem(original)
+				
+				if !slot.storage:
+					pass
+				elif slot.getItem() == null and !storage:
+					setItem(null)
+					slot.setItem(original)
+				elif storage:
+					setItem(slot.getItem())
+					slot.setItem(original)
 
 func _on_quickSlot_mouse_entered():
 	touch = true

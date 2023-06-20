@@ -9,9 +9,9 @@ func _ready():
 func _pressed():
 	pressed = true
 	$"../../amountSlider".show()
-	$"../../amountSlider/number".text = "1"
 	$"..".hide()
 	$"../../require".show()
+	$"../../back".show()
 	for require in $"../../require".get_children():
 		require.hide()
 			
@@ -26,7 +26,9 @@ func _pressed():
 	for i in len(recipe.require):
 		if numberOfItem > Inventory.countShit(recipe.require[i].name) / recipe.amounts[i] or numberOfItem == -1:
 			numberOfItem = Inventory.countShit(recipe.require[i].name) / recipe.amounts[i]
-			
+	
+	$"../../amountSlider/number".text = str(numberOfItem)
+	$"../../amountSlider".value = numberOfItem
 	$"../../amountSlider".max_value = numberOfItem
 
 

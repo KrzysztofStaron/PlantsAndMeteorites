@@ -1191,7 +1191,7 @@ script = ExtResource( 25 )
 name = "PotatoSeed"
 type = "seed"
 texture = ExtResource( 18 )
-quantity = 100
+quantity = 50
 crop = ExtResource( 27 )
 
 [sub_resource type="Resource" id=8]
@@ -1199,7 +1199,7 @@ script = ExtResource( 25 )
 name = "TomatoSeed"
 type = "seed"
 texture = ExtResource( 19 )
-quantity = 100
+quantity = 50
 crop = ExtResource( 28 )
 
 [sub_resource type="Resource" id=6]
@@ -1207,7 +1207,7 @@ script = ExtResource( 25 )
 name = "CarrotSeed"
 type = "seed"
 texture = ExtResource( 26 )
-quantity = 100
+quantity = 50
 crop = ExtResource( 24 )
 
 [sub_resource type="Resource" id=9]
@@ -1215,7 +1215,7 @@ script = ExtResource( 25 )
 name = "CucumberSeed"
 type = "seed"
 texture = ExtResource( 30 )
-quantity = 100
+quantity = 50
 crop = ExtResource( 29 )
 
 [sub_resource type="Resource" id=10]
@@ -1223,21 +1223,21 @@ script = ExtResource( 33 )
 name = "Iron"
 type = "item"
 texture = ExtResource( 34 )
-quantity = 999
+quantity = 30
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 33 )
 name = "Stone"
 type = "item"
 texture = ExtResource( 35 )
-quantity = 10
+quantity = 30
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 39 )
 name = "Iron Wall"
 type = "building"
 texture = ExtResource( 38 )
-quantity = 9999
+quantity = 30
 scene = ExtResource( 37 )
 buildingTime = 0.0
 offset = 0
@@ -1247,7 +1247,7 @@ script = ExtResource( 39 )
 name = "Soil"
 type = "building"
 texture = ExtResource( 43 )
-quantity = 990
+quantity = 30
 scene = ExtResource( 22 )
 buildingTime = 0.0
 offset = 0
@@ -1308,7 +1308,7 @@ gridPath = NodePath("../grid")
 playerPath = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 72, 72 )
+position = Vector2( 160, 96 )
 z_index = 3
 
 [node name="pebbleSpot" type="Node2D" parent="."]
@@ -1398,10 +1398,6 @@ item = SubResource( 6 )
 position = Vector2( 88, 40 )
 item = SubResource( 9 )
 
-[node name="DroppedItem5" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 32, 72 )
-item = ExtResource( 11 )
-
 [node name="DroppedItem11" parent="Debug" instance=ExtResource( 17 )]
 position = Vector2( -88, 80 )
 item = ExtResource( 11 )
@@ -1409,30 +1405,6 @@ item = ExtResource( 11 )
 [node name="DroppedItem12" parent="Debug" instance=ExtResource( 17 )]
 position = Vector2( -88, 96 )
 item = ExtResource( 11 )
-
-[node name="DroppedItem13" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -88, 112 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem14" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -88, 128 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem15" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -88, 144 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem16" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -88, 160 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem17" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -88, 160 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem6" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 32, 96 )
-item = ExtResource( 32 )
 
 [node name="DroppedItem18" parent="Debug" instance=ExtResource( 17 )]
 position = Vector2( -32, 80 )
@@ -1442,24 +1414,8 @@ item = ExtResource( 32 )
 position = Vector2( -32, 96 )
 item = ExtResource( 32 )
 
-[node name="DroppedItem20" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -32, 112 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem21" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -32, 128 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem22" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -32, 144 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem23" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( -32, 160 )
-item = ExtResource( 32 )
-
 [node name="DroppedItem7" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 72, 88 )
+position = Vector2( 184, 104 )
 item = SubResource( 10 )
 
 [node name="DroppedItem8" parent="Debug" instance=ExtResource( 17 )]
@@ -1472,98 +1428,6 @@ item = SubResource( 13 )
 
 [node name="DroppedItem10" parent="Debug" instance=ExtResource( 17 )]
 position = Vector2( 120, 136 )
-item = SubResource( 62 )
-
-[node name="DroppedItem24" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 528, 64 )
-item = SubResource( 7 )
-
-[node name="DroppedItem25" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 544, 64 )
-item = SubResource( 8 )
-
-[node name="DroppedItem26" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 528, 80 )
-item = SubResource( 6 )
-
-[node name="DroppedItem27" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 544, 80 )
-item = SubResource( 9 )
-
-[node name="DroppedItem28" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 488, 112 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem29" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 368, 120 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem30" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 368, 136 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem31" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 368, 152 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem32" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 368, 168 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem33" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 368, 184 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem34" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 368, 200 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem35" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 368, 200 )
-item = ExtResource( 11 )
-
-[node name="DroppedItem36" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 488, 136 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem37" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 424, 120 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem38" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 424, 136 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem39" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 424, 152 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem40" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 424, 168 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem41" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 424, 184 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem42" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 424, 200 )
-item = ExtResource( 32 )
-
-[node name="DroppedItem43" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 528, 128 )
-item = SubResource( 10 )
-
-[node name="DroppedItem44" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 512, 176 )
-item = SubResource( 11 )
-
-[node name="DroppedItem45" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 544, 176 )
-item = SubResource( 13 )
-
-[node name="DroppedItem46" parent="Debug" instance=ExtResource( 17 )]
-position = Vector2( 576, 176 )
 item = SubResource( 62 )
 
 [node name="scrap" parent="Debug" instance=ExtResource( 40 )]
@@ -1598,7 +1462,7 @@ position = Vector2( -168, 8 )
 texture = SubResource( 61 )
 
 [node name="SteamRock" parent="Debug" instance=ExtResource( 13 )]
-position = Vector2( 80, 104 )
+position = Vector2( 96, 112 )
 
 [node name="drag" type="CanvasLayer" parent="."]
 
