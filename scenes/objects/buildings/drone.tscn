@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/objects/buildings/Drone.png" type="Texture" id=1]
+[ext_resource path="res://scripts/objects/buildings/drone.gd" type="Script" id=2]
+
+[node name="drone" type="Node2D"]
+
+[node name="sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="wypizdochuj" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="wypizdochuj" to="sprite" method="_on_wypizdochuj_tween_completed"]

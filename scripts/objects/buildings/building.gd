@@ -19,6 +19,7 @@ func instanceLoot(droppedItem : InventoryItem, particle : PackedScene = null) ->
 	queue_free()
 
 func _ready():
+	get_tree().get_root().get_node("main/drone/sprite").center = global_position
 	if builded:
 		build()
 
@@ -36,6 +37,7 @@ func startBuilding(buildTime : float) -> void:
 func o_build() -> void:
 	builded = true
 	emit_signal("build")
+	get_tree().get_root().get_node("main/drone/sprite").center = Vector2(0,0)
 	build()
 	
 func build() -> void:
