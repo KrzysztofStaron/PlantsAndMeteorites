@@ -17,7 +17,7 @@ func _process(delta):
 			oxygen = maxOxygen
 	else:
 		if oxygen <= 0:
-			print("udusiłeś sie")
+			pass
 		else:
 			oxygen -= delta
 

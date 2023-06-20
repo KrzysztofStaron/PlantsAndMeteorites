@@ -6,7 +6,6 @@ var makingCounter := 0
 var used := false
 
 var selected : Resource
-var stationPos : Vector2
 
 func _on_craft_pressed():
 	for item in $items.get_children():
@@ -38,7 +37,7 @@ func _on_craft_pressed():
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		GameManager.canPause = true
-		hide()
+		get_parent().hide()
 		get_tree().paused = false
 
 	if procesing:
@@ -66,7 +65,7 @@ func _on_hammer_animation_finished():
 		if not Inventory.addToinventory(oldSelected, true):
 			for x in oldSelected.quantity:
 				var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
-				dropScene.position = stationPos
+				dropScene.position = get_node("../../").position + Vector2(0, 8)
 				dropScene.item = selected.duplicate()
 				get_tree().get_root().get_node("main").add_child(dropScene)
 		

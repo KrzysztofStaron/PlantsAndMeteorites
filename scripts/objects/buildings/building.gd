@@ -5,6 +5,19 @@ signal build
 export var builded := false
 export var path := "../"
 
+func instanceLoot(droppedItem : InventoryItem, particle : PackedScene = null) -> void:
+	if particle != null:
+		var destroy : Node = particle.instance()
+		destroy.position = position
+		destroy.emitting = true
+		get_parent().add_child(destroy)
+
+	var dropScene : Node = load("res://scenes/droppedItem.tscn").instance()
+	dropScene.position = position
+	dropScene.item = droppedItem.duplicate()
+	get_parent().add_child(dropScene)
+	queue_free()
+
 func _ready():
 	if builded:
 		build()

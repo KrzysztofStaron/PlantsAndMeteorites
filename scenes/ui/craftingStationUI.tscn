@@ -23,6 +23,7 @@ atlas = ExtResource( 1 )
 region = Rect2( 1, 109, 76, 15 )
 
 [sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
 shader = ExtResource( 3 )
 shader_param/persent = 0.0
 
@@ -103,7 +104,14 @@ size = 32
 use_mipmaps = true
 font_data = ExtResource( 13 )
 
-[node name="craftingStationUI" type="TextureRect"]
+[node name="ui" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 0, 0, 0, 0.509804 )
+margin_right = 320.0
+margin_bottom = 179.0
+
+[node name="craftingStationUI" type="TextureRect" parent="."]
 pause_mode = 2
 margin_left = 110.0
 margin_top = 22.0
@@ -112,13 +120,13 @@ margin_bottom = 119.0
 texture = SubResource( 1 )
 script = ExtResource( 6 )
 
-[node name="slider" type="TextureRect" parent="."]
+[node name="slider" type="TextureRect" parent="craftingStationUI"]
 margin_top = 99.0
 margin_right = 76.0
 margin_bottom = 114.0
 texture = SubResource( 2 )
 
-[node name="fill" type="TextureRect" parent="slider"]
+[node name="fill" type="TextureRect" parent="craftingStationUI/slider"]
 material = SubResource( 3 )
 margin_left = 7.0
 margin_top = 6.0
@@ -126,7 +134,7 @@ margin_right = 69.0
 margin_bottom = 9.0
 texture = ExtResource( 2 )
 
-[node name="craft" type="TextureButton" parent="."]
+[node name="craft" type="TextureButton" parent="craftingStationUI"]
 margin_left = 78.0
 margin_top = 99.0
 margin_right = 93.0
@@ -134,12 +142,12 @@ margin_bottom = 114.0
 texture_normal = SubResource( 4 )
 texture_hover = SubResource( 5 )
 
-[node name="hammer" type="AnimatedSprite" parent="."]
+[node name="hammer" type="AnimatedSprite" parent="craftingStationUI"]
 visible = false
 position = Vector2( 38, 47 )
 frames = SubResource( 18 )
 
-[node name="items" type="GridContainer" parent="."]
+[node name="items" type="GridContainer" parent="craftingStationUI"]
 margin_left = 6.0
 margin_top = 15.0
 margin_right = 71.0
@@ -148,51 +156,51 @@ custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 3
 
-[node name="craftingItem" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 recipe = ExtResource( 7 )
 
-[node name="craftingItem2" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem2" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_left = 22.0
 margin_right = 42.0
 recipe = ExtResource( 8 )
 
-[node name="craftingItem3" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem3" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_left = 44.0
 margin_right = 64.0
 
-[node name="craftingItem4" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem4" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_top = 22.0
 margin_bottom = 42.0
 
-[node name="craftingItem5" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem5" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 42.0
 margin_bottom = 42.0
 
-[node name="craftingItem6" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem6" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_left = 44.0
 margin_top = 22.0
 margin_right = 64.0
 margin_bottom = 42.0
 
-[node name="craftingItem7" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem7" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_top = 44.0
 margin_bottom = 64.0
 
-[node name="craftingItem8" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem8" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_left = 22.0
 margin_top = 44.0
 margin_right = 42.0
 margin_bottom = 64.0
 
-[node name="craftingItem9" parent="items" instance=ExtResource( 5 )]
+[node name="craftingItem9" parent="craftingStationUI/items" instance=ExtResource( 5 )]
 margin_left = 44.0
 margin_top = 44.0
 margin_right = 64.0
 margin_bottom = 64.0
 
-[node name="require" type="GridContainer" parent="."]
+[node name="require" type="GridContainer" parent="craftingStationUI"]
 visible = false
 margin_left = 6.0
 margin_top = 15.0
@@ -202,38 +210,38 @@ custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 3
 
-[node name="require" parent="require" instance=ExtResource( 9 )]
+[node name="require" parent="craftingStationUI/require" instance=ExtResource( 9 )]
 
-[node name="require2" parent="require" instance=ExtResource( 9 )]
+[node name="require2" parent="craftingStationUI/require" instance=ExtResource( 9 )]
 margin_left = 22.0
 margin_right = 42.0
 
-[node name="require3" parent="require" instance=ExtResource( 9 )]
+[node name="require3" parent="craftingStationUI/require" instance=ExtResource( 9 )]
 margin_left = 44.0
 margin_right = 64.0
 
-[node name="require4" parent="require" instance=ExtResource( 9 )]
+[node name="require4" parent="craftingStationUI/require" instance=ExtResource( 9 )]
 margin_top = 22.0
 margin_bottom = 42.0
 
-[node name="require5" parent="require" instance=ExtResource( 9 )]
+[node name="require5" parent="craftingStationUI/require" instance=ExtResource( 9 )]
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 42.0
 margin_bottom = 42.0
 
-[node name="require6" parent="require" instance=ExtResource( 9 )]
+[node name="require6" parent="craftingStationUI/require" instance=ExtResource( 9 )]
 margin_left = 44.0
 margin_top = 22.0
 margin_right = 64.0
 margin_bottom = 42.0
 
-[node name="processTween" type="Tween" parent="."]
+[node name="processTween" type="Tween" parent="craftingStationUI"]
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="craftingStationUI"]
 one_shot = true
 
-[node name="amountSlider" type="HSlider" parent="."]
+[node name="amountSlider" type="HSlider" parent="craftingStationUI"]
 visible = false
 margin_left = 6.0
 margin_top = 78.0
@@ -251,7 +259,7 @@ max_value = 2.0
 value = 1.0
 scrollable = false
 
-[node name="TextureRect" type="TextureRect" parent="amountSlider"]
+[node name="TextureRect" type="TextureRect" parent="craftingStationUI/amountSlider"]
 modulate = Color( 0.152941, 0.152941, 0.211765, 1 )
 margin_top = 3.0
 margin_right = 1.0
@@ -259,7 +267,7 @@ margin_bottom = 13.0
 texture = ExtResource( 11 )
 expand = true
 
-[node name="number" type="Label" parent="amountSlider"]
+[node name="number" type="Label" parent="craftingStationUI/amountSlider"]
 margin_top = -20.0
 margin_right = 64.0
 margin_bottom = 6.0
@@ -267,7 +275,7 @@ custom_fonts/font = SubResource( 23 )
 align = 1
 valign = 1
 
-[connection signal="pressed" from="craft" to="." method="_on_craft_pressed"]
-[connection signal="animation_finished" from="hammer" to="." method="_on_hammer_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="value_changed" from="amountSlider" to="." method="_on_amountSlider_value_changed"]
+[connection signal="pressed" from="craftingStationUI/craft" to="craftingStationUI" method="_on_craft_pressed"]
+[connection signal="animation_finished" from="craftingStationUI/hammer" to="craftingStationUI" method="_on_hammer_animation_finished"]
+[connection signal="timeout" from="craftingStationUI/Timer" to="craftingStationUI" method="_on_Timer_timeout"]
+[connection signal="value_changed" from="craftingStationUI/amountSlider" to="craftingStationUI" method="_on_amountSlider_value_changed"]

@@ -37,6 +37,6 @@ func update(_delta : float) -> void:
 			else:
 				owner.get_node("Sprite").frame = DOWN
 
-		(owner as KinematicBody2D).move_and_slide(dir * speed)
+		owner.move_and_slide(dir * speed)
 	else:
 		state_machine.transition_to("Idle")

@@ -65,12 +65,12 @@ one_shot = true
 
 [node name="Label" type="Label" parent="."]
 visible = false
-margin_left = -33.0
+margin_left = -43.0
 margin_top = -2.0
 margin_right = 2.0
 margin_bottom = 24.0
 custom_fonts/font = SubResource( 2 )
-text = "999/999"
+text = "000/000"
 align = 2
 valign = 1
 

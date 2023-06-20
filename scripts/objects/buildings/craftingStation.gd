@@ -1,11 +1,15 @@
 extends Building
 
 func interact_left():
-	print("left")
+	var item = Inventory.getSelectedItem()
+	if item == null:
+		return
+
+	if item.type == "tool" and item.toolType == Tool.Hammer:
+		instanceLoot(load("res://data/items/buildings/CraftingStation.tres"), preload("res://scenes/objects/buildings/IronWall/destroy.tscn"))
 
 func interact_right():
 	if builded:
 		GameManager.canPause = false
-		get_tree().get_root().get_node("main/UI/craftingStationUI").show()
-		get_tree().get_root().get_node("main/UI/craftingStationUI").stationPos = position + Vector2(0, 8)
+		get_node("ui").show()
 		get_tree().paused = true
