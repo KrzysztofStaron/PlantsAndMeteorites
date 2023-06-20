@@ -26,3 +26,7 @@ margin_top = 3.0
 margin_right = 17.0
 margin_bottom = 17.0
 expand = true
+
+[connection signal="button_down" from="." to="." method="_pressed"]
+[connection signal="pressed" from="." to="." method="_pressed"]
+[connection signal="toggled" from="." to="." method="togle"]

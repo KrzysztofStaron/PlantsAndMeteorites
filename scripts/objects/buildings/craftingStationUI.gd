@@ -6,7 +6,6 @@ var makingCounter := 0
 var used := false
 
 var selected : Resource
-
 func _on_craft_pressed():
 	for item in $items.get_children():
 		if item.pressed:
@@ -36,9 +35,14 @@ func _on_craft_pressed():
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
+		$require.hide()
+		$amountSlider.hide()
+		$items.show()
+		for child in $items.get_children():
+			child.pressed = false
+		procesing = true
 		GameManager.canPause = true
 		get_parent().hide()
-		get_tree().paused = false
 
 	if procesing:
 		if $hammer.frame == 3:
@@ -61,13 +65,7 @@ func _on_hammer_animation_finished():
 	if makingCounter == makingTime:
 		var oldSelected := selected.duplicate()
 		oldSelected.quantity = $amountSlider.value
-		
-		if not Inventory.addToinventory(oldSelected, true):
-			for x in oldSelected.quantity:
-				var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
-				dropScene.position = get_node("../../").position + Vector2(0, 8)
-				dropScene.item = selected.duplicate()
-				get_tree().get_root().get_node("main").add_child(dropScene)
+		$"../addictionalSlot/buildingSlot".setItem(oldSelected)
 		
 		procesing = false
 		$hammer.frame = 9

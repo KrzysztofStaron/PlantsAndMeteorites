@@ -80,7 +80,3 @@ material = SubResource( 7 )
 texture = SubResource( 3 )
 
 [node name="ui" parent="." instance=ExtResource( 5 )]
-margin_left = -32.0
-margin_top = -48.0
-margin_right = 67.0
-margin_bottom = 49.0

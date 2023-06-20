@@ -1292,9 +1292,6 @@ margin_bottom = 40.0
 [node name="quickInventory" parent="UI" instance=ExtResource( 15 )]
 margin_bottom = 25.04
 
-[node name="draggedItem" parent="UI" instance=ExtResource( 21 )]
-pause_mode = 2
-
 [node name="grid" type="TileMap" parent="."]
 z_index = -5
 tile_set = SubResource( 1 )
@@ -1305,7 +1302,6 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
-frame = 0
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
@@ -1382,23 +1378,7 @@ format = 1
 position = Vector2( 152, 120 )
 builded = true
 
-[node name="SteamRock" parent="." instance=ExtResource( 13 )]
-position = Vector2( 80, 104 )
-
-[node name="scrap" parent="." instance=ExtResource( 40 )]
-position = Vector2( -192, 64 )
-
-[node name="scrap2" parent="." instance=ExtResource( 40 )]
-position = Vector2( -320, 88 )
-
-[node name="scrap3" parent="." instance=ExtResource( 40 )]
-position = Vector2( -272, 24 )
-
-[node name="scrap4" parent="." instance=ExtResource( 40 )]
-position = Vector2( -248, 136 )
-
-[node name="scrap5" parent="." instance=ExtResource( 40 )]
-position = Vector2( -368, 40 )
+[node name="objects" type="Node" parent="."]
 
 [node name="Debug" type="Node2D" parent="."]
 
@@ -1586,18 +1566,41 @@ item = SubResource( 13 )
 position = Vector2( 576, 176 )
 item = SubResource( 62 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="scrap" parent="Debug" instance=ExtResource( 40 )]
+position = Vector2( -192, 64 )
+
+[node name="scrap2" parent="Debug" instance=ExtResource( 40 )]
+position = Vector2( -320, 88 )
+
+[node name="scrap3" parent="Debug" instance=ExtResource( 40 )]
+position = Vector2( -272, 24 )
+
+[node name="scrap4" parent="Debug" instance=ExtResource( 40 )]
+position = Vector2( -248, 136 )
+
+[node name="scrap5" parent="Debug" instance=ExtResource( 40 )]
+position = Vector2( -368, 40 )
+
+[node name="Sprite" type="Sprite" parent="Debug"]
 position = Vector2( -392, 144 )
 texture = SubResource( 60 )
 
-[node name="Sprite3" type="Sprite" parent="."]
+[node name="Sprite3" type="Sprite" parent="Debug"]
 position = Vector2( -144, 0 )
 texture = SubResource( 60 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Sprite2" type="Sprite" parent="Debug"]
 position = Vector2( -424, 0 )
 texture = SubResource( 61 )
 
-[node name="Sprite4" type="Sprite" parent="."]
+[node name="Sprite4" type="Sprite" parent="Debug"]
 position = Vector2( -168, 8 )
 texture = SubResource( 61 )
+
+[node name="SteamRock" parent="Debug" instance=ExtResource( 13 )]
+position = Vector2( 80, 104 )
+
+[node name="drag" type="CanvasLayer" parent="."]
+
+[node name="draggedItem" parent="drag" instance=ExtResource( 21 )]
+mouse_filter = 2
