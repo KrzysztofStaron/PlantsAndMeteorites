@@ -68,8 +68,13 @@ func _on_hammer_animation_finished():
 		oldSelected.quantity = $amountSlider.value
 		if $"../addictionalSlot/buildingSlot".item == null:
 			pass
-		if $"../addictionalSlot/buildingSlot".item.name == oldSelected.name:
+		elif $"../addictionalSlot/buildingSlot".item.name == oldSelected.name:
 			oldSelected.quantity += $"../addictionalSlot/buildingSlot".item.quantity
+		else:
+			var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
+			dropScene.position = owner.get_parent().position + Vector2(0,12)
+			dropScene.item = $"../addictionalSlot/buildingSlot".item.duplicate()
+			owner.get_node("../../").add_child(dropScene)
 		
 		$"../addictionalSlot/buildingSlot".setItem(oldSelected)
 		
