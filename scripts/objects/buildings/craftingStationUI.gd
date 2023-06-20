@@ -28,6 +28,7 @@ func _on_craft_pressed():
 				$hammer.frame = 0
 				$hammer.playing = true
 				$amountSlider.hide()
+				$back.hide()
 				procesing = true
 	
 	for child in $items.get_children():

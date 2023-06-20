@@ -107,6 +107,7 @@ use_mipmaps = true
 font_data = ExtResource( 13 )
 
 [node name="ui" type="CanvasLayer"]
+visible = false
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color( 0, 0, 0, 0.509804 )

@@ -43,16 +43,21 @@ func _input(event):
 			get_tree().get_root().get_node("main/drag/draggedItem").visible = false
 			
 			if len(get_tree().get_root().get_node("main/drag/draggedItem/detector").get_overlapping_areas()):
-				var original := getItem()
+				var original := getItem().duplicate()
 				var slot : Node = get_tree().get_root().get_node("main/drag/draggedItem/detector").get_overlapping_areas()[0].get_parent()
 				
 				if !slot.storage:
 					pass
-				elif slot.getItem() == null and !storage:
+				elif slot.getItem() == null:
+					if slot.getItem() == null and !storage:
+						setItem(null)
+						slot.setItem(original)
+				elif slot.getItem().name == getItem().name:
+					original.quantity += slot.getItem().quantity
 					setItem(null)
 					slot.setItem(original)
 				elif storage:
-					setItem(slot.getItem())
+					setItem(slot.getItem().duplicate())
 					slot.setItem(original)
 
 func _on_quickSlot_mouse_entered():

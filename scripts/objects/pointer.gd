@@ -83,6 +83,9 @@ func interact_right(interacted : object, type : String):
 		interacted.interact_right()
 
 func build():
+	# Using GameManager.canPuse in not safe way
+	if !GameManager.canPause:
+		return
 	var building : Node = Inventory.getSelectedItem().scene.instance()
 	building.position = position + Vector2(Inventory.getSelectedItem().offset, Inventory.getSelectedItem().offset)
 	get_node(building.path).add_child(building)
