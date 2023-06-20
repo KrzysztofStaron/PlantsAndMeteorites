@@ -12,3 +12,4 @@ func interact_right():
 	if builded:
 		GameManager.canPause = false
 		get_node("ui").show()
+		get_node("ui/craftingStationUI").start()

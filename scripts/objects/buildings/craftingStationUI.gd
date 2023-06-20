@@ -6,6 +6,14 @@ var makingCounter := 0
 var used := false
 
 var selected : Resource
+
+func start():
+	if !procesing:
+		$back.hide()
+		$require.hide()
+		$amountSlider.hide()
+		$items.show()
+		
 func _on_craft_pressed():
 	for item in $items.get_children():
 		if item.pressed:
@@ -36,15 +44,18 @@ func _on_craft_pressed():
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
-		$back.hide()
-		$require.hide()
-		$amountSlider.hide()
-		$items.show()
+		if !procesing:
+			$back.hide()
+			$require.hide()
+			$amountSlider.hide()
+			$items.show()
+		
 		for child in $items.get_children():
 			child.pressed = false
 		procesing = true
 		GameManager.canPause = true
 		get_parent().hide()
+	
 
 	if procesing:
 		if $hammer.frame == 3:
