@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=2]
+[gd_scene load_steps=123 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -41,7 +41,9 @@
 [ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=39]
 [ext_resource path="res://scenes/objects/scrap.tscn" type="PackedScene" id=40]
 [ext_resource path="res://assets/objects/atlas.png" type="Texture" id=41]
+[ext_resource path="res://scenes/objects/buildings/oxygenMachine.tscn" type="PackedScene" id=42]
 [ext_resource path="res://assets/items/buildings/dirt.png" type="Texture" id=43]
+[ext_resource path="res://assets/player/death.png" type="Texture" id=44]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -60,12 +62,151 @@ void fragment(){
 	COLOR = vec4(color.rgb , color.a * vignette);
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=63]
 shader = SubResource( 2 )
 shader_param/color = Color( 0, 0, 0, 0.627451 )
 shader_param/MULTIPLIER = 0.8
 shader_param/SCALE = 0.5
 shader_param/SOFTNESS = 1.2
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 44 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 44 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 44 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 44 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 44 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=69]
+atlas = ExtResource( 44 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=70]
+atlas = ExtResource( 44 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=71]
+atlas = ExtResource( 44 )
+region = Rect2( 96, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=72]
+atlas = ExtResource( 44 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=73]
+atlas = ExtResource( 44 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=74]
+atlas = ExtResource( 44 )
+region = Rect2( 64, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=75]
+atlas = ExtResource( 44 )
+region = Rect2( 96, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=76]
+atlas = ExtResource( 44 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=77]
+animations = [ {
+"frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
+"loop": false,
+"name": "default",
+"speed": 9.0
+} ]
+
+[sub_resource type="Animation" id=78]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../oxygen:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../quickInventory:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../quickInventory:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../oxygen:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=79]
+resource_name = "start"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../quickInventory:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../oxygen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 20 )
@@ -1265,10 +1406,19 @@ region = Rect2( 35, 85, 27, 42 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="UI"]
-material = SubResource( 3 )
+[node name="vignete" type="Panel" parent="UI"]
+material = SubResource( 63 )
 margin_right = 320.0
 margin_bottom = 180.0
+
+[node name="death" type="AnimatedSprite" parent="UI/vignete"]
+visible = false
+position = Vector2( 160, 90 )
+frames = SubResource( 77 )
+
+[node name="anim" type="AnimationPlayer" parent="UI/vignete"]
+anims/RESET = SubResource( 78 )
+anims/start = SubResource( 79 )
 
 [node name="oxygen" type="TextureRect" parent="UI"]
 margin_left = -11.0
@@ -1303,13 +1453,14 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
+frame = 0
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
 playerPath = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160, 96 )
+position = Vector2( 160, 90 )
 z_index = 3
 
 [node name="pebbleSpot" type="Node2D" parent="."]
@@ -1375,11 +1526,15 @@ collision_layer = 8
 collision_mask = 0
 format = 1
 
-[node name="craftingStation" parent="." instance=ExtResource( 23 )]
-position = Vector2( 152, 120 )
+[node name="objects" type="Node" parent="."]
+
+[node name="oxygenMachine" parent="objects" instance=ExtResource( 42 )]
+position = Vector2( 248, 48 )
 builded = true
 
-[node name="objects" type="Node" parent="."]
+[node name="craftingStation" parent="objects" instance=ExtResource( 23 )]
+position = Vector2( 152, 120 )
+builded = true
 
 [node name="Debug" type="Node2D" parent="."]
 
@@ -1472,3 +1627,5 @@ mouse_filter = 2
 
 [node name="drone" parent="." instance=ExtResource( 31 )]
 position = Vector2( 240, 120 )
+
+[connection signal="animation_finished" from="UI/vignete/death" to="player" method="_on_death_animation_finished"]

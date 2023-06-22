@@ -18,7 +18,7 @@ func isInReach() -> bool:
 
 	var mouseTile : Vector2 = grid.world_to_map(get_global_mouse_position())
 	
-	return abs(mouseTile.x - playerTile.x) <= 3 and abs(mouseTile.y - playerTile.y) <= 3
+	return abs(mouseTile.x - playerTile.x) <= 3.5 and abs(mouseTile.y - playerTile.y) <= 3.5
 
 func posToTileCenter(input : Vector2) -> Vector2:
 	return grid.map_to_world(grid.world_to_map(input)) + grid.cell_size / 2
