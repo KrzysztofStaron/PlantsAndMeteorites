@@ -7,10 +7,10 @@
 [ext_resource path="res://scripts/player/Idle.gd" type="Script" id=5]
 
 [sub_resource type="Curve" id=5]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.5, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.86, 0.18 ), 0.0, 0.0, 0, 0, Vector2( 0.95, 0.15 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.762136, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.95, 0.18 ), 0.0, 0.0, 0, 0, Vector2( 0.99, 0.15 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Curve" id=6]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.825243, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.762136, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.95, 0.95 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 3.5 )
@@ -53,7 +53,6 @@ tracks/0/keys = {
 collision_layer = 4
 collision_mask = 8
 script = ExtResource( 2 )
-maxOxygen = 15.0
 scaleCurve = SubResource( 5 )
 colorCurve = SubResource( 6 )
 

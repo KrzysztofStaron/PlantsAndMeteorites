@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-be0254f702cf55c19c4800582a88ad15.stex"
+path="res://.import/death screen.png-f78b288a31bf23e2b9ce7b7f03e7e932.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/background.png"
-dest_files=[ "res://.import/background.png-be0254f702cf55c19c4800582a88ad15.stex" ]
+source_file="res://assets/deathScreen/death screen.png"
+dest_files=[ "res://.import/death screen.png-f78b288a31bf23e2b9ce7b7f03e7e932.stex" ]
 
 [params]
 

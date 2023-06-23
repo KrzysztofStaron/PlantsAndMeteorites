@@ -8,6 +8,7 @@ export var playerPath : NodePath
 onready var grid := get_node(gridPath)
 onready var player := get_node(playerPath)
 
+var oldPos : Vector2
 
 func isInReach() -> bool:
 	# Snaping to 0.5
@@ -36,6 +37,19 @@ func _physics_process(delta):
 			interact(false)
 		elif Input.is_action_just_pressed("interact_right"):
 			interact(true)
+			
+	if oldPos != position:
+		if !isInReach():
+			pass
+		elif Input.is_action_just_pressed("interact_left") or Input.is_action_just_pressed("interact_right"):
+			pass
+		elif Input.is_action_pressed("interact_left"):
+			interact(false)
+		elif Input.is_action_pressed("interact_right"):
+			interact(true)
+		
+		oldPos = position
+
 	position = posToTileCenter(get_global_mouse_position())
 
 func interact(iType : bool):

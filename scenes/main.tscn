@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=2]
+[gd_scene load_steps=127 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://scenes/objects/buildings/oxygenMachine.tscn" type="PackedScene" id=42]
 [ext_resource path="res://assets/items/buildings/dirt.png" type="Texture" id=43]
 [ext_resource path="res://assets/player/death.png" type="Texture" id=44]
+[ext_resource path="res://assets/deathScreen/gaspingForAir.mp3" type="AudioStream" id=45]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -126,7 +127,7 @@ animations = [ {
 "frames": [ SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ), SubResource( 69 ), SubResource( 70 ), SubResource( 71 ), SubResource( 72 ), SubResource( 73 ), SubResource( 74 ), SubResource( 75 ), SubResource( 76 ) ],
 "loop": false,
 "name": "default",
-"speed": 9.0
+"speed": 7.0
 } ]
 
 [sub_resource type="Animation" id=78]
@@ -180,9 +181,37 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=80]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../oxygen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../quickInventory:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=79]
 resource_name = "start"
-length = 0.5
+length = 50.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../quickInventory:modulate")
 tracks/0/interp = 1
@@ -227,6 +256,37 @@ shader_param/persent = 1.0
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+
+[sub_resource type="Animation" id=81]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:sound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.5 ]
+}
+
+[sub_resource type="Animation" id=82]
+resource_name = "fade"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:sound")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.4, 0.0 ]
+}
 
 [sub_resource type="TileSet" id=4]
 0/name = "soil.png 0"
@@ -1418,6 +1478,7 @@ frames = SubResource( 77 )
 
 [node name="anim" type="AnimationPlayer" parent="UI/vignete"]
 anims/RESET = SubResource( 78 )
+anims/show = SubResource( 80 )
 anims/start = SubResource( 79 )
 
 [node name="oxygen" type="TextureRect" parent="UI"]
@@ -1460,8 +1521,17 @@ gridPath = NodePath("../grid")
 playerPath = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 160, 90 )
+position = Vector2( -70, 130 )
 z_index = 3
+oxygen = 60.0
+sound = 0.5
+
+[node name="gasping" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource( 45 )
+
+[node name="sound" type="AnimationPlayer" parent="player"]
+anims/RESET = SubResource( 81 )
+anims/fade = SubResource( 82 )
 
 [node name="pebbleSpot" type="Node2D" parent="."]
 position = Vector2( 104, 72 )
