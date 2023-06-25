@@ -5,6 +5,10 @@ signal build
 export var builded := false
 export var path := "../"
 
+func enableOutline():
+	$Sprite.material = preload("res://assets/objects/outline.tres").duplicate()
+	outlineEnabled = true
+
 func instanceLoot(droppedItem : InventoryItem, particle : PackedScene = null) -> void:
 	if particle != null:
 		var destroy : Node = particle.instance()
@@ -41,7 +45,9 @@ func o_build() -> void:
 	build()
 	
 func build() -> void:
-	print("build")
+	if drawOutline:
+		enableOutline()
+
 	if get_node_or_null("Sprite"):
 		for buildStuf in $Sprite.get_children():
 			if buildStuf.name == "buildTimer":

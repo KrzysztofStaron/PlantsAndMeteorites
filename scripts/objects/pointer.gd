@@ -10,6 +10,8 @@ onready var player := get_node(playerPath)
 
 var oldPos : Vector2
 
+var rotationIndex : int
+
 func isInReach() -> bool:
 	# Snaping to 0.5
 	var playerTile : Vector2 = Vector2(
@@ -23,6 +25,52 @@ func isInReach() -> bool:
 
 func posToTileCenter(input : Vector2) -> Vector2:
 	return grid.map_to_world(grid.world_to_map(input)) + grid.cell_size / 2
+
+func setRotation(building: Node, change := true):
+	var rotationType : int = Inventory.getSelectedItem().rotation
+	
+	match rotationType:
+		0:
+			building.rotation_degrees = 0
+			building.scale = Vector2(1, 1)
+		1:
+			if change:
+				rotationIndex += 1
+				if rotationIndex == 2:
+					rotationIndex = 0
+			
+			building.rotation_degrees = rotationIndex * 90
+			building.scale = Vector2(1, 1)
+		2:
+			if change:
+				rotationIndex += 1
+				if rotationIndex == 3:
+					rotationIndex = 0
+				
+			match rotationIndex:
+				0:
+					building.rotation_degrees = 0
+					building.scale.y = 1					
+					building.scale.x = 1
+				1:
+					building.rotation_degrees = 90
+					building.scale.x = 1
+				2:
+					building.rotation_degrees = 90
+					building.scale.y = -1
+
+func _process(delta):
+	if Inventory.getSelectedItemType() == "building":
+		var showcase := $showcase
+		
+		setRotation(showcase, Input.is_action_just_pressed("rotate"))
+		
+		
+		showcase.show()
+		showcase.offset = Vector2(Inventory.getSelectedItem().offset, Inventory.getSelectedItem().offset) + Inventory.getSelectedItem().showcaseOffset
+		showcase.texture = Inventory.getSelectedItem().showcaseTexture
+	else:
+		$showcase.hide()
 
 func _physics_process(delta):
 	if 	!isInReach():
@@ -55,6 +103,7 @@ func _physics_process(delta):
 func interact(iType : bool):
 	var type : String = Inventory.getSelectedItemType()
 	var areas : Array = $detector.get_overlapping_areas()
+	var floors : Array = $floorDetector.get_overlapping_areas()
 	
 	if len(areas) == 0:
 		areas.append(null)
@@ -73,8 +122,12 @@ func interact(iType : bool):
 			interact_right(interacted, type)
 		else:
 			interact_left(interacted, type)
+	
+	for floorObj in floors:
+		if !iType:
+			interact_left(floorObj, type, true)
 
-func interact_left(interacted : object, type : String):
+func interact_left(interacted : object, type : String, ignoreObj := false):
 	match type:
 		"tool":
 			match Inventory.getSelectedItem().toolType:
@@ -83,7 +136,7 @@ func interact_left(interacted : object, type : String):
 					water.position = position
 					get_parent().add_child(water)
 		"building":
-			if interacted == null:
+			if interacted == null or ignoreObj:
 				build()
 
 	if interacted != null:
@@ -102,6 +155,7 @@ func build():
 		return
 	var building : Node = Inventory.getSelectedItem().scene.instance()
 	building.position = position + Vector2(Inventory.getSelectedItem().offset, Inventory.getSelectedItem().offset)
+	setRotation(building, false)
 	get_node(building.path).add_child(building)
 	building.startBuilding(Inventory.getSelectedItem().buildingTime)
 	Inventory.removeAmount()

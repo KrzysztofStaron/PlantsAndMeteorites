@@ -1,8 +1,13 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=1]
 [ext_resource path="res://assets/items/buildings/wall.png" type="Texture" id=2]
 [ext_resource path="res://scenes/objects/buildings/IronWall/IronWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/objects/buildings/IronWall.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=92]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 48, 16, 16 )
 
 [resource]
 script = ExtResource( 1 )
@@ -13,3 +18,6 @@ quantity = 1
 scene = ExtResource( 3 )
 buildingTime = 0.0
 offset = 0
+showcaseTexture = SubResource( 92 )
+showcaseOffset = Vector2( 0, 0 )
+rotation = 0

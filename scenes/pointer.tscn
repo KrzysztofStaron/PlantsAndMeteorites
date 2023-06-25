@@ -24,7 +24,6 @@ extents = Vector2( 7.5, 7.5 )
 
 [node name="pointer" type="AnimatedSprite"]
 frames = SubResource( 3 )
-frame = 1
 playing = true
 script = ExtResource( 1 )
 
@@ -34,6 +33,17 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
 shape = SubResource( 4 )
+
+[node name="floorDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floorDetector"]
+shape = SubResource( 4 )
+
+[node name="showcase" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+z_index = 1
 
 [connection signal="area_entered" from="detector" to="." method="_on_detector_area_entered"]
 [connection signal="area_exited" from="detector" to="." method="_on_detector_area_exited"]

@@ -7,6 +7,7 @@ export var oxygen := 0.0
 
 export var scaleCurve : Curve
 export var colorCurve : Curve
+export var soundCurve : Curve
 
 var hiden := false
 export var stopSound := false
@@ -28,6 +29,9 @@ func _process(delta):
 		else:
 			oxygen = maxOxygen
 	else:
+		if oxygen > 2 and stopSound:
+			stopSound = false
+
 		if oxygen < 2:
 			$sound.play("fade")
 			stopSound = true
@@ -53,7 +57,7 @@ func _process(delta):
 		$"../UI/vignete".get_material().set_shader_param("color", Color(0,0,0,1))
 	
 	if !stopSound:
-		$gasping.volume_db = linear2db(0.4 - (0.4*scaleCurve.interpolate(1.0 - oxygen/maxOxygen)))
+		$gasping.volume_db = linear2db(soundCurve.interpolate(1.0 - oxygen/maxOxygen))
 	else:
 		$gasping.volume_db = linear2db(sound)
 	

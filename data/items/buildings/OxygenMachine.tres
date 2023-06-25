@@ -13,3 +13,6 @@ quantity = 1
 scene = ExtResource( 2 )
 buildingTime = 2.0
 offset = 8
+showcaseTexture = ExtResource( 3 )
+showcaseOffset = Vector2( 1, -2 )
+rotation = 0

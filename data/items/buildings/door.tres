@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=6 format=2]
+
+[ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=1]
+[ext_resource path="res://assets/items/buildings/door.png" type="Texture" id=2]
+[ext_resource path="res://scenes/objects/buildings/door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/objects/buildings/door/door.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=90]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 48, 16 )
+
+[resource]
+script = ExtResource( 1 )
+name = "door"
+type = "building"
+texture = ExtResource( 2 )
+quantity = 1
+scene = ExtResource( 3 )
+buildingTime = 1.0
+offset = 0
+showcaseTexture = SubResource( 90 )
+showcaseOffset = Vector2( 0, 0 )
+rotation = 1

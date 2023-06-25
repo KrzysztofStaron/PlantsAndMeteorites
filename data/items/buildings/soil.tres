@@ -1,8 +1,17 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://scenes/objects/buildings/soil/hoedSoil.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=2]
 [ext_resource path="res://assets/items/buildings/dirt.png" type="Texture" id=3]
+[ext_resource path="res://assets/objects/soil/soil.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=87]
+atlas = ExtResource( 4 )
+region = Rect2( -8, -8, 48, 48 )
+
+[sub_resource type="AtlasTexture" id=88]
+atlas = SubResource( 87 )
+region = Rect2( 8, 8, 32, 32 )
 
 [resource]
 script = ExtResource( 2 )
@@ -13,3 +22,6 @@ quantity = 1
 scene = ExtResource( 1 )
 buildingTime = 0.0
 offset = 0
+showcaseTexture = SubResource( 88 )
+showcaseOffset = Vector2( 0, 0 )
+rotation = 0
