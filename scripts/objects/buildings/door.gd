@@ -1,8 +1,9 @@
 extends Building
 
-var opened := false
+export var opened := false
 var touchMouse := false
-
+var changeState := false
+	
 func interact_left():
 	var item = Inventory.getSelectedItem()
 	if item == null:
@@ -33,10 +34,36 @@ func showOutline():
 		$Sprite.material.set_shader_param("width", outlineWidth)
 	
 
-
 func _on_tileCollision_mouse_entered():
 	touchMouse = true
 
 
 func _on_tileCollision_mouse_exited():
 	touchMouse = false
+
+func _on_playerDetector_body_entered(body):
+	if opened:
+		pass
+	elif $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position:
+		$AnimationPlayer.play("open")
+	else:
+		changeState = true
+	
+
+func _on_playerDetector_body_exited(body):
+	if !opened:
+		pass
+	elif $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position:
+		$AnimationPlayer.play("close")
+	else:
+		changeState = true
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if !changeState:
+		pass
+	elif len($playerDetector.get_overlapping_bodies()) == 0:
+		changeState = false
+		$AnimationPlayer.play("close")
+	elif len($playerDetector.get_overlapping_bodies()) != 0:
+		changeState = false
+		$AnimationPlayer.play("open")

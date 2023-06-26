@@ -8,4 +8,5 @@ script = ExtResource( 1 )
 name = "Watering can"
 type = "tool"
 texture = ExtResource( 2 )
+price = 0
 toolType = 2

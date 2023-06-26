@@ -1,4 +1,5 @@
 extends quickInventorySlot
+signal itemChanged
 
 var item : Resource
 
@@ -13,8 +14,10 @@ func update():
 
 	if item is CountableItem and item.quantity > 1:
 		get_node("amount").text = str(item.quantity)
+		emit_signal("itemChanged")
 	else:
 		get_node("amount").text = ""
+
 
 func getItem() -> InventoryItem:
 	return (item as InventoryItem)

@@ -48,17 +48,21 @@ func _input(event):
 				
 				if !slot.storage:
 					pass
-				elif slot.getItem() == null:
-					if slot.getItem() == null and !storage:
-						setItem(null)
-						slot.setItem(original)
-				elif slot.getItem().name == getItem().name:
-					original.quantity += slot.getItem().quantity
+				elif slot.getItem() == null and !storage:
 					setItem(null)
 					slot.setItem(original)
+				elif slot.getItem() != null:
+					if slot.getItem().name == getItem().name:
+						original.quantity += slot.getItem().quantity
+						setItem(null)
+						slot.setItem(original)
+					elif storage:
+						setItem(slot.getItem().duplicate())
+						slot.setItem(original)
 				elif storage:
-					setItem(slot.getItem().duplicate())
+					setItem(null)
 					slot.setItem(original)
+					
 
 func _on_quickSlot_mouse_entered():
 	touch = true

@@ -3,7 +3,9 @@ var inv : Array
 var dropping := false
 
 func drop(num := 0):
-	if get_tree().get_root().get_node("main/pointer").isInReach():
+	if len(get_tree().get_root().get_node("main/pointer/bodyDetector").get_overlapping_bodies()) != 0:
+		$Label.visible = false
+	elif get_tree().get_root().get_node("main/pointer").isInReach():
 		dropping = false
 		$Label.visible = dropping
 		
@@ -32,7 +34,9 @@ func _input(event):
 				$Label.rect_position.y = get_node("VContainer/slot"+str(slot-1)).rect_position.y - 4
 		# Dropping
 		if event.is_action_pressed("dropItem") and Inventory.getSelectedItemType() and get_tree().get_root().get_node("main/pointer").isInReach():
-			if Inventory.getSelectedItem() is CountableItem:		
+			if len(get_tree().get_root().get_node("main/pointer/bodyDetector").get_overlapping_bodies()) != 0:
+				pass
+			elif Inventory.getSelectedItem() is CountableItem:		
 				$Timer.start(1.0)
 				dropping = true
 				$Label.visible = true

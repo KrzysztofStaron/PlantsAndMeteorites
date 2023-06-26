@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/sell.gd" type="Script" id=3]
+
+[node name="sell" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 3 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 121.0
+margin_top = 77.0
+margin_right = 198.0
+margin_bottom = 103.0
+
+[node name="buildingSlot" parent="CenterContainer/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 22.0
+margin_bottom = 26.0
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_left = 26.0
+margin_right = 34.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+valign = 1
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_left = 38.0
+margin_right = 77.0
+margin_bottom = 26.0
+text = "Seel"
+
+[connection signal="itemChanged" from="CenterContainer/HBoxContainer/buildingSlot" to="." method="_on_buildingSlot_itemChanged"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/objects/buildings/inPorgress.tres" type="Material" id=1]
 [ext_resource path="res://assets/objects/buildings/door/door.png" type="Texture" id=2]
@@ -119,6 +119,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:opened")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "close"
@@ -175,6 +187,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:opened")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -233,9 +257,24 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:opened")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 12, 4 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 7, 11 )
 
 [node name="door" type="StaticBody2D"]
 z_index = -1
@@ -282,9 +321,18 @@ anims/open = SubResource( 12 )
 shape = SubResource( 13 )
 disabled = true
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="playerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetector"]
+position = Vector2( 0, 2 )
+shape = SubResource( 14 )
 
 [connection signal="mouse_entered" from="tileCollision" to="." method="outline" binds= [ true ]]
 [connection signal="mouse_entered" from="tileCollision" to="." method="_on_tileCollision_mouse_entered"]
 [connection signal="mouse_exited" from="tileCollision" to="." method="outline" binds= [ false ]]
 [connection signal="mouse_exited" from="tileCollision" to="." method="_on_tileCollision_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="playerDetector" to="." method="_on_playerDetector_body_entered"]
+[connection signal="body_exited" from="playerDetector" to="." method="_on_playerDetector_body_exited"]

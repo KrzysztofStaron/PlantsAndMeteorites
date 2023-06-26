@@ -142,8 +142,9 @@ func interact(iType : bool):
 func interact_floor_left(interacted : object, type : String):
 	match type:
 		"building":
-			if interacted == null:
-				build()
+			if Inventory.getSelectedItem() != null:
+				if interacted == null and Inventory.getSelectedItem().isFloor:
+					build()
 
 	if interacted != null:
 		interacted.interact_left()
@@ -171,9 +172,13 @@ func interact_right(interacted : object, type : String):
 		interacted.interact_right()
 
 func build():
+	if len($playerDetector.get_overlapping_bodies()) != 0 and !Inventory.getSelectedItem().isFloor:
+		return
+	
 	# Using GameManager.canPuse in not safe way
 	if !GameManager.canPause:
 		return
+		
 	var building : Node = Inventory.getSelectedItem().scene.instance()
 	building.position = position + Vector2(Inventory.getSelectedItem().offset, Inventory.getSelectedItem().offset)
 	setRotation(building, false)
