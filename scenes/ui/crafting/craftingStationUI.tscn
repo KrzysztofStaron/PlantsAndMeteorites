@@ -1,88 +1,88 @@
 [gd_scene load_steps=37 format=2]
 
-[ext_resource path="res://assets/ui/buildings/craftingStation/craftingStation.png" type="Texture" id=1]
-[ext_resource path="res://assets/ui/buildings/craftingStation/fill.png" type="Texture" id=2]
-[ext_resource path="res://assets/ui/slider2.gdshader" type="Shader" id=3]
-[ext_resource path="res://assets/ui/buildings/craftingStation/Working_Progress_Build_.png" type="Texture" id=4]
-[ext_resource path="res://scenes/ui/craftingItem.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/objects/buildings/craftingStationUI.gd" type="Script" id=6]
-[ext_resource path="res://data/recipies/wall.tres" type="Resource" id=7]
-[ext_resource path="res://data/recipies/floor.tres" type="Resource" id=8]
-[ext_resource path="res://scenes/ui/require.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/ui/slider.png" type="Texture" id=10]
-[ext_resource path="res://assets/ui/sliderFill.png" type="Texture" id=11]
-[ext_resource path="res://assets/ui/grabber.png" type="Texture" id=12]
-[ext_resource path="res://assets/ui/m3x6.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=14]
-[ext_resource path="res://assets/ui/buildings/craftingStation/additionalSlot.png" type="Texture" id=15]
+[ext_resource path="res://assets/ui/slider.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/sliderFill.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/grabber.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/buildings/craftingStation/additionalSlot.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/buildings/craftingStation/Working_Progress_Build_.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/buildings/craftingStation/craftingStation.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/buildings/craftingStation/fill.png" type="Texture" id=7]
+[ext_resource path="res://data/recipies/wall.tres" type="Resource" id=8]
+[ext_resource path="res://data/recipies/floor.tres" type="Resource" id=9]
+[ext_resource path="res://scenes/ui/crafting/require.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ui/crafting/craftingItem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/objects/buildings/crafingStation/craftingStationUI.gd" type="Script" id=13]
+[ext_resource path="res://assets/ui/slider2.gdshader" type="Shader" id=14]
+[ext_resource path="res://assets/ui/m3x6.ttf" type="DynamicFontData" id=15]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 6 )
 region = Rect2( 1, 1, 99, 97 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 6 )
 region = Rect2( 1, 109, 76, 15 )
 
 [sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
-shader = ExtResource( 3 )
+shader = ExtResource( 14 )
 shader_param/persent = 0.0
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 6 )
 region = Rect2( 79, 109, 15, 15 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 6 )
 region = Rect2( 96, 109, 15, 15 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 32, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 96, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 32, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 5 )
 region = Rect2( 96, 64, 32, 32 )
 
 [sub_resource type="SpriteFrames" id=18]
@@ -94,17 +94,17 @@ animations = [ {
 } ]
 
 [sub_resource type="StyleBoxTexture" id=21]
-texture = ExtResource( 10 )
+texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 64, 10 )
 
 [sub_resource type="StyleBoxTexture" id=22]
-texture = ExtResource( 11 )
+texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 64, 10 )
 
 [sub_resource type="DynamicFont" id=23]
 size = 32
 use_mipmaps = true
-font_data = ExtResource( 13 )
+font_data = ExtResource( 15 )
 
 [node name="ui" type="CanvasLayer"]
 visible = false
@@ -121,11 +121,11 @@ margin_top = 34.0
 margin_right = 141.0
 margin_bottom = 113.0
 mouse_filter = 2
-texture = ExtResource( 15 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 3
 
-[node name="buildingSlot" parent="addictionalSlot" instance=ExtResource( 14 )]
+[node name="buildingSlot" parent="addictionalSlot" instance=ExtResource( 12 )]
 margin_left = 39.0
 margin_top = 52.0
 margin_right = 57.77
@@ -139,7 +139,7 @@ margin_right = 209.0
 margin_bottom = 119.0
 mouse_filter = 2
 texture = SubResource( 1 )
-script = ExtResource( 6 )
+script = ExtResource( 13 )
 
 [node name="slider" type="TextureRect" parent="craftingStationUI"]
 margin_top = 99.0
@@ -153,7 +153,7 @@ margin_left = 7.0
 margin_top = 6.0
 margin_right = 69.0
 margin_bottom = 9.0
-texture = ExtResource( 2 )
+texture = ExtResource( 7 )
 
 [node name="craft" type="TextureButton" parent="craftingStationUI"]
 margin_left = 78.0
@@ -177,51 +177,51 @@ custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 3
 
-[node name="craftingItem" parent="craftingStationUI/items" instance=ExtResource( 5 )]
-recipe = ExtResource( 7 )
-
-[node name="craftingItem2" parent="craftingStationUI/items" instance=ExtResource( 5 )]
-margin_left = 22.0
-margin_right = 42.0
+[node name="craftingItem" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 recipe = ExtResource( 8 )
 
-[node name="craftingItem3" parent="craftingStationUI/items" instance=ExtResource( 5 )]
+[node name="craftingItem2" parent="craftingStationUI/items" instance=ExtResource( 11 )]
+margin_left = 22.0
+margin_right = 42.0
+recipe = ExtResource( 9 )
+
+[node name="craftingItem3" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 margin_left = 44.0
 margin_right = 64.0
 disabled = true
 
-[node name="craftingItem4" parent="craftingStationUI/items" instance=ExtResource( 5 )]
+[node name="craftingItem4" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 margin_top = 22.0
 margin_bottom = 42.0
 disabled = true
 
-[node name="craftingItem5" parent="craftingStationUI/items" instance=ExtResource( 5 )]
+[node name="craftingItem5" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 42.0
 margin_bottom = 42.0
 disabled = true
 
-[node name="craftingItem6" parent="craftingStationUI/items" instance=ExtResource( 5 )]
+[node name="craftingItem6" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 margin_left = 44.0
 margin_top = 22.0
 margin_right = 64.0
 margin_bottom = 42.0
 disabled = true
 
-[node name="craftingItem7" parent="craftingStationUI/items" instance=ExtResource( 5 )]
+[node name="craftingItem7" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 margin_top = 44.0
 margin_bottom = 64.0
 disabled = true
 
-[node name="craftingItem8" parent="craftingStationUI/items" instance=ExtResource( 5 )]
+[node name="craftingItem8" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 margin_left = 22.0
 margin_top = 44.0
 margin_right = 42.0
 margin_bottom = 64.0
 disabled = true
 
-[node name="craftingItem9" parent="craftingStationUI/items" instance=ExtResource( 5 )]
+[node name="craftingItem9" parent="craftingStationUI/items" instance=ExtResource( 11 )]
 margin_left = 44.0
 margin_top = 44.0
 margin_right = 64.0
@@ -238,27 +238,27 @@ custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 columns = 3
 
-[node name="require" parent="craftingStationUI/require" instance=ExtResource( 9 )]
+[node name="require" parent="craftingStationUI/require" instance=ExtResource( 10 )]
 
-[node name="require2" parent="craftingStationUI/require" instance=ExtResource( 9 )]
+[node name="require2" parent="craftingStationUI/require" instance=ExtResource( 10 )]
 margin_left = 22.0
 margin_right = 42.0
 
-[node name="require3" parent="craftingStationUI/require" instance=ExtResource( 9 )]
+[node name="require3" parent="craftingStationUI/require" instance=ExtResource( 10 )]
 margin_left = 44.0
 margin_right = 64.0
 
-[node name="require4" parent="craftingStationUI/require" instance=ExtResource( 9 )]
+[node name="require4" parent="craftingStationUI/require" instance=ExtResource( 10 )]
 margin_top = 22.0
 margin_bottom = 42.0
 
-[node name="require5" parent="craftingStationUI/require" instance=ExtResource( 9 )]
+[node name="require5" parent="craftingStationUI/require" instance=ExtResource( 10 )]
 margin_left = 22.0
 margin_top = 22.0
 margin_right = 42.0
 margin_bottom = 42.0
 
-[node name="require6" parent="craftingStationUI/require" instance=ExtResource( 9 )]
+[node name="require6" parent="craftingStationUI/require" instance=ExtResource( 10 )]
 margin_left = 44.0
 margin_top = 22.0
 margin_right = 64.0
@@ -275,10 +275,10 @@ margin_left = 6.0
 margin_top = 78.0
 margin_right = 70.0
 margin_bottom = 94.0
-custom_icons/tick = ExtResource( 12 )
-custom_icons/grabber_disabled = ExtResource( 12 )
-custom_icons/grabber_highlight = ExtResource( 12 )
-custom_icons/grabber = ExtResource( 12 )
+custom_icons/tick = ExtResource( 3 )
+custom_icons/grabber_disabled = ExtResource( 3 )
+custom_icons/grabber_highlight = ExtResource( 3 )
+custom_icons/grabber = ExtResource( 3 )
 custom_styles/slider = SubResource( 21 )
 custom_styles/grabber_area_highlight = SubResource( 22 )
 custom_styles/grabber_area = SubResource( 22 )
@@ -292,7 +292,7 @@ modulate = Color( 0.152941, 0.152941, 0.211765, 1 )
 margin_top = 3.0
 margin_right = 1.0
 margin_bottom = 13.0
-texture = ExtResource( 11 )
+texture = ExtResource( 2 )
 expand = true
 
 [node name="number" type="Label" parent="craftingStationUI/amountSlider"]

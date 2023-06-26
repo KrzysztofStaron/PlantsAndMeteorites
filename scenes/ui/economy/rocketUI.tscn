@@ -1,0 +1,194 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/ui/UI_5.png" type="Texture" id=1]
+[ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/ui/economy/soldSlot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/ui/m3x6.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/economy/rocketUI.gd" type="Script" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 79, 18, 22, 23 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+use_mipmaps = true
+font_data = ExtResource( 4 )
+
+[node name="rocketUI" type="Control"]
+script = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="bought" type="Panel" parent="Panel"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 16.0
+margin_top = 40.0
+margin_right = 64.0
+margin_bottom = 144.0
+
+[node name="GridContainer" type="GridContainer" parent="Panel/bought"]
+margin_right = 40.0
+margin_bottom = 40.0
+columns = 2
+
+[node name="buildingSlot2" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 22.0
+margin_bottom = 23.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="buildingSlot" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_right = 48.0
+margin_bottom = 23.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="buildingSlot3" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 27.0
+margin_right = 22.0
+margin_bottom = 50.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="buildingSlot4" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 27.0
+margin_right = 48.0
+margin_bottom = 50.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="buildingSlot5" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 22.0
+margin_bottom = 77.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="buildingSlot6" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 54.0
+margin_right = 48.0
+margin_bottom = 77.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="buildingSlot7" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 81.0
+margin_right = 22.0
+margin_bottom = 104.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="buildingSlot8" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 81.0
+margin_right = 48.0
+margin_bottom = 104.0
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+storage = false
+
+[node name="sold" type="Panel" parent="Panel"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 96.0
+margin_top = 40.0
+margin_right = 240.0
+margin_bottom = 144.0
+
+[node name="sold" type="VBoxContainer" parent="Panel/sold"]
+margin_top = 1.0
+margin_right = 144.0
+margin_bottom = 104.0
+custom_constants/separation = 26
+
+[node name="soldSlot" parent="Panel/sold/sold" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 144.0
+margin_bottom = 0.0
+
+[node name="soldSlot2" parent="Panel/sold/sold" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 26.0
+margin_right = 144.0
+margin_bottom = 26.0
+
+[node name="soldSlot3" parent="Panel/sold/sold" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 52.0
+margin_right = 144.0
+margin_bottom = 52.0
+
+[node name="soldSlot4" parent="Panel/sold/sold" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 78.0
+margin_right = 144.0
+margin_bottom = 78.0
+
+[node name="sum" type="Panel" parent="Panel/sold"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 80.0
+margin_top = 104.0
+margin_right = 136.0
+margin_bottom = 128.0
+
+[node name="sum" type="Label" parent="Panel/sold/sum"]
+margin_top = -4.0
+margin_right = 56.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 2 )
+text = "1234567"
+align = 1
+valign = 1
+
+[node name="lunch" type="Button" parent="."]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 303.0
+margin_bottom = 100.0
+text = "lunch"
+
+[connection signal="priceChanged" from="Panel/sold/sold/soldSlot" to="." method="_on_soldSlot_priceChanged"]
+[connection signal="priceChanged" from="Panel/sold/sold/soldSlot2" to="." method="_on_soldSlot_priceChanged"]
+[connection signal="priceChanged" from="Panel/sold/sold/soldSlot3" to="." method="_on_soldSlot_priceChanged"]
+[connection signal="priceChanged" from="Panel/sold/sold/soldSlot4" to="." method="_on_soldSlot_priceChanged"]
+[connection signal="pressed" from="lunch" to="." method="_on_lunch_pressed"]

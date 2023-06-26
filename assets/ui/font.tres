@@ -3,6 +3,6 @@
 [ext_resource path="res://assets/ui/m3x6.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 32
+size = 48
 use_mipmaps = true
 font_data = ExtResource( 1 )

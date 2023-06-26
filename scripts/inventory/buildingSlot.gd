@@ -7,6 +7,7 @@ func _ready():
 	update()
 
 func update():
+	emit_signal("itemChanged")
 	if getItem() == null:
 		get_node("icon").texture = Texture
 	else:
@@ -14,7 +15,6 @@ func update():
 
 	if item is CountableItem and item.quantity > 1:
 		get_node("amount").text = str(item.quantity)
-		emit_signal("itemChanged")
 	else:
 		get_node("amount").text = ""
 

@@ -47,6 +47,10 @@ func timeToInt() -> int:
 	return int((Inventory.getSelectedItem().quantity-1) * (1-$Timer.time_left)) + 1
 
 func _process(delta):
+	for slot in range(1,len(Inventory.inventory)+1):
+		if Input.is_action_just_pressed("slot"+str(slot)):
+			Inventory.selectedItemIndex = slot - 1
+
 	if dropping:
 		if Input.is_action_just_pressed("cancelDrop"):
 			dropping = false

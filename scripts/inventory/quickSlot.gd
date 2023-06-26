@@ -46,7 +46,7 @@ func _input(event):
 				var original := getItem().duplicate()
 				var slot : Node = get_tree().get_root().get_node("main/drag/draggedItem/detector").get_overlapping_areas()[0].get_parent()
 				
-				if !slot.storage:
+				if !slot.storage or slot == self:
 					pass
 				elif slot.getItem() == null and !storage:
 					setItem(null)

@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/objects/buildings/craftingStation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/objects/buildings/CraftingStation.png" type="Texture" id=3]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=96]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 2, 32, 32 )
 
@@ -12,12 +12,13 @@ region = Rect2( 0, 2, 32, 32 )
 script = ExtResource( 1 )
 name = "CrafingStation"
 type = "building"
-texture = SubResource( 1 )
+texture = SubResource( 96 )
+price = 0
 quantity = 1
 scene = ExtResource( 2 )
 buildingTime = 3.0
 offset = 0
-showcaseTexture = SubResource( 1 )
+showcaseTexture = SubResource( 96 )
 showcaseOffset = Vector2( 8, 1 )
 rotation = 2
 isFloor = false

@@ -8,5 +8,5 @@ script = ExtResource( 1 )
 name = "Drill"
 type = "tool"
 texture = ExtResource( 2 )
-price = 0
+price = 50
 toolType = 1
