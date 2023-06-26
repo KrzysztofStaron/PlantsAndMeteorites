@@ -107,6 +107,8 @@ func interact(iType : bool):
 	
 	if len(areas) == 0:
 		areas.append(null)
+	if len(floors) == 0:
+		floors.append(null)
 	
 	for area in areas:
 		var interacted : object
@@ -118,16 +120,35 @@ func interact(iType : bool):
 		else:
 			interacted = null
 			
+		
 		if iType:
 			interact_right(interacted, type)
 		else:
 			interact_left(interacted, type)
 	
 	for floorObj in floors:
+		var interacted : object
+		
+		if floorObj is object:
+			interacted = floorObj
+		elif floorObj != null:
+			interacted = floorObj.get_parent()
+		else:
+			interacted = null
+		
 		if !iType:
-			interact_left(floorObj, type, true)
+			interact_floor_left(floorObj, type)
 
-func interact_left(interacted : object, type : String, ignoreObj := false):
+func interact_floor_left(interacted : object, type : String):
+	match type:
+		"building":
+			if interacted == null:
+				build()
+
+	if interacted != null:
+		interacted.interact_left()
+
+func interact_left(interacted : object, type : String):
 	match type:
 		"tool":
 			match Inventory.getSelectedItem().toolType:
@@ -136,7 +157,7 @@ func interact_left(interacted : object, type : String, ignoreObj := false):
 					water.position = position
 					get_parent().add_child(water)
 		"building":
-			if interacted == null or ignoreObj:
+			if interacted == null and !Inventory.getSelectedItem().isFloor:
 				build()
 
 	if interacted != null:

@@ -20,3 +20,4 @@ offset = 0
 showcaseTexture = SubResource( 1 )
 showcaseOffset = Vector2( 8, 1 )
 rotation = 2
+isFloor = false

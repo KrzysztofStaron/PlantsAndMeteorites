@@ -16,3 +16,4 @@ offset = 8
 showcaseTexture = ExtResource( 3 )
 showcaseOffset = Vector2( 1, -2 )
 rotation = 0
+isFloor = false

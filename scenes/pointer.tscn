@@ -24,6 +24,7 @@ extents = Vector2( 7.5, 7.5 )
 
 [node name="pointer" type="AnimatedSprite"]
 frames = SubResource( 3 )
+frame = 1
 playing = true
 script = ExtResource( 1 )
 

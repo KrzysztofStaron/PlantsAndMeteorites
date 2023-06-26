@@ -1482,6 +1482,7 @@ offset = 0
 showcaseTexture = SubResource( 88 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 0
+isFloor = false
 
 [sub_resource type="AtlasTexture" id=92]
 atlas = ExtResource( 36 )
@@ -1499,6 +1500,7 @@ offset = 0
 showcaseTexture = SubResource( 92 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 0
+isFloor = false
 
 [sub_resource type="AtlasTexture" id=90]
 atlas = ExtResource( 46 )
@@ -1516,6 +1518,7 @@ offset = 0
 showcaseTexture = SubResource( 90 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 1
+isFloor = false
 
 [sub_resource type="AtlasTexture" id=94]
 atlas = ExtResource( 49 )
@@ -1533,6 +1536,7 @@ offset = 0
 showcaseTexture = SubResource( 94 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 0
+isFloor = true
 
 [node name="main" type="Node2D"]
 

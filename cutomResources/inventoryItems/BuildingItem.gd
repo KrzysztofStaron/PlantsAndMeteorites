@@ -7,3 +7,4 @@ export var offset : int
 export var showcaseTexture : Texture
 export var showcaseOffset : Vector2
 export(int, "non", "2dir", "2dirMirorX") var rotation : int
+export var isFloor : bool
