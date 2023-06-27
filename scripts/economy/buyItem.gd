@@ -12,4 +12,5 @@ func _ready():
 
 
 func _on_buy_pressed():
+	item.quantity = 1
 	$"../../bought".order(item)
