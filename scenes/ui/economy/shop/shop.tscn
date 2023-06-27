@@ -107,36 +107,43 @@ columns = 2
 [node name="boughtSlot2" parent="bought/GridContainer" instance=ExtResource( 1 )]
 margin_left = 26.0
 margin_right = 48.0
+index = 1
 
 [node name="boughtSlot3" parent="bought/GridContainer" instance=ExtResource( 1 )]
 margin_top = 27.0
 margin_bottom = 50.0
+index = 2
 
 [node name="boughtSlot4" parent="bought/GridContainer" instance=ExtResource( 1 )]
 margin_left = 26.0
 margin_top = 27.0
 margin_right = 48.0
 margin_bottom = 50.0
+index = 3
 
 [node name="boughtSlot5" parent="bought/GridContainer" instance=ExtResource( 1 )]
 margin_top = 54.0
 margin_bottom = 77.0
+index = 4
 
 [node name="boughtSlot6" parent="bought/GridContainer" instance=ExtResource( 1 )]
 margin_left = 26.0
 margin_top = 54.0
 margin_right = 48.0
 margin_bottom = 77.0
+index = 5
 
 [node name="boughtSlot7" parent="bought/GridContainer" instance=ExtResource( 1 )]
 margin_top = 81.0
 margin_bottom = 104.0
+index = 6
 
 [node name="boughtSlot8" parent="bought/GridContainer" instance=ExtResource( 1 )]
 margin_left = 26.0
 margin_top = 81.0
 margin_right = 48.0
 margin_bottom = 104.0
+index = 7
 
 [node name="order" type="Button" parent="."]
 margin_left = 224.0

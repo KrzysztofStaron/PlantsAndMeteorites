@@ -49,3 +49,6 @@ margin_right = 16.0
 margin_bottom = 18.0
 rect_scale = Vector2( 0.4, 0.4 )
 text = "r"
+
+[connection signal="pressed" from="sub" to="." method="sub"]
+[connection signal="pressed" from="remove" to="." method="remove"]
