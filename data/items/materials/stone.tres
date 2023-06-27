@@ -8,5 +8,6 @@ script = ExtResource( 1 )
 name = "Stone"
 type = "item"
 texture = ExtResource( 2 )
-price = 1
+sell_price = 1
+buy_price = 10
 quantity = 1

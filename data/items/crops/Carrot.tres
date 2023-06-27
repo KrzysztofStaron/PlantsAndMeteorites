@@ -8,5 +8,6 @@ script = ExtResource( 1 )
 name = "Carrot"
 type = "item"
 texture = ExtResource( 2 )
-price = 0
+sell_price = 40
+buy_price = 0
 quantity = 1

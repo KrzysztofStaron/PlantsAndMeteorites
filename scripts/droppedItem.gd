@@ -9,10 +9,11 @@ func _ready():
 	$Sprite.texture = item.texture
 
 func _on_DroppedItem_area_entered(area):
-	if area.item.name == item.name and area.spawnDate < spawnDate and position.distance_to(area.position) < 2:
-		item.quantity += area.item.quantity
-		print("free")
-		area.queue_free()
+	if area.item is CountableItem:
+		if area.item.name == item.name and area.spawnDate < spawnDate and position.distance_to(area.position) < 2:
+			item.quantity += area.item.quantity
+			print("free")
+			area.queue_free()
 
 func _process(delta):
 	for body in get_overlapping_bodies():

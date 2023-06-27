@@ -31,4 +31,4 @@ func _on_sell_pressed():
 
 
 func _on_Button_pressed():
-	visible = true
+	visible = !visible

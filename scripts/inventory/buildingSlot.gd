@@ -1,7 +1,7 @@
 extends quickInventorySlot
 signal itemChanged
 
-var item : Resource
+export var item : Resource
 
 func _ready():
 	update()

@@ -1,23 +1,23 @@
 extends Control
 signal lunch 
 
+func sumUp() -> int:
+	var sum := 0
+	for slot in $Panel/sold/sold.get_children():
+		if slot.get_node("buildingSlot").item != null:
+			if slot.get_node("buildingSlot").item is CountableItem:
+				sum += slot.get_node("buildingSlot").item.sell_price * slot.get_node("buildingSlot").item.quantity
+			else:
+				sum += slot.get_node("buildingSlot").item.sell_price
+	return sum
 
 func _on_soldSlot_priceChanged():
-	var sum := 0
-	for slot in $Panel/sold/sold.get_children():
-		sum += slot.price
-	
-	$Panel/sold/sum/sum.text = str(sum)
-
+	$Panel/sold/sum/sum.text = str(sumUp())
 
 func _on_lunch_pressed():
-	var sum := 0
-	
+	GameManager.money += sumUp()
 	for slot in $Panel/sold/sold.get_children():
-		sum += slot.price
 		slot.get_node("buildingSlot").setItem(null)
-	
-	GameManager.money += sum
 	
 	print("lunch")
 	# lunch logic
