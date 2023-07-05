@@ -36,6 +36,8 @@ valign = 1
 margin_left = 56.0
 margin_right = 92.0
 margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Buy"
 
 [connection signal="pressed" from="buy" to="." method="_on_buy_pressed"]

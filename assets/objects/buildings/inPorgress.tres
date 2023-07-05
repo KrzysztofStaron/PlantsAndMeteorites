@@ -39,5 +39,5 @@ shader_param/ratio_width = 0.333
 shader_param/ratio_height = 1.0
 shader_param/location_x = 0.25
 shader_param/location_y = 0.125
-shader_param/show = true
+shader_param/show = false
 shader_param/mask_texture = ExtResource( 1 )

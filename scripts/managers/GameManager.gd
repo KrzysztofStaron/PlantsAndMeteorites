@@ -4,6 +4,7 @@ export var canPause := true
 export var day : int
 var player : Player
 export var money : int
+export var ordered : Array
 
 func _process(delta):
 	if Input.is_action_just_pressed("debug"):

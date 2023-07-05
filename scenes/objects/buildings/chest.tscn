@@ -1,0 +1,210 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/objects/chest.gd" type="Script" id=1]
+[ext_resource path="res://assets/objects/buildings/chest.png" type="Texture" id=2]
+[ext_resource path="res://assets/objects/buildings/inPorgress.tres" type="Material" id=3]
+[ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "close"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 9, 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "open"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "start"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[node name="chest" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource( 1 )
+objectName = "Chest"
+drawOutline = true
+builded = true
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 1.90735e-06, 7.5 )
+texture = ExtResource( 2 )
+hframes = 4
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 2 )
+
+[node name="tile" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tile"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 3 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="ui"]
+margin_left = 120.0
+margin_top = 48.0
+margin_right = 200.0
+margin_bottom = 130.0
+
+[node name="CenterContainer" type="CenterContainer" parent="ui"]
+margin_right = 320.0
+margin_bottom = 180.0
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="ui/CenterContainer"]
+margin_left = 123.0
+margin_top = 51.0
+margin_right = 197.0
+margin_bottom = 128.0
+columns = 3
+
+[node name="buildingSlot" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 22.0
+margin_bottom = 23.0
+
+[node name="buildingSlot2" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_right = 48.0
+margin_bottom = 23.0
+
+[node name="buildingSlot3" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 74.0
+margin_bottom = 23.0
+
+[node name="buildingSlot4" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 27.0
+margin_right = 22.0
+margin_bottom = 50.0
+
+[node name="buildingSlot5" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 27.0
+margin_right = 48.0
+margin_bottom = 50.0
+
+[node name="buildingSlot6" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_top = 27.0
+margin_right = 74.0
+margin_bottom = 50.0
+
+[node name="buildingSlot7" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 54.0
+margin_right = 22.0
+margin_bottom = 77.0
+
+[node name="buildingSlot8" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 54.0
+margin_right = 48.0
+margin_bottom = 77.0
+
+[node name="buildingSlot9" parent="ui/CenterContainer/GridContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_top = 54.0
+margin_right = 74.0
+margin_bottom = 77.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+anims/RESET = SubResource( 4 )
+anims/close = SubResource( 5 )
+anims/open = SubResource( 6 )
+anims/start = SubResource( 7 )

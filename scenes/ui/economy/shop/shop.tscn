@@ -151,3 +151,5 @@ margin_top = 136.0
 margin_right = 273.0
 margin_bottom = 156.0
 text = "Order"
+
+[connection signal="pressed" from="order" to="." method="_on_order_pressed"]
