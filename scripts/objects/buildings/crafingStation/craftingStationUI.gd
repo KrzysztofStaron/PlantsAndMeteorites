@@ -46,7 +46,7 @@ func _process(delta):
 	get_node("../addictionalSlot/buildingSlot/area").monitoring = owner.visible
 	get_node("../addictionalSlot/buildingSlot/area").monitorable = owner.visible
 	
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and owner.visible:
 		if !procesing:
 			$back.hide()
 			$require.hide()

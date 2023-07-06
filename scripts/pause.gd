@@ -2,10 +2,11 @@ extends TextureRect
 
 func _input(event):
 	if event is InputEventKey:
-		if event.is_action_pressed("pause") and GameManager.canPause:
-			visible = !visible
-			get_tree().paused = visible
-			$"../../pointer".visible = !visible
+		if event.is_action_pressed("pause"):
+			if GameManager.canPause:
+				visible = !visible
+				get_tree().paused = visible
+				$"../../pointer".visible = !visible
 
 func _on_resume_pressed():
 	visible = false

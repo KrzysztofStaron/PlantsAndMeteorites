@@ -31,12 +31,13 @@ func setRotation(building: Node, change := true):
 	
 	match rotationType:
 		0:
+			rotationIndex = 0
 			building.rotation_degrees = 0
 			building.scale = Vector2(1, 1)
 		1:
 			if change:
 				rotationIndex += 1
-				if rotationIndex == 2:
+				if rotationIndex >= 2:
 					rotationIndex = 0
 			
 			building.rotation_degrees = rotationIndex * 90
@@ -46,11 +47,14 @@ func setRotation(building: Node, change := true):
 				rotationIndex += 1
 				if rotationIndex == 3:
 					rotationIndex = 0
+			
+			if rotationIndex > 2:
+				rotationIndex = 2
 				
 			match rotationIndex:
 				0:
 					building.rotation_degrees = 0
-					building.scale.y = 1					
+					building.scale.y = 1
 					building.scale.x = 1
 				1:
 					building.rotation_degrees = 90
@@ -58,19 +62,30 @@ func setRotation(building: Node, change := true):
 				2:
 					building.rotation_degrees = 90
 					building.scale.y = -1
-
-func _process(delta):
-	if Inventory.getSelectedItemType() == "building":
-		var showcase := $showcase
-		
-		setRotation(showcase, Input.is_action_just_pressed("rotate"))
-		
-		
-		showcase.show()
-		showcase.offset = Vector2(Inventory.getSelectedItem().offset, Inventory.getSelectedItem().offset) + Inventory.getSelectedItem().showcaseOffset
-		showcase.texture = Inventory.getSelectedItem().showcaseTexture
-	else:
-		$showcase.hide()
+					
+		3:
+			if change:
+				rotationIndex += 1
+				if rotationIndex == 4:
+					rotationIndex = 0
+				
+			match rotationIndex:
+				0:
+					building.rotation_degrees = 0
+					building.scale.y = 1
+					building.scale.x = 1
+				1:
+					building.rotation_degrees = 90
+					building.scale.y = 1
+					building.scale.x = 1
+				2:
+					building.rotation_degrees = 180
+					building.scale.x = 1
+					building.scale.y = 1
+				3:
+					building.rotation_degrees = 270
+					building.scale.y = 1
+					building.scale.x = 1
 
 func _physics_process(delta):
 	if 	!isInReach():
@@ -180,7 +195,7 @@ func build():
 		return
 		
 	var building : Node = Inventory.getSelectedItem().scene.instance()
-	building.position = position + Vector2(Inventory.getSelectedItem().offset, Inventory.getSelectedItem().offset)
+	building.position = position + Inventory.getSelectedItem().offset
 	setRotation(building, false)
 	get_node(building.path).add_child(building)
 	building.startBuilding(Inventory.getSelectedItem().buildingTime)
@@ -199,3 +214,64 @@ func _on_detector_area_exited(area):
 		area.get_parent().outline(false)
 	elif area.has_method("outline"):
 		area.outline(false)
+
+
+func _on_quickInventory_ItemChanged():
+	print("changed")
+	if Inventory.getSelectedItemType() == "building":
+		play("no")
+		var showcase := $showcase
+		
+		setRotation(showcase, Input.is_action_just_pressed("rotate"))
+		
+		
+		showcase.show()
+		showcase.offset = Inventory.getSelectedItem().offset + Inventory.getSelectedItem().showcaseOffset
+		showcase.texture = Inventory.getSelectedItem().showcaseTexture
+		
+		var itemScene : Building = Inventory.getSelectedItem().scene.instance()
+		var collisionNode : Node = itemScene.get_node_or_null(itemScene.collisionPath)
+		if collisionNode != null:
+			collisionNode = collisionNode.duplicate()
+		itemScene.queue_free()
+		
+		removeCollisions($detector)
+		removeCollisions($floorDetector)
+		removeCollisions($bodyDetector)
+		removeCollisions($playerDetector)
+		
+		if collisionNode != null:
+			$detector.add_child(collisionNode.duplicate())
+			$floorDetector.add_child(collisionNode.duplicate())
+			$bodyDetector.add_child(collisionNode.duplicate())
+			$playerDetector.add_child(collisionNode.duplicate())
+			
+			$detector/CollisionShape2D.disabled = true
+			$floorDetector/CollisionShape2D.disabled = true
+			$bodyDetector/CollisionShape2D.disabled = true
+			$playerDetector/CollisionShape2D.disabled = true
+		else:
+			$detector/CollisionShape2D.disabled = false
+			$floorDetector/CollisionShape2D.disabled = false
+			$bodyDetector/CollisionShape2D.disabled = false
+			$playerDetector/CollisionShape2D.disabled = false
+	else:
+		play("default")
+		$showcase.hide()
+		
+		$detector/CollisionShape2D.disabled = false
+		$floorDetector/CollisionShape2D.disabled = false
+		$bodyDetector/CollisionShape2D.disabled = false
+		$playerDetector/CollisionShape2D.disabled = false
+
+		removeCollisions($detector)
+		removeCollisions($floorDetector)
+		removeCollisions($bodyDetector)
+		removeCollisions($playerDetector)
+
+func removeCollisions(from : Node) -> void:
+	for x in len(from.get_children()):
+		if x == 0:
+			pass
+		else:
+			from.get_children()[x].queue_free()

@@ -5,6 +5,7 @@ signal build
 export var builded := false
 export var path := "../"
 export var isFloor : bool
+export var collisionPath : NodePath 
 
 func enableOutline():
 	$Sprite.material = preload("res://assets/objects/outline.tres").duplicate()

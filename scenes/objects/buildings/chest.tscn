@@ -1,12 +1,53 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/objects/chest.gd" type="Script" id=1]
 [ext_resource path="res://assets/objects/buildings/chest.png" type="Texture" id=2]
-[ext_resource path="res://assets/objects/buildings/inPorgress.tres" type="Material" id=3]
+[ext_resource path="res://assets/objects/buildings/Building_Progress_animation - Copy - Copy.png" type="Texture" id=3]
 [ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/objects/buildings/Sprite.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask_texture;
+uniform float rect_size : hint_range(0.0, 5.0) = 1.0;
+uniform float ratio_width : hint_range(0.0, 3.0) = 1.0;
+uniform float ratio_height : hint_range(0.0, 3.0) = 1.0;
+uniform float location_x : hint_range(-1.0, 2.0) = 0.0;
+uniform float location_y : hint_range(-1.0, 2.0) = 0.0;
+uniform bool show = false;
+
+void fragment() {
+	float ratio = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
+    vec4 color = texture(TEXTURE, UV);
+	if (!show) {
+		COLOR = color;
+	} else {
+		vec4 effect = texture(mask_texture, (UV - vec2(location_x,location_y)) / vec2(ratio_width,ratio_height) / rect_size);
+	
+		if (effect.a == 0.0) {
+		    COLOR = color;	
+		} else if (color.a != 0.0) {
+			COLOR = effect;
+		} else {
+			COLOR.a = 0.0
+		}
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = SubResource( 6 )
+shader_param/rect_size = 0.25
+shader_param/ratio_width = 0.333
+shader_param/ratio_height = 1.0
+shader_param/location_x = 0.25
+shader_param/location_y = 0.125
+shader_param/show = true
+shader_param/mask_texture = ExtResource( 3 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 8 )
+extents = Vector2( 16.5, 8 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 16, 8 )
@@ -42,28 +83,15 @@ tracks/0/keys = {
 "values": [ 9, 0 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "open"
+[sub_resource type="Animation" id=9]
 length = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0, 9 ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -71,22 +99,22 @@ tracks/1/keys = {
 "method": "open"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 9 ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "start"
 length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
 
 [node name="chest" type="StaticBody2D"]
 collision_layer = 8
@@ -95,16 +123,18 @@ script = ExtResource( 1 )
 objectName = "Chest"
 drawOutline = true
 builded = true
+collisionPath = NodePath("tile/CollisionShape2D")
 
-[node name="Sprite" type="Sprite" parent="."]
-material = ExtResource( 3 )
-position = Vector2( 1.90735e-06, 7.5 )
+[node name="Sprite" parent="." instance=ExtResource( 5 )]
+material = SubResource( 8 )
+position = Vector2( 0, 7 )
 texture = ExtResource( 2 )
 hframes = 4
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, 0 )
+visible = false
+position = Vector2( 7.5, 0 )
 shape = SubResource( 2 )
 
 [node name="tile" type="Area2D" parent="."]
@@ -112,7 +142,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tile"]
-position = Vector2( -0.5, 0 )
+position = Vector2( 8, 0 )
 shape = SubResource( 3 )
 
 [node name="ui" type="CanvasLayer" parent="."]
@@ -206,5 +236,5 @@ margin_bottom = 77.0
 autoplay = "start"
 anims/RESET = SubResource( 4 )
 anims/close = SubResource( 5 )
-anims/open = SubResource( 6 )
+anims/open = SubResource( 9 )
 anims/start = SubResource( 7 )

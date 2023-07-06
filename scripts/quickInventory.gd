@@ -1,6 +1,10 @@
 extends TextureRect
+signal ItemChanged
+
 var inv : Array
 var dropping := false
+
+var oldSelected : Resource
 
 func drop(num := 0):
 	if len(get_tree().get_root().get_node("main/pointer/bodyDetector").get_overlapping_bodies()) != 0:
@@ -15,14 +19,19 @@ func drop(num := 0):
 		
 		if not dropScene.item is CountableItem:
 			Inventory.inventory[Inventory.selectedItemIndex] = null
+			emit_signal("ItemChanged")
 		else:
 			dropScene.item.quantity = num
 			Inventory.removeAmount(num)
-	
+		
 		get_tree().get_root().get_node("main").add_child(dropScene)
-
+		
 func _ready():
 	inv = Inventory.inventory
+	if Inventory.getSelectedItem() == null:
+		oldSelected = null
+	else:
+		oldSelected = Inventory.getSelectedItem().duplicate()
 	updateSelection(0)
 
 func _input(event):
@@ -47,6 +56,20 @@ func timeToInt() -> int:
 	return int((Inventory.getSelectedItem().quantity-1) * (1-$Timer.time_left)) + 1
 
 func _process(delta):
+	if Inventory.getSelectedItem() != null:
+		if oldSelected == null:
+			emit_signal("ItemChanged")
+			oldSelected = Inventory.getSelectedItem().duplicate()
+		elif oldSelected.name != Inventory.getSelectedItem().name:
+			emit_signal("ItemChanged")
+			oldSelected = Inventory.getSelectedItem().duplicate()
+	else:
+		if oldSelected != null:
+			emit_signal("ItemChanged")
+			oldSelected = null
+		
+		
+
 	for slot in range(1,len(Inventory.inventory)+1):
 		if Input.is_action_just_pressed("slot"+str(slot)):
 			Inventory.selectedItemIndex = slot - 1

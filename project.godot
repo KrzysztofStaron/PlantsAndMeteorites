@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://cutomResources/drop/drop.gd"
 }, {
+"base": "Node",
+"class": "GameEvent",
+"language": "GDScript",
+"path": "res://scripts/events/gameEvent.gd"
+}, {
 "base": "Resource",
 "class": "InventoryItem",
 "language": "GDScript",
@@ -94,6 +99,7 @@ _global_script_class_icons={
 "BuildingItem": "",
 "CountableItem": "",
 "Drop": "",
+"GameEvent": "",
 "InventoryItem": "",
 "Plant": "",
 "Player": "",

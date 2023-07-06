@@ -50,7 +50,7 @@ func addToinventory(item : InventoryItem, update := false) -> bool:
 					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
 				else:
 					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = ""
-				
+
 				return true
 	
 	for x in len(inventory):
@@ -62,11 +62,11 @@ func addToinventory(item : InventoryItem, update := false) -> bool:
 					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
 				else:
 					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = ""
-					
+			
 			return true
 	
 	return false
-			
+
 func getSelectedItemType() -> String:
 	if inventory[selectedItemIndex] == null:
 		return ""

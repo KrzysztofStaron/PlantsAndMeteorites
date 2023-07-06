@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=2]
+[gd_scene load_steps=153 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -58,79 +58,7 @@
 [ext_resource path="res://scenes/ui/economy/rocket/rocketUI.tscn" type="PackedScene" id=56]
 [ext_resource path="res://data/items/tools/drill.tres" type="Resource" id=57]
 [ext_resource path="res://scenes/objects/buildings/chest.tscn" type="PackedScene" id=58]
-
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-
-uniform vec4 color : hint_color = vec4(1.0);
-uniform float width : hint_range(0, 10) = 1.0;
-uniform int pattern : hint_range(0, 2) = 0; // diamond, circle, square
-uniform bool inside = false;
-uniform bool add_margins = true; // only useful when inside is false
-
-void vertex() {
-	if (add_margins) {
-		VERTEX += (UV * 2.0 - 1.0) * width;
-	}
-}
-
-bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
-	for (float i = -ceil(width); i <= ceil(width); i++) {
-		float x = abs(i) > width ? width * sign(i) : i;
-		float offset;
-		
-		if (pattern == 0) {
-			offset = width - abs(x);
-		} else if (pattern == 1) {
-			offset = floor(sqrt(pow(width + 0.5, 2) - x * x));
-		} else if (pattern == 2) {
-			offset = width;
-		}
-		
-		for (float j = -ceil(offset); j <= ceil(offset); j++) {
-			float y = abs(j) > offset ? offset * sign(j) : j;
-			vec2 xy = uv + texture_pixel_size * vec2(x, y);
-			
-			if ((xy != clamp(xy, vec2(0.0), vec2(1.0)) || texture(texture, xy).a == 0.0) == inside) {
-				return true;
-			}
-		}
-	}
-	
-	return false;
-}
-
-void fragment() {
-	vec2 uv = UV;
-	
-	if (add_margins) {
-		vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(width * 2.0));
-		
-		uv = (uv - texture_pixel_size * width) * TEXTURE_PIXEL_SIZE / texture_pixel_size;
-		
-		if (uv != clamp(uv, vec2(0.0), vec2(1.0))) {
-			COLOR.a = 0.0;
-		} else {
-			COLOR = texture(TEXTURE, uv);
-		}
-	} else {
-		COLOR = texture(TEXTURE, uv);
-	}
-	
-	if ((COLOR.a > 0.0) == inside && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, TEXTURE)) {
-		COLOR.rgb = inside ? mix(COLOR.rgb, color.rgb, color.a) : color.rgb;
-		COLOR.a += (1.0 - COLOR.a) * color.a;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id=99]
-resource_local_to_scene = true
-shader = SubResource( 3 )
-shader_param/color = Color( 1, 1, 1, 1 )
-shader_param/width = 0.0
-shader_param/pattern = 2
-shader_param/inside = false
-shader_param/add_margins = true
+[ext_resource path="res://data/items/buildings/chest.tres" type="Resource" id=59]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -1542,7 +1470,7 @@ buy_price = 0
 quantity = 19
 scene = ExtResource( 23 )
 buildingTime = 3.0
-offset = 0
+offset = Vector2( 0, 0 )
 showcaseTexture = SubResource( 96 )
 showcaseOffset = Vector2( 8, 1 )
 rotation = 2
@@ -1558,7 +1486,7 @@ buy_price = 0
 quantity = 19
 scene = ExtResource( 42 )
 buildingTime = 2.0
-offset = 8
+offset = Vector2( 0, 0 )
 showcaseTexture = ExtResource( 53 )
 showcaseOffset = Vector2( 1, -2 )
 rotation = 0
@@ -1608,7 +1536,7 @@ buy_price = 0
 quantity = 900
 scene = ExtResource( 22 )
 buildingTime = 0.0
-offset = 0
+offset = Vector2( 0, 0 )
 showcaseTexture = SubResource( 88 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 0
@@ -1628,7 +1556,7 @@ buy_price = 0
 quantity = 900
 scene = ExtResource( 37 )
 buildingTime = 0.0
-offset = 0
+offset = Vector2( 0, 0 )
 showcaseTexture = SubResource( 92 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 0
@@ -1648,7 +1576,7 @@ buy_price = 0
 quantity = 900
 scene = ExtResource( 48 )
 buildingTime = 1.0
-offset = 0
+offset = Vector2( 0, 0 )
 showcaseTexture = SubResource( 90 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 1
@@ -1668,19 +1596,86 @@ buy_price = 0
 quantity = 900
 scene = ExtResource( 51 )
 buildingTime = 0.0
-offset = 0
+offset = Vector2( 0, 0 )
 showcaseTexture = SubResource( 94 )
 showcaseOffset = Vector2( 0, 0 )
 rotation = 0
 isFloor = true
 
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color = vec4(1.0);
+uniform float width : hint_range(0, 10) = 1.0;
+uniform int pattern : hint_range(0, 2) = 0; // diamond, circle, square
+uniform bool inside = false;
+uniform bool add_margins = true; // only useful when inside is false
+
+void vertex() {
+	if (add_margins) {
+		VERTEX += (UV * 2.0 - 1.0) * width;
+	}
+}
+
+bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
+	for (float i = -ceil(width); i <= ceil(width); i++) {
+		float x = abs(i) > width ? width * sign(i) : i;
+		float offset;
+		
+		if (pattern == 0) {
+			offset = width - abs(x);
+		} else if (pattern == 1) {
+			offset = floor(sqrt(pow(width + 0.5, 2) - x * x));
+		} else if (pattern == 2) {
+			offset = width;
+		}
+		
+		for (float j = -ceil(offset); j <= ceil(offset); j++) {
+			float y = abs(j) > offset ? offset * sign(j) : j;
+			vec2 xy = uv + texture_pixel_size * vec2(x, y);
+			
+			if ((xy != clamp(xy, vec2(0.0), vec2(1.0)) || texture(texture, xy).a == 0.0) == inside) {
+				return true;
+			}
+		}
+	}
+	
+	return false;
+}
+
+void fragment() {
+	vec2 uv = UV;
+	
+	if (add_margins) {
+		vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(width * 2.0));
+		
+		uv = (uv - texture_pixel_size * width) * TEXTURE_PIXEL_SIZE / texture_pixel_size;
+		
+		if (uv != clamp(uv, vec2(0.0), vec2(1.0))) {
+			COLOR.a = 0.0;
+		} else {
+			COLOR = texture(TEXTURE, uv);
+		}
+	} else {
+		COLOR = texture(TEXTURE, uv);
+	}
+	
+	if ((COLOR.a > 0.0) == inside && hasContraryNeighbour(uv, TEXTURE_PIXEL_SIZE, TEXTURE)) {
+		COLOR.rgb = inside ? mix(COLOR.rgb, color.rgb, color.a) : color.rgb;
+		COLOR.a += (1.0 - COLOR.a) * color.a;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=99]
+resource_local_to_scene = true
+shader = SubResource( 3 )
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/width = 0.0
+shader_param/pattern = 2
+shader_param/inside = false
+shader_param/add_margins = true
+
 [node name="main" type="Node2D"]
-
-[node name="rocket" parent="." instance=ExtResource( 55 )]
-position = Vector2( 104, 88 )
-
-[node name="Sprite" parent="rocket" index="0"]
-material = SubResource( 99 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -1715,6 +1710,7 @@ margin_bottom = 49.0
 texture = ExtResource( 12 )
 
 [node name="pause" parent="UI" instance=ExtResource( 14 )]
+process_priority = 1
 visible = false
 margin_top = 40.0
 margin_bottom = 40.0
@@ -1732,6 +1728,8 @@ margin_bottom = 25.04
 margin_top = 160.0
 margin_right = 43.0
 margin_bottom = 180.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "shop"
 
 [node name="grid" type="TileMap" parent="."]
@@ -1744,7 +1742,6 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
-frame = 1
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
@@ -1764,7 +1761,7 @@ anims/RESET = SubResource( 81 )
 anims/fade = SubResource( 82 )
 
 [node name="pebbleSpot" type="Node2D" parent="."]
-position = Vector2( 104, 72 )
+position = Vector2( 256, 80 )
 
 [node name="pebble" parent="pebbleSpot" instance=ExtResource( 4 )]
 position = Vector2( 29, 4 )
@@ -1827,14 +1824,6 @@ collision_mask = 0
 format = 1
 
 [node name="objects" type="Node" parent="."]
-
-[node name="oxygenMachine" parent="objects" instance=ExtResource( 42 )]
-position = Vector2( 248, 48 )
-builded = true
-
-[node name="craftingStation" parent="objects" instance=ExtResource( 23 )]
-position = Vector2( 152, 120 )
-builded = true
 
 [node name="Debug" type="Node2D" parent="."]
 
@@ -1914,7 +1903,7 @@ position = Vector2( -168, 8 )
 texture = SubResource( 61 )
 
 [node name="SteamRock" parent="Debug" instance=ExtResource( 13 )]
-position = Vector2( 96, 112 )
+position = Vector2( 96, 176 )
 
 [node name="DroppedItem5" parent="Debug" instance=ExtResource( 17 )]
 position = Vector2( 168, 144 )
@@ -1924,6 +1913,10 @@ item = SubResource( 89 )
 position = Vector2( 168, 168 )
 item = SubResource( 93 )
 
+[node name="DroppedItem14" parent="Debug" instance=ExtResource( 17 )]
+position = Vector2( 200, 136 )
+item = ExtResource( 59 )
+
 [node name="DroppedItem9" parent="Debug" instance=ExtResource( 17 )]
 position = Vector2( 168, 192 )
 item = SubResource( 91 )
@@ -1931,6 +1924,23 @@ item = SubResource( 91 )
 [node name="DroppedItem10" parent="Debug" instance=ExtResource( 17 )]
 position = Vector2( 168, 216 )
 item = SubResource( 95 )
+
+[node name="craftingStation" parent="Debug" instance=ExtResource( 23 )]
+position = Vector2( 152, 120 )
+builded = true
+
+[node name="oxygenMachine" parent="Debug" instance=ExtResource( 42 )]
+position = Vector2( 408, 64 )
+builded = true
+
+[node name="chest" parent="Debug" instance=ExtResource( 58 )]
+position = Vector2( 48, 72 )
+
+[node name="rocket" parent="Debug" instance=ExtResource( 55 )]
+position = Vector2( 104, 88 )
+
+[node name="Sprite" parent="Debug/rocket" index="0"]
+material = SubResource( 99 )
 
 [node name="drag" type="CanvasLayer" parent="."]
 
@@ -1940,11 +1950,10 @@ mouse_filter = 2
 [node name="drone" parent="." instance=ExtResource( 31 )]
 position = Vector2( 240, 120 )
 
-[node name="chest" parent="." instance=ExtResource( 58 )]
-position = Vector2( 48, 72 )
-
 [connection signal="animation_finished" from="UI/vignete/death" to="player" method="_on_death_animation_finished"]
-[connection signal="lunch" from="UI/rocketUI" to="rocket" method="_on_rocketUI_lunch"]
+[connection signal="lunch" from="UI/rocketUI" to="Debug/rocket" method="_on_rocketUI_lunch"]
+[connection signal="visibility_changed" from="UI/rocketUI" to="UI/rocketUI" method="_on_rocketUI_visibility_changed"]
+[connection signal="ItemChanged" from="UI/quickInventory" to="pointer" method="_on_quickInventory_ItemChanged"]
 [connection signal="pressed" from="UI/Button" to="UI/shop" method="_on_Button_pressed"]
 
-[editable path="rocket"]
+[editable path="Debug/rocket"]

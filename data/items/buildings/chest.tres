@@ -1,16 +1,29 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" load_steps=6 format=2]
 
 [ext_resource path="res://cutomResources/inventoryItems/BuildingItem.gd" type="Script" id=1]
+[ext_resource path="res://scenes/objects/buildings/chest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/objects/buildings/chest.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 1, 1, 33, 16 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 1, -8, 33, 33 )
 
 [resource]
 script = ExtResource( 1 )
-name = ""
+name = "Chest"
 type = "building"
+texture = SubResource( 1 )
 sell_price = 0
 buy_price = 0
 quantity = 1
-buildingTime = 0.0
-offset = 0
-showcaseOffset = Vector2( 0, 0 )
-rotation = 0
+scene = ExtResource( 2 )
+buildingTime = 5.0
+offset = Vector2( 0, 0 )
+showcaseTexture = SubResource( 2 )
+showcaseOffset = Vector2( 8, 0 )
+rotation = 3
 isFloor = false

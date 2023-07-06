@@ -42,25 +42,21 @@ func nextDay():
 		$crop.texture = crop.textures[growthDays]
 		watered = false
 	
-	print("GrowthDays: " + str(growthDays) + " isFullyGrown: " + str(isFullyGrown()))
+	# print("GrowthDays: " + str(growthDays) + " isFullyGrown: " + str(isFullyGrown()))
 
 func plantCrop(cropToPlant : Plant) -> bool:
 	if crop == null:
 		crop = cropToPlant
 		$crop.texture = crop.textures[0]
-		print("planted")
 		return true
 	else:
-		print("crop_slot has already a seed inside")
 		return false
 
 func water():
 	$watered.show()
 	watered = true
-	print("water")
 
 func digUp():
-	print("diged up")
 	crop = null
 	growthDays = 0
 	$crop.texture = null
@@ -87,9 +83,9 @@ func destroy():
 
 func harvest():
 	if crop == null:
-		print("this object( crop_spot ) does not contain any plant")
+		pass
 	elif !isFullyGrown():
-		print("crop isn't fully grown")
+		pass
 	else:
 		var newItem : CountableItem = crop.harvest
 		newItem.quantity = crop.harvestAmount
@@ -102,4 +98,4 @@ func harvest():
 			crop = null
 			$crop.texture = null
 		else:
-			print("inventoery full")
+			pass

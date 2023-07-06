@@ -2,15 +2,15 @@ extends object
 
 func interact_right():
 	GameManager.canPause = false
-	get_node("../UI/rocketUI").show()
+	get_tree().get_root().get_node("main/UI/rocketUI").show()
 
 func _ready():
-	get_node("../UI/rocketUI").hide()
+	get_tree().get_root().get_node("main/UI/rocketUI").hide()
 
 func _input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and get_tree().get_root().get_node("main/UI/rocketUI").visible:
 		GameManager.canPause = true
-		get_node("../UI/rocketUI").hide()
+		get_tree().get_root().get_node("main/UI/rocketUI").hide()
 		
 
 

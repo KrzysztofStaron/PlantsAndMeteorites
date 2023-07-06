@@ -24,3 +24,7 @@ func _on_lunch_pressed():
 	hide()
 	
 	emit_signal("lunch")
+
+
+func _on_rocketUI_visibility_changed():
+	GameManager.canPause = visible
