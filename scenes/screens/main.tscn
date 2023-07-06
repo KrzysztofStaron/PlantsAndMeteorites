@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=2]
+[gd_scene load_steps=155 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -59,6 +59,8 @@
 [ext_resource path="res://data/items/tools/drill.tres" type="Resource" id=57]
 [ext_resource path="res://scenes/objects/buildings/chest.tscn" type="PackedScene" id=58]
 [ext_resource path="res://data/items/buildings/chest.tres" type="Resource" id=59]
+[ext_resource path="res://scripts/managers/DayAndNightCycle.gd" type="Script" id=60]
+[ext_resource path="res://assets/timeGradient.tres" type="Gradient" id=61]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -1677,6 +1679,11 @@ shader_param/add_margins = true
 
 [node name="main" type="Node2D"]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+script = ExtResource( 60 )
+colorGradient = ExtResource( 61 )
+colorGradient2 = ExtResource( 61 )
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="vignete" type="Panel" parent="UI"]
@@ -1742,7 +1749,6 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
-frame = 1
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
