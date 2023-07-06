@@ -1742,6 +1742,7 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
+frame = 1
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
@@ -1935,6 +1936,7 @@ builded = true
 
 [node name="chest" parent="Debug" instance=ExtResource( 58 )]
 position = Vector2( 48, 72 )
+builded = true
 
 [node name="rocket" parent="Debug" instance=ExtResource( 55 )]
 position = Vector2( 104, 88 )
