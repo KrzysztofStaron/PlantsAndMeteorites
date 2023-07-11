@@ -11,6 +11,7 @@ func update():
 	if getItem() == null:
 		get_node("icon").texture = Texture
 	else:
+		print(getItem().name)
 		get_node("icon").texture = item.texture
 
 	if item is CountableItem and item.quantity > 1:

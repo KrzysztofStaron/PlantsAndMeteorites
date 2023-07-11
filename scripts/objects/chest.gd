@@ -17,7 +17,14 @@ func _process(delta):
 		GameManager.canPause = true
 		$ui.hide()
 		$AnimationPlayer.play("close")
+	
 
 func open():
 	$ui.show()
 	GameManager.canPause = false
+
+
+func _on_ui_visibility_changed():
+	for slot in $ui/CenterContainer/GridContainer.get_children():
+		slot.get_node("area").monitoring = $ui.visible
+		slot.get_node("area").monitorable = $ui.visible

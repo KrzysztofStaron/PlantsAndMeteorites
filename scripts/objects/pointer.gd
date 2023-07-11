@@ -35,6 +35,7 @@ func setRotation(building: Node, change := true):
 			building.rotation_degrees = 0
 			building.scale = Vector2(1, 1)
 		1:
+			print("rotate")
 			if change:
 				rotationIndex += 1
 				if rotationIndex >= 2:
@@ -88,6 +89,9 @@ func setRotation(building: Node, change := true):
 					building.scale.x = 1
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("rotate"):
+		setRotation($showcase)
+		
 	if 	!isInReach():
 		frame = 0
 		playing = false

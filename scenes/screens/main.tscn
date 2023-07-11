@@ -1732,6 +1732,7 @@ visible = false
 margin_bottom = 25.04
 
 [node name="Button" type="Button" parent="UI"]
+visible = false
 margin_top = 160.0
 margin_right = 43.0
 margin_bottom = 180.0
@@ -1755,9 +1756,9 @@ gridPath = NodePath("../grid")
 playerPath = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 192, 96 )
+position = Vector2( 200, 112 )
 z_index = 3
-oxygen = 10.0
+oxygen = 5.0
 sound = 0.5
 
 [node name="gasping" type="AudioStreamPlayer" parent="player"]
@@ -1948,6 +1949,7 @@ builded = true
 position = Vector2( 104, 88 )
 
 [node name="Sprite" parent="Debug/rocket" index="0"]
+visible = false
 material = SubResource( 99 )
 
 [node name="drag" type="CanvasLayer" parent="."]
