@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.25 ]
+"values": [ 0.0, 0.125 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:material:shader_param/location_y")
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.125 ]
+"values": [ 0.0, 0.063 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:material:shader_param/show")
@@ -47,7 +47,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 resource_name = "stop"
 length = 0.001
 tracks/0/type = "value"
@@ -88,6 +88,6 @@ autoplay = "building"
 playback_speed = 0.25
 anims/RESET = SubResource( 4 )
 anims/building = SubResource( 5 )
-anims/stop = SubResource( 6 )
+anims/stop = SubResource( 8 )
 
 [node name="buildTimer" type="Timer" parent="."]

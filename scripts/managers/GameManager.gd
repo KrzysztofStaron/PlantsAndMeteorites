@@ -5,6 +5,7 @@ export var day : int
 var player : Player
 export var money : int
 export var ordered : Array
+export var cloningStations : Array
 
 var time : float
 const dayLenght := 10.0

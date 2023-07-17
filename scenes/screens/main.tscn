@@ -1,10 +1,10 @@
-[gd_scene load_steps=155 format=2]
+[gd_scene load_steps=156 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/objects/pebbles/pebble5.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/ground.png" type="Texture" id=5]
+[ext_resource path="res://assets/other/ground.png" type="Texture" id=5]
 [ext_resource path="res://scenes/objects/pebbles/pebble6.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/objects/pebbles/pebble4.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/objects/pebbles/pebble1.tscn" type="PackedScene" id=8]
@@ -60,7 +60,8 @@
 [ext_resource path="res://scenes/objects/buildings/chest.tscn" type="PackedScene" id=58]
 [ext_resource path="res://data/items/buildings/chest.tres" type="Resource" id=59]
 [ext_resource path="res://scripts/managers/DayAndNightCycle.gd" type="Script" id=60]
-[ext_resource path="res://assets/timeGradient.tres" type="Gradient" id=61]
+[ext_resource path="res://assets/other/timeGradient.tres" type="Gradient" id=61]
+[ext_resource path="res://scenes/objects/buildings/cloningStation.tscn" type="PackedScene" id=62]
 
 [sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
@@ -1910,6 +1911,10 @@ texture = SubResource( 61 )
 position = Vector2( -168, 8 )
 texture = SubResource( 61 )
 
+[node name="Sprite5" type="Sprite" parent="Debug"]
+position = Vector2( 128, -72 )
+texture = SubResource( 61 )
+
 [node name="SteamRock" parent="Debug" instance=ExtResource( 13 )]
 position = Vector2( 96, 176 )
 
@@ -1938,7 +1943,7 @@ position = Vector2( 152, 120 )
 builded = true
 
 [node name="oxygenMachine" parent="Debug" instance=ExtResource( 42 )]
-position = Vector2( 408, 64 )
+position = Vector2( 400, -64 )
 builded = true
 
 [node name="chest" parent="Debug" instance=ExtResource( 58 )]
@@ -1959,6 +1964,10 @@ mouse_filter = 2
 
 [node name="drone" parent="." instance=ExtResource( 31 )]
 position = Vector2( 240, 120 )
+
+[node name="cloningStation" parent="." instance=ExtResource( 62 )]
+position = Vector2( 16, 136 )
+builded = true
 
 [connection signal="animation_finished" from="UI/vignete/death" to="player" method="_on_death_animation_finished"]
 [connection signal="lunch" from="UI/rocketUI" to="Debug/rocket" method="_on_rocketUI_lunch"]

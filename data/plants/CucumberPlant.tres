@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Cucumber"
-growthTime = 3
+growthTime = 5
 harvestAmount = 1
 harvest = ExtResource( 6 )
-textures = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ]
+textures = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ) ]

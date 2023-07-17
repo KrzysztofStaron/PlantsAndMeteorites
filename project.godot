@@ -151,6 +151,7 @@ enabled=PoolStringArray( "res://addons/imrp/plugin.cfg" )
 [global]
 
 allow=false
+physics=false
 
 [gui]
 

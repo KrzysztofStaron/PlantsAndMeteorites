@@ -10,7 +10,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "Tomato"
-growthTime = 3
+growthTime = 7
 harvestAmount = 1
 harvest = ExtResource( 2 )
-textures = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ) ]
+textures = [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 3 ) ]

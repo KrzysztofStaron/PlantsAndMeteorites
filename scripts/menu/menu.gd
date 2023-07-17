@@ -14,7 +14,7 @@ export var maxMass := 90  # Maximum mass allowed for the asteroids
 func _ready():
 	updateAsteroids(true)  # Call the function to update asteroids when ready
 
-func _on_play_pressed():
+func play():
 	get_tree().change_scene("res://scenes/main.tscn")  # Change the scene to "main.tscn" when the play button is pressed
 
 func getRandomScreenPosition() -> Vector2:
