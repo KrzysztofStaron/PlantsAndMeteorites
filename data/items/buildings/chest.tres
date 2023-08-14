@@ -22,7 +22,6 @@ buy_price = 0
 quantity = 1
 scene = ExtResource( 2 )
 buildingTime = 5.0
-offset = Vector2( 0, 0 )
 showcaseTexture = SubResource( 2 )
 showcaseOffset = Vector2( 8, 0 )
 rotation = 3

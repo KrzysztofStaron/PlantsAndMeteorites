@@ -1,7 +1,6 @@
 extends Building
 
 export var opened := false
-var touchMouse := false
 var changeState := false
 	
 func interact_left():
@@ -26,34 +25,14 @@ func interact_right():
 	else:
 		$AnimationPlayer.play("close")
 
-func hideOutline():
-	$Sprite.material.set_shader_param("width", 0)
-	
-func showOutline():
-	if touchMouse:
-		$Sprite.material.set_shader_param("width", outlineWidth)
-	
-
-func _on_tileCollision_mouse_entered():
-	touchMouse = true
-
-
-func _on_tileCollision_mouse_exited():
-	touchMouse = false
-
 func _on_playerDetector_body_entered(body):
-	if opened:
-		pass
-	elif $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position:
+	if $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position:
 		$AnimationPlayer.play("open")
 	else:
 		changeState = true
-	
 
 func _on_playerDetector_body_exited(body):
-	if !opened:
-		pass
-	elif $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position:
+	if $AnimationPlayer.current_animation_length == $AnimationPlayer.current_animation_position:
 		$AnimationPlayer.play("close")
 	else:
 		changeState = true

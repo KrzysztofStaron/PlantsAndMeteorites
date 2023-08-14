@@ -12,7 +12,7 @@ length = 0.001
 
 [sub_resource type="Animation" id=5]
 resource_name = "building"
-length = 2.0
+length = 20.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/location_x")
@@ -21,7 +21,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 20 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.25 ]
@@ -33,7 +33,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 20 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.125 ]
@@ -172,19 +172,19 @@ tracks/0/keys = {
 "values": [ 0, 20 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:drawOutline")
+tracks/1/path = NodePath("CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false ]
 }
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:opened")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -192,16 +192,11 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 1.3 ),
 "transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "hideOutline"
-}, {
-"args": [  ],
-"method": "showOutline"
-} ]
+"update": 1,
+"values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/path = NodePath("Sprite:hframes")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -210,39 +205,15 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 5 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath(".:opened")
+tracks/4/path = NodePath("Sprite:vframes")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite:hframes")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 5 ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite:vframes")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -265,53 +236,24 @@ tracks/0/keys = {
 "values": [ 20, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:drawOutline")
+tracks/1/path = NodePath("CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "hideOutline"
-}, {
-"args": [  ],
-"method": "showOutline"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0.8 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:opened")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:opened")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 1.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -322,7 +264,7 @@ tracks/4/keys = {
 extents = Vector2( 15.5, 5 )
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 7, 11 )
+extents = Vector2( 12, 11 )
 
 [node name="door" type="StaticBody2D"]
 z_index = -1
@@ -341,12 +283,12 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="tleColllsionShape" type="CollisionShape2D" parent="tileCollision"]
-position = Vector2( -0.5, 0 )
+position = Vector2( 7.5, 0 )
 shape = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
 material = ExtResource( 1 )
-position = Vector2( 0, 1 )
+position = Vector2( 7.5, 1 )
 texture = ExtResource( 2 )
 offset = Vector2( -0.5, -0.5 )
 hframes = 5
@@ -355,7 +297,6 @@ vframes = 5
 [node name="building" type="AnimationPlayer" parent="Sprite"]
 root_node = NodePath("../..")
 autoplay = "building"
-playback_speed = 0.1
 anims/RESET = SubResource( 4 )
 anims/building = SubResource( 5 )
 anims/stop = SubResource( 8 )
@@ -369,7 +310,7 @@ anims/close = SubResource( 11 )
 anims/open = SubResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.5, 1 )
+position = Vector2( 7.5, 1 )
 shape = SubResource( 13 )
 disabled = true
 
@@ -379,6 +320,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetector"]
+position = Vector2( 7, 0 )
 shape = SubResource( 14 )
 
 [connection signal="mouse_entered" from="tileCollision" to="." method="outline" binds= [ true ]]

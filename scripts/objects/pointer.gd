@@ -38,7 +38,6 @@ func setRotation(building: Node, change := true):
 			building.rotation_degrees = 0
 			building.scale = Vector2(1, 1)
 		1:
-			print("rotate")
 			if change:
 				rotationIndex += 1
 				if rotationIndex >= 2:
@@ -94,6 +93,10 @@ func setRotation(building: Node, change := true):
 func _physics_process(delta):
 	if Input.is_action_just_pressed("rotate"):
 		setRotation($showcase)
+		setRotation($detector, false)
+		setRotation($floorDetector, false)
+		setRotation($bodyDetector, false)
+		setRotation($playerDetector, false)
 		
 	if 	!isInReach():
 		frame = 0
@@ -202,8 +205,12 @@ func build():
 		return
 		
 	var building : Node = Inventory.getSelectedItem().scene.instance()
-	building.position = position + Inventory.getSelectedItem().offset
+	building.position = position
 	setRotation(building, false)
+	setRotation($detector, false)
+	setRotation($floorDetector, false)
+	setRotation($bodyDetector, false)
+	setRotation($playerDetector, false)
 	get_node(building.path).add_child(building)
 	building.startBuilding(Inventory.getSelectedItem().buildingTime)
 	Inventory.removeAmount()
@@ -232,8 +239,9 @@ func _on_quickInventory_ItemChanged():
 		setRotation(showcase, Input.is_action_just_pressed("rotate"))
 		
 		
+		
 		showcase.show()
-		showcase.offset = Inventory.getSelectedItem().offset + Inventory.getSelectedItem().showcaseOffset
+		showcase.offset = Inventory.getSelectedItem().showcaseOffset
 		showcase.texture = Inventory.getSelectedItem().showcaseTexture
 		
 		var itemScene : Building = Inventory.getSelectedItem().scene.instance()
