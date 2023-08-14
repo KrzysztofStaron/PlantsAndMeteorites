@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/menu7.tres" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/ui/main.tres" type="Theme" id=12]
 [ext_resource path="res://scenes/hoverEffect.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/menu/dc.png" type="Texture" id=14]
+[ext_resource path="res://scenes/screens/menu/click.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -47,7 +48,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 2 ) ]
 }
 
-[sub_resource type="StyleBoxEmpty" id=10]
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
@@ -57,7 +58,7 @@ tracks/0/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=10]
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 14 )
@@ -67,6 +68,7 @@ region = Rect2( 83, 117, 13, 8 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+clickEffect = ExtResource( 15 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 320.0
@@ -96,31 +98,15 @@ texture = ExtResource( 11 )
 
 [node name="CenterContainer" type="CenterContainer" parent="UI"]
 margin_left = 213.0
-margin_top = 43.0
-margin_right = 265.0
-margin_bottom = 55.0
-rect_scale = Vector2( 0.7, 0.7 )
-
-[node name="play" type="Button" parent="UI/CenterContainer"]
-margin_left = 13.0
-margin_top = 1.0
-margin_right = 39.0
-margin_bottom = 11.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_hover = Color( 0.815686, 0.815686, 0.815686, 1 )
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 5 )
-custom_styles/focus = SubResource( 6 )
-custom_styles/disabled = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
-text = "Play"
-
-[node name="settings" type="Button" parent="UI"]
-margin_left = 212.0
 margin_top = 57.0
-margin_right = 265.0
-margin_bottom = 70.0
+margin_right = 266.0
+margin_bottom = 69.0
 rect_scale = Vector2( 0.7, 0.7 )
+
+[node name="settings" type="Button" parent="UI/CenterContainer"]
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 11.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.815686, 0.815686, 0.815686, 1 )
 custom_styles/hover = SubResource( 4 )
@@ -129,6 +115,20 @@ custom_styles/focus = SubResource( 6 )
 custom_styles/disabled = SubResource( 7 )
 custom_styles/normal = SubResource( 8 )
 text = "Settings"
+
+[node name="play" type="Button" parent="UI"]
+margin_left = 217.0
+margin_top = 41.0
+margin_right = 243.0
+margin_bottom = 51.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.815686, 0.815686, 0.815686, 1 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+text = "Play"
 
 [node name="Credits" type="Button" parent="UI"]
 margin_left = 212.0
@@ -156,4 +156,7 @@ stretch_mode = 3
 
 [node name="hover" parent="UI/TextureButton" instance=ExtResource( 13 )]
 
-[connection signal="pressed" from="UI/CenterContainer/play" to="." method="play"]
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="UI/play" to="." method="play"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

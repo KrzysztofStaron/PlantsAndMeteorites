@@ -13,4 +13,5 @@ name = "Cucumber"
 growthTime = 5
 harvestAmount = 1
 harvest = ExtResource( 6 )
+specialHarvests = [  ]
 textures = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ) ]

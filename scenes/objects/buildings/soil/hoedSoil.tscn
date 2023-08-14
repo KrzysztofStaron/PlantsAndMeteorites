@@ -75,6 +75,7 @@ z_index = 1
 texture = ExtResource( 2 )
 
 [node name="crop" type="Sprite" parent="."]
+light_mask = 3
 z_index = 1
 
 [node name="Sprite" type="Sprite" parent="."]

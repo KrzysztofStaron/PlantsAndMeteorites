@@ -3,7 +3,8 @@ extends RigidBody2D
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.is_action_pressed("interact_left") and isTouchingMouse():
-			 destroy()
+#			 destroy()
+			pass
 
 func isTouchingMouse() -> bool:
 	return get_global_mouse_position().distance_to(global_position) < 5

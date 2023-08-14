@@ -27,6 +27,9 @@ func posToTileCenter(input : Vector2) -> Vector2:
 	return grid.map_to_world(grid.world_to_map(input)) + grid.cell_size / 2
 
 func setRotation(building: Node, change := true):
+	if Inventory.getSelectedItem() == null or Inventory.getSelectedItem().type != "building":
+		return
+	
 	var rotationType : int = Inventory.getSelectedItem().rotation
 	
 	match rotationType:
@@ -87,7 +90,7 @@ func setRotation(building: Node, change := true):
 					building.rotation_degrees = 270
 					building.scale.y = 1
 					building.scale.x = 1
-
+	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("rotate"):
 		setRotation($showcase)

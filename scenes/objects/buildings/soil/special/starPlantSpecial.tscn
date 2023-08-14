@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/specialPlants/specialPlantLight.gd" type="Script" id=1]
+[ext_resource path="res://assets/objects/buildings/cloningStation/LightSprite.png" type="Texture" id=2]
+[ext_resource path="res://assets/plants/star/glow/glow4.png" type="Texture" id=3]
+[ext_resource path="res://assets/plants/star/glow/glow3.png" type="Texture" id=4]
+[ext_resource path="res://assets/plants/star/glow/glow5.png" type="Texture" id=5]
+
+[node name="special" type="Node2D"]
+script = ExtResource( 1 )
+lightSize = PoolRealArray( 0, 0, 0, 0.364, 0.578, 0.707 )
+lightEnergy = PoolRealArray( 0, 0, 0, 0.333, 0.491, 0.608 )
+lightTexture = [ null, null, null, ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+glowTexture = [ null, null, null, ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ]
+glowEnergy = PoolRealArray( 0, 0, 0, 0.35, 0.4, 0.5 )
+glowOffset = PoolVector2Array( 0, 0, 0, 0, 0, 0, -0.5, 0, 0.5, 0, 0, -0.5 )
+
+[node name="light" type="Light2D" parent="."]
+color = Color( 0.9, 0.8736, 0.702, 1 )
+
+[node name="glowLight" type="Light2D" parent="."]
+range_item_cull_mask = 2

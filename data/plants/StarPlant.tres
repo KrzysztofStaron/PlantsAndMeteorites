@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=10 format=2]
+
+[ext_resource path="res://cutomResources/plant.gd" type="Script" id=1]
+[ext_resource path="res://assets/plants/star/starPlant0.tres" type="Texture" id=2]
+[ext_resource path="res://assets/plants/star/starPlant2.tres" type="Texture" id=3]
+[ext_resource path="res://assets/plants/star/starPlant1.tres" type="Texture" id=4]
+[ext_resource path="res://assets/plants/star/starPlant5.tres" type="Texture" id=5]
+[ext_resource path="res://assets/plants/star/starPlant4.tres" type="Texture" id=6]
+[ext_resource path="res://assets/plants/star/starPlant3.tres" type="Texture" id=7]
+[ext_resource path="res://data/items/crops/StarPlant.tres" type="Resource" id=8]
+[ext_resource path="res://scenes/objects/buildings/soil/special/starPlantSpecial.tscn" type="PackedScene" id=9]
+
+[resource]
+script = ExtResource( 1 )
+name = "Star Plant"
+growthTime = 5
+harvestAmount = 1
+harvest = ExtResource( 8 )
+specialHarvests = [  ]
+textures = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ]
+specialNode = ExtResource( 9 )

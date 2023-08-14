@@ -13,4 +13,5 @@ name = "Carrot"
 growthTime = 3
 harvestAmount = 1
 harvest = ExtResource( 2 )
+specialHarvests = [  ]
 textures = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ) ]

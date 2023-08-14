@@ -93,6 +93,11 @@ _global_script_classes=[ {
 "class": "resourceSource",
 "language": "GDScript",
 "path": "res://scripts/objects/resourceSource/resourceSource.gd"
+}, {
+"base": "Node",
+"class": "specialPlantLight",
+"language": "GDScript",
+"path": "res://scripts/specialPlants/starPlant.gd"
 } ]
 _global_script_class_icons={
 "Building": "",
@@ -111,7 +116,8 @@ _global_script_class_icons={
 "Tool": "",
 "object": "",
 "quickInventorySlot": "",
-"resourceSource": ""
+"resourceSource": "",
+"specialPlantLight": ""
 }
 
 [application]

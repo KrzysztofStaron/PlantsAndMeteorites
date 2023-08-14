@@ -6,9 +6,10 @@ var player : Player
 export var money : int
 export var ordered : Array
 export var cloningStations : Array
+export var overallBrightness : float
 
-var time : float
-const dayLenght := 10.0
+var time := 100.0
+const dayLenght := 900.0
 
 var events := [
 	[1, "test"],

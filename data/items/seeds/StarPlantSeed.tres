@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://cutomResources/inventoryItems/seed.gd" type="Script" id=1]
+[ext_resource path="res://assets/items/plants/starPlant/StarPlantSeed.png" type="Texture" id=2]
+[ext_resource path="res://data/plants/StarPlant.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "StarPlantSeed"
+type = "seed"
+texture = ExtResource( 2 )
+sell_price = 0
+buy_price = 0
+quantity = 1
+crop = ExtResource( 3 )

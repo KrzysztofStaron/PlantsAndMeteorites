@@ -7,6 +7,9 @@ export var path := "../"
 export var isFloor : bool
 export var collisionPath : NodePath 
 
+var lights : Array
+export var energies : PoolRealArray
+
 func enableOutline():
 	$Sprite.material = preload("res://assets/objects/outline.tres").duplicate()
 	outlineEnabled = true
@@ -24,7 +27,17 @@ func instanceLoot(droppedItem : InventoryItem, particle : PackedScene = null) ->
 	get_parent().add_child(dropScene)
 	queue_free()
 
+func _process(delta):
+	if len(lights) > 0:
+		for i in len(lights):
+			lights[i].energy = energies[i] * GameManager.overallBrightness
+
 func _ready():
+	for child in get_children():
+		if child is Light2D:
+			lights.append(child)
+			energies.append(child.energy)
+	
 	get_tree().get_root().get_node("main/drone/sprite").center = global_position
 	if builded:
 		o_build()

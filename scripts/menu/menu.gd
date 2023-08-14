@@ -1,5 +1,9 @@
 extends Control
 
+export var clickEffect : PackedScene
+var canShowEffect := true
+var effectPos : Vector2
+
 onready var asteroids : Array = [
 	[preload("res://scenes/screens/menu/asteroid1.tscn"), 5],  # Array of asteroid scenes and their masses
 	[preload("res://scenes/screens/menu/asteroid2.tscn"), 3],
@@ -11,11 +15,21 @@ onready var asteroids : Array = [
 
 export var maxMass := 90  # Maximum mass allowed for the asteroids
 
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.is_action_pressed("interact_left") and (canShowEffect or event.position.distance_to(effectPos) > 10):
+			var effect :Node= clickEffect.instance()
+			effect.position = event.position
+			effectPos = event.position
+			add_child(effect)
+			canShowEffect = false
+			$Timer.start(0.3)
+
 func _ready():
 	updateAsteroids(true)  # Call the function to update asteroids when ready
 
 func play():
-	get_tree().change_scene("res://scenes/main.tscn")  # Change the scene to "main.tscn" when the play button is pressed
+	get_tree().change_scene("res://scenes/screens/main.tscn")  # Change the scene to "main.tscn" when the play button is pressed
 
 func getRandomScreenPosition() -> Vector2:
 	var screenWidth := 320
@@ -77,3 +91,7 @@ func updateAsteroids(start := false):
 				
 			get_node("container").call_deferred("add_child", newAsteroid)  # Add the new asteroid as a child to the "container" node
 			newAsteroid.apply_impulse(Vector2(320,180)/2, Vector2(rand_range(-5, 5), rand_range(-5, 5)))  # Apply an impulse to the new asteroid
+
+
+func _on_Timer_timeout():
+	canShowEffect = true

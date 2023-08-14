@@ -1,12 +1,8 @@
 extends CanvasModulate
 
-export var colorGradient : Gradient
-export var colorGradient2 : Gradient
+export var brightnessLevel : Gradient
 
 func _process(delta):
-	return
-	var offset := (GameManager.time / GameManager.dayLenght) * 2
-	if offset/2 < 0.5:
-		color = colorGradient.interpolate(offset)
-	else:
-		color = colorGradient2.interpolate(1.0 - (offset-1.0))
+	var offset := GameManager.time / GameManager.dayLenght
+	color = brightnessLevel.interpolate(offset)
+	GameManager.overallBrightness = (1.0 - ((color.r + color.g + color.b) / 3.0)) + 0.1
