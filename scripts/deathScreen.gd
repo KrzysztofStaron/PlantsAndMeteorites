@@ -6,7 +6,9 @@ func _ready():
 		$buttons/clone.disabled = false
 	
 func _on_clone_pressed():
-	pass # Replace with function body.
+	# load game save
+	# give GameManger info that it should start respawning
+	pass
 
 func _on_menu_pressed():
-	pass # Replace with function body.
+	pass

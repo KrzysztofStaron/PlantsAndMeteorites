@@ -109,3 +109,7 @@ func updateSelection(id : int):
 	for slotIndex in range(0, 4):
 		get_node("VContainer/slot"+str(slotIndex)).disabled = slotIndex == id
 		get_node("VContainer/slot"+str(slotIndex)).pressed = slotIndex == id
+
+
+func _on_Area2D_mouse_entered():
+	print("gówno ")

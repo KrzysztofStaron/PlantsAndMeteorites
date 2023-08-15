@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+export var semiTransparent : Color
+export var fullColor : Color
+
+func mouse_entered():
+	$Tween.interpolate_property(get_parent(), \"modulate\", get_parent().modulate, fullColor, 0.3)
+	$Tween.start()
+
+
+func mouse_exited():
+	$Tween.interpolate_property(get_parent(), \"modulate\", get_parent().modulate, semiTransparent, 0.3)
+	$Tween.start()
+
+
+func _on_transManager_area_entered(area):
+	mouse_entered()
+
+
+func _on_transManager_area_exited(area):
+	mouse_exited()
+
+
+func _on_transparencyManager_area_entered(area):
+	mouse_entered()
+
+
+func _on_transparencyManager_area_exited(area):
+	mouse_exited()
+"
+
+[node name="transManager" type="Area2D"]
+position = Vector2( 10, 8 )
+collision_layer = 0
+collision_mask = 2
+priority = 1.0
+script = SubResource( 1 )
+semiTransparent = Color( 1, 1, 1, 0.647059 )
+fullColor = Color( 1, 1, 1, 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_Area2D_area_entered"]

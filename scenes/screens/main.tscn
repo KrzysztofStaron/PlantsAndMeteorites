@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=2]
+[gd_scene load_steps=159 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -46,6 +46,7 @@
 [ext_resource path="res://assets/player/death.png" type="Texture" id=44]
 [ext_resource path="res://assets/deathScreen/gaspingForAir.mp3" type="AudioStream" id=45]
 [ext_resource path="res://data/items/buildings/door.tres" type="Resource" id=46]
+[ext_resource path="res://scripts/managers/DayAndNightDarkness.gd" type="Script" id=48]
 [ext_resource path="res://assets/objects/buildings/stone.png" type="Texture" id=49]
 [ext_resource path="res://assets/items/buildings/floor.png" type="Texture" id=50]
 [ext_resource path="res://scenes/objects/buildings/StoneFloor.tscn" type="PackedScene" id=51]
@@ -1702,12 +1703,12 @@ anims/show = SubResource( 80 )
 anims/start = SubResource( 79 )
 
 [node name="oxygen" type="TextureRect" parent="UI"]
-visible = false
-margin_left = -11.0
-margin_top = -4.0
-margin_right = 53.0
-margin_bottom = 60.0
+margin_left = -8.0
+margin_right = 56.0
+margin_bottom = 64.0
+rect_scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 16 )
+script = ExtResource( 48 )
 
 [node name="fill" type="TextureRect" parent="UI/oxygen"]
 material = SubResource( 5 )
@@ -1742,6 +1743,12 @@ text = "shop"
 margin_right = 26.88
 margin_bottom = 128.0
 
+[node name="Control" type="Control" parent="UI/quickInventory"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 48 )
+parent = true
+
 [node name="grid" type="TileMap" parent="."]
 z_index = -5
 tile_set = SubResource( 1 )
@@ -1752,6 +1759,7 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
+frame = 1
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
@@ -1832,6 +1840,10 @@ cell_size = Vector2( 16, 16 )
 collision_layer = 8
 collision_mask = 0
 format = 1
+
+[node name="cloningStation" parent="structures" instance=ExtResource( 62 )]
+position = Vector2( 40, -120 )
+builded = true
 
 [node name="objects" type="Node" parent="."]
 
@@ -1974,10 +1986,6 @@ mouse_filter = 2
 [node name="drone" parent="." instance=ExtResource( 31 )]
 visible = false
 position = Vector2( 240, 120 )
-
-[node name="cloningStation" parent="." instance=ExtResource( 62 )]
-position = Vector2( 40, -120 )
-builded = true
 
 [connection signal="animation_finished" from="UI/vignete/death" to="player" method="_on_death_animation_finished"]
 [connection signal="lunch" from="UI/rocketUI" to="Debug/rocket" method="_on_rocketUI_lunch"]

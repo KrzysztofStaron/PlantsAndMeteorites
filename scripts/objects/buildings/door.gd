@@ -11,7 +11,7 @@ func interact_left():
 	if item.type == "tool" and item.toolType == Tool.Hammer:
 		destroy()
 		
-func destroy():	
+func destroy():
 	instanceLoot(load("res://data/items/buildings/door.tres"), preload("res://scenes/objects/buildings/IronWall/destroy.tscn"))
 	queue_free()
 
