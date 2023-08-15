@@ -1730,14 +1730,18 @@ visible = false
 [node name="rocketUI" parent="UI" instance=ExtResource( 56 )]
 visible = false
 
-[node name="Shop" type="Button" parent="UI"]
-visible = false
+[node name="ShopButton" type="TextureButton" parent="UI"]
 margin_top = 160.0
 margin_right = 43.0
 margin_bottom = 180.0
 focus_mode = 0
 enabled_focus_mode = 0
-text = "shop"
+
+[node name="Control" type="Control" parent="UI/ShopButton"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 48 )
+parent = true
 
 [node name="quickInventory" parent="UI" instance=ExtResource( 15 )]
 margin_right = 26.88
@@ -1990,7 +1994,7 @@ position = Vector2( 240, 120 )
 [connection signal="animation_finished" from="UI/vignete/death" to="player" method="_on_death_animation_finished"]
 [connection signal="lunch" from="UI/rocketUI" to="Debug/rocket" method="_on_rocketUI_lunch"]
 [connection signal="visibility_changed" from="UI/rocketUI" to="UI/rocketUI" method="_on_rocketUI_visibility_changed"]
-[connection signal="pressed" from="UI/Shop" to="UI/shop" method="_on_Button_pressed"]
+[connection signal="pressed" from="UI/ShopButton" to="UI/shop" method="_on_Button_pressed"]
 [connection signal="ItemChanged" from="UI/quickInventory" to="pointer" method="_on_quickInventory_ItemChanged"]
 
 [editable path="Debug/rocket"]
