@@ -7,13 +7,14 @@ export var drawOutline : bool
 var outlineEnabled := false
 export var outlineWidth := 0.5
 
+onready var sprite := $Sprite
 func outline(flag : bool):
 	if !drawOutline:
 		return
 	if flag:
-		$Sprite.material.set_shader_param("width", outlineWidth)
+		sprite.material.set_shader_param("width", outlineWidth)
 	else:
-		$Sprite.material.set_shader_param("width", 0)
+		sprite.material.set_shader_param("width", 0)
 
 func interact_left():
 	pass

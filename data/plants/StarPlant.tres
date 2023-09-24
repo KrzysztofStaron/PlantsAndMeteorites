@@ -16,6 +16,6 @@ name = "Star Plant"
 growthTime = 5
 harvestAmount = 1
 harvest = ExtResource( 8 )
-specialHarvests = [  ]
+specialHarvests = [ [ "res://data/items/seeds/StarPlantSeed.tres", 0.25 ] ]
 textures = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ) ]
 specialNode = ExtResource( 9 )

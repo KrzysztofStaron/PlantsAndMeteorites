@@ -16,6 +16,7 @@ type = "building"
 texture = ExtResource( 1 )
 sell_price = 0
 buy_price = 0
+droppedScale = 1.0
 quantity = 1
 scene = ExtResource( 4 )
 buildingTime = 0.0

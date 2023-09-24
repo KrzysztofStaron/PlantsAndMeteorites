@@ -20,7 +20,7 @@ func setItem(item : InventoryItem):
 func sub():
 	var item : InventoryItem = $"../..".inventory[index]
 	item.quantity -= 1
-	$"../../..".subMoney -= item.buy_price
+	GameManager.money += item.buy_price
 	
 	if item.quantity <= 0:
 		$"../..".inventory[index] = null
@@ -37,9 +37,9 @@ func sub():
 func remove():
 	var item : InventoryItem = $"../..".inventory[index]
 	if item is CountableItem:
-		$"../../..".subMoney -= item.buy_price * item.quantity
+		GameManager.money += item.buy_price * item.quantity
 	else:
-		$"../../..".subMoney -= item.buy_price
+		GameManager.money += item.buy_price
 
 	$"../..".inventory[index] = null
 	$remove.hide()

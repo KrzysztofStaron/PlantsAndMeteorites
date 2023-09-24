@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/ui/pause/UI_4.png" type="Texture" id=1]
 [ext_resource path="res://assets/ui/pause/UI_3.png" type="Texture" id=2]
 [ext_resource path="res://scripts/pause.gd" type="Script" id=3]
 [ext_resource path="res://scenes/hoverEffect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/ui/UI_5.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -17,6 +18,14 @@ region = Rect2( 60, 58, 8, 8 )
 atlas = ExtResource( 1 )
 region = Rect2( 60, 76, 8, 7 )
 
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 111, 24, 17 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 26, 111, 24, 17 )
+
 [node name="pause" type="TextureRect"]
 pause_mode = 2
 anchor_right = 1.0
@@ -25,6 +34,9 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 4
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_vertical_guides_": [ 59.0 ]
+}
 
 [node name="resume" type="TextureButton" parent="."]
 margin_left = 139.0
@@ -59,6 +71,16 @@ stretch_mode = 3
 
 [node name="hover" parent="home" instance=ExtResource( 4 )]
 
+[node name="save" type="TextureButton" parent="."]
+margin_left = 320.0
+margin_top = 163.0
+margin_right = 344.0
+margin_bottom = 180.0
+rect_scale = Vector2( -1, 1 )
+texture_normal = SubResource( 4 )
+texture_pressed = SubResource( 5 )
+
 [connection signal="pressed" from="resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="save" to="." method="_on_save_pressed"]

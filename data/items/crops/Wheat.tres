@@ -10,4 +10,5 @@ type = "item"
 texture = ExtResource( 2 )
 sell_price = 0
 buy_price = 0
+droppedScale = 1.0
 quantity = 1

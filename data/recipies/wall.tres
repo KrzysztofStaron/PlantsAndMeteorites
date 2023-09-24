@@ -2,7 +2,7 @@
 
 [ext_resource path="res://cutomResources/recipe.gd" type="Script" id=1]
 [ext_resource path="res://data/items/buildings/IronWall.tres" type="Resource" id=2]
-[ext_resource path="res://data/items/materials/iron.tres" type="Resource" id=3]
+[ext_resource path="res://data/items/materials/Iron.tres" type="Resource" id=3]
 
 [resource]
 script = ExtResource( 1 )

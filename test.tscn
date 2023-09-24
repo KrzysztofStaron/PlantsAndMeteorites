@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://assets/items/tools/hammer.png" type="Texture" id=2]
 [ext_resource path="res://assets/ui/slider.gdshader" type="Shader" id=3]
@@ -12,7 +12,6 @@
 [ext_resource path="res://assets/ui/buildings/oxygen/Oxygen_Icon_1.png" type="Texture" id=18]
 [ext_resource path="res://assets/ui/UI_5.png" type="Texture" id=19]
 [ext_resource path="res://assets/ui/buildings/oxygen/Oxygen_Icon_2.png" type="Texture" id=22]
-[ext_resource path="res://assets/ui/buildings/craftingStation/craftingStation.png" type="Texture" id=23]
 [ext_resource path="res://scenes/ui/inventory/draggedItem.tscn" type="PackedScene" id=24]
 [ext_resource path="res://scenes/ui/crafting/craftingStationUI.tscn" type="PackedScene" id=25]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=26]
@@ -54,10 +53,6 @@ shader_param/persent = 1.0
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 19 )
 region = Rect2( 102, 0, 26, 128 )
-
-[sub_resource type="AtlasTexture" id=62]
-atlas = ExtResource( 23 )
-region = Rect2( 1, 1, 99, 97 )
 
 [sub_resource type="TileSet" id=63]
 0/name = "ground.png 0"
@@ -1240,12 +1235,6 @@ margin_bottom = -98.1666
 texture = ExtResource( 2 )
 
 [node name="craftingStationUI" parent="UI" instance=ExtResource( 25 )]
-visible = false
-margin_left = 125.0
-margin_top = 30.0
-margin_right = 224.0
-margin_bottom = 127.0
-texture = SubResource( 62 )
 
 [node name="dark" type="Panel" parent="UI/craftingStationUI"]
 self_modulate = Color( 0, 0, 0, 0.588235 )

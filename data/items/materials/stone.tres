@@ -1,13 +1,14 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://cutomResources/inventoryItems/countableItem.gd" type="Script" id=1]
-[ext_resource path="res://assets/items/material/stone.png" type="Texture" id=2]
+[ext_resource path="res://assets/items/material/stone.png" type="Texture" id=1]
+[ext_resource path="res://cutomResources/inventoryItems/countableItem.gd" type="Script" id=2]
 
 [resource]
-script = ExtResource( 1 )
-name = "Stone"
+script = ExtResource( 2 )
+name = "materials/Stone"
 type = "item"
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 sell_price = 1
 buy_price = 10
+droppedScale = 1.0
 quantity = 1

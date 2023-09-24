@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/menu/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/menu/menu7.tres" type="Texture" id=2]
@@ -64,11 +64,57 @@ tracks/0/keys = {
 atlas = ExtResource( 14 )
 region = Rect2( 83, 117, 13, 8 )
 
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("show/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("show/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("show")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
 [node name="menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
 clickEffect = ExtResource( 15 )
+maxMass = 20
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 320.0
@@ -157,6 +203,18 @@ stretch_mode = 3
 [node name="hover" parent="UI/TextureButton" instance=ExtResource( 13 )]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="show" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/RESET = SubResource( 11 )
+anims/show = SubResource( 12 )
+
+[node name="Panel" type="Panel" parent="show"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -5.0
+margin_top = -4.0
+margin_right = 326.0
+margin_bottom = 185.0
 
 [connection signal="pressed" from="UI/play" to="." method="play"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

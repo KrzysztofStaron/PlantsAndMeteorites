@@ -7,6 +7,10 @@ export var watered : bool
 
 func _ready():
 	show()
+	if crop != null:
+		$crop.texture = crop.textures[growthDays]
+		if crop.specialNode:
+			add_child(crop.specialNode.instance())
 	
 func updateTexture():
 	$appear.queue_free()
@@ -80,7 +84,7 @@ func destroy():
 	var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
 	dropScene.position = position
 	dropScene.item = load("res://data/items/buildings/soil.tres")
-	get_parent().add_child(dropScene)
+	get_node("/root/main/items").add_child(dropScene).add_child(dropScene)
 
 	get_parent().updateTexture(position, true)
 	queue_free()
@@ -91,6 +95,16 @@ func harvest():
 	elif !isFullyGrown():
 		pass
 	else:
+		for i in crop.specialHarvests:
+			if randf() < i[1]:
+				if Inventory.addToinventory(load(i[0])):
+					pass
+				else:
+					var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
+					dropScene.position = position
+					dropScene.item = load(i[0])
+					get_node("/root/main/items").add_child(dropScene).add_child(dropScene)
+		
 		var newItem : CountableItem = crop.harvest
 		newItem.quantity = crop.harvestAmount
 		if Inventory.addToinventory(newItem):
@@ -103,16 +117,7 @@ func harvest():
 			$crop.texture = null
 		else:
 			pass
-			
-		for i in crop.specialHarvers:
-			if randf() < i[1]:
-				if Inventory.addToinventory(i[0]):
-					pass
-				else:
-					var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
-					dropScene.position = position
-					dropScene.item = i[0]
-					get_parent().add_child(dropScene)
+		
 	destroySpecial()
 
 func destroySpecial():

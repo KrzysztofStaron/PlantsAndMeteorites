@@ -1,11 +1,9 @@
 extends Control
-export var subMoney : int
+
+onready var money := $money
 
 func _process(delta):
-	if Input.is_action_just_pressed("debug_shop"):
-		visible = !visible
-		
-	$money.text = str(GameManager.money - subMoney)
+	money.text = str(GameManager.money)
 
 
 func _on_Button_pressed():

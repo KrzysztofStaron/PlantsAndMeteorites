@@ -11,4 +11,9 @@ func _on_clone_pressed():
 	pass
 
 func _on_menu_pressed():
-	pass
+	$buttons/clone.disabled = true
+	$buttons/menu.disabled = true
+	$AnimationPlayer.play("hide")
+
+func loadGame():
+	get_tree().change_scene("res://scenes/screens/menu/menu.tscn")

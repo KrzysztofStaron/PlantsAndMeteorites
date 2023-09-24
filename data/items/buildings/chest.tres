@@ -19,6 +19,7 @@ type = "building"
 texture = SubResource( 1 )
 sell_price = 0
 buy_price = 0
+droppedScale = 0.75
 quantity = 1
 scene = ExtResource( 2 )
 buildingTime = 5.0

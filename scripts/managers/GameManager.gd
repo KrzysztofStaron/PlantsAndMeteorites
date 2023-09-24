@@ -7,9 +7,9 @@ export var money : int
 export var ordered : Array
 export var cloningStations : Array
 export var overallBrightness : float
-
-var time := 0.0
-const dayLenght := 10.0 #900.0
+var time := 200.0
+const dayLenght := 900.0 #900.0
+var owners : PoolStringArray
 
 var events := [
 	[1, "test"],
@@ -34,3 +34,32 @@ func calcEvent() -> void:
 		if randf() <= event[0]/100.0:
 			add_child(load("res://scenes/events/" + event[1] + ".tscn").instance())
 			break
+
+func loadGame():
+	var data : GameData = load("user://save_game.tres").duplicate()
+	if data == null:
+		return
+	
+	for key in data.player:
+		player[key] = data.player[key]
+	
+	var dropScene : PackedScene = preload("res://scenes/droppedItem.tscn")
+	for item in data.itemsOnFloor:
+		var dropNode : Node = dropScene.instance()
+		dropNode.item = item[0]
+		dropNode.position = item[1]
+		get_node("/root/main/items").add_child(dropNode)
+		
+	for i in len(Inventory.inventory):
+		if data.inventory[i] != null:
+			Inventory.inventory[i] = data.inventory[i].duplicate()
+		else:
+			Inventory.inventory[i] = null
+
+func saveGame():
+	var save_data := GameData.new()
+	save_data["player"] = player.getData()
+	save_data["itemsOnFloor"] = get_node("../main/items").getData()
+	save_data["inventory"] = Inventory.inventory
+	
+	ResourceSaver.save("user://save_game.tres", save_data)

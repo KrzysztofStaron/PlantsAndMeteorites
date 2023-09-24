@@ -24,7 +24,7 @@ func drop(num := 0):
 			dropScene.item.quantity = num
 			Inventory.removeAmount(num)
 		
-		get_tree().get_root().get_node("main").add_child(dropScene)
+		get_tree().get_root().get_node("main/items").add_child(dropScene)
 		
 func _ready():
 	inv = Inventory.inventory
@@ -67,8 +67,6 @@ func _process(delta):
 		if oldSelected != null:
 			emit_signal("ItemChanged")
 			oldSelected = null
-		
-		
 
 	for slot in range(1,len(Inventory.inventory)+1):
 		if Input.is_action_just_pressed("slot"+str(slot)):
@@ -108,8 +106,3 @@ func updateSelection(id : int):
 	Inventory.selectedItemIndex = id
 	for slotIndex in range(0, 4):
 		get_node("VContainer/slot"+str(slotIndex)).disabled = slotIndex == id
-		get_node("VContainer/slot"+str(slotIndex)).pressed = slotIndex == id
-
-
-func _on_Area2D_mouse_entered():
-	print("gówno ")

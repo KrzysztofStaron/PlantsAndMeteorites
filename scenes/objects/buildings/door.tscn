@@ -261,7 +261,6 @@ collision_mask = 4
 script = ExtResource( 3 )
 objectName = "Door"
 outlineWidth = 1.0
-path = "../structures"
 collisionPath = NodePath("tileCollision/tleColllsionShape")
 
 [node name="tileCollision" type="Area2D" parent="."]
@@ -310,10 +309,10 @@ collision_mask = 4
 position = Vector2( 7, 0 )
 shape = SubResource( 14 )
 
-[connection signal="mouse_entered" from="tileCollision" to="." method="outline" binds= [ true ]]
 [connection signal="mouse_entered" from="tileCollision" to="." method="_on_tileCollision_mouse_entered"]
-[connection signal="mouse_exited" from="tileCollision" to="." method="outline" binds= [ false ]]
+[connection signal="mouse_entered" from="tileCollision" to="." method="outline" binds= [ true ]]
 [connection signal="mouse_exited" from="tileCollision" to="." method="_on_tileCollision_mouse_exited"]
+[connection signal="mouse_exited" from="tileCollision" to="." method="outline" binds= [ false ]]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="playerDetector" to="." method="_on_playerDetector_body_entered"]
 [connection signal="body_exited" from="playerDetector" to="." method="_on_playerDetector_body_exited"]

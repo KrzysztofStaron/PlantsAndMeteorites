@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/ui/UI_5.png" type="Texture" id=1]
 [ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/economy/rocket/soldSlot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui/m3x6.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/economy/rocketUI.gd" type="Script" id=5]
+[ext_resource path="res://assets/ui/economy/rocketUI/trading_Ui_2_parts_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/economy/rocketUI/trading_Ui_2_parts_3.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/economy/money.png" type="Texture" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -15,23 +18,37 @@ size = 32
 use_mipmaps = true
 font_data = ExtResource( 4 )
 
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 7 )
+region = Rect2( 267, 77, 10, 10 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 7 )
+region = Rect2( 265, 88, 14, 14 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 7 )
+region = Rect2( 3, 157, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 25, 155, 24, 24 )
+
 [node name="rocketUI" type="Control"]
 script = ExtResource( 5 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="TextureRect" parent="."]
 margin_right = 320.0
 margin_bottom = 180.0
+texture = ExtResource( 6 )
 
-[node name="bought" type="Panel" parent="Panel"]
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 16.0
-margin_top = 40.0
-margin_right = 64.0
-margin_bottom = 144.0
+[node name="bought" type="Node2D" parent="Panel"]
 
 [node name="GridContainer" type="GridContainer" parent="Panel/bought"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = 17.0
+margin_top = 39.0
+margin_right = 65.0
+margin_bottom = 143.0
 columns = 2
 
 [node name="buildingSlot2" parent="Panel/bought/GridContainer" instance=ExtResource( 2 )]
@@ -124,71 +141,95 @@ texture_pressed = SubResource( 1 )
 texture_disabled = SubResource( 1 )
 storage = false
 
-[node name="sold" type="Panel" parent="Panel"]
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 96.0
-margin_top = 40.0
-margin_right = 240.0
-margin_bottom = 144.0
+[node name="sold" type="Node2D" parent="Panel"]
 
 [node name="sold" type="VBoxContainer" parent="Panel/sold"]
-margin_top = 1.0
-margin_right = 144.0
-margin_bottom = 104.0
+margin_left = 97.0
+margin_top = 40.0
+margin_right = 252.0
+margin_bottom = 135.0
 custom_constants/separation = 26
 
 [node name="soldSlot" parent="Panel/sold/sold" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 144.0
+margin_right = 155.0
 margin_bottom = 0.0
 
 [node name="soldSlot2" parent="Panel/sold/sold" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 26.0
-margin_right = 144.0
+margin_right = 155.0
 margin_bottom = 26.0
 
 [node name="soldSlot3" parent="Panel/sold/sold" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 52.0
-margin_right = 144.0
+margin_right = 155.0
 margin_bottom = 52.0
 
 [node name="soldSlot4" parent="Panel/sold/sold" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 78.0
-margin_right = 144.0
+margin_right = 155.0
 margin_bottom = 78.0
 
-[node name="sum" type="Panel" parent="Panel/sold"]
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 80.0
-margin_top = 104.0
-margin_right = 136.0
-margin_bottom = 128.0
+[node name="hbox" type="HBoxContainer" parent="Panel/sold"]
+margin_left = 155.0
+margin_top = 136.0
+margin_right = 278.0
+margin_bottom = 162.0
+alignment = 2
 
-[node name="sum" type="Label" parent="Panel/sold/sum"]
-margin_top = -4.0
-margin_right = 56.0
-margin_bottom = 22.0
+[node name="sum" type="HBoxContainer" parent="Panel/sold/hbox"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 76.0
+margin_right = 123.0
+margin_bottom = 26.0
+custom_constants/separation = 7
+
+[node name="sum" type="Label" parent="Panel/sold/hbox/sum"]
+margin_right = 40.0
+margin_bottom = 26.0
 custom_fonts/font = SubResource( 2 )
-text = "1234567"
+text = "42069"
 align = 1
 valign = 1
 
-[node name="lunch" type="Button" parent="."]
+[node name="shards" type="TextureRect" parent="Panel/sold/hbox/sum"]
+margin_left = 47.0
+margin_right = 47.0
+margin_bottom = 26.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 4
+
+[node name="lunch" type="TextureButton" parent="."]
 margin_left = 256.0
 margin_top = 64.0
-margin_right = 303.0
+margin_right = 288.0
 margin_bottom = 100.0
-text = "lunch"
+texture_normal = SubResource( 3 )
+texture_hover = SubResource( 4 )
+expand = true
+stretch_mode = 3
+
+[node name="close" type="TextureButton" parent="."]
+margin_left = -7.0
+margin_top = 147.0
+margin_right = 33.0
+margin_bottom = 187.0
+texture_normal = SubResource( 5 )
+texture_hover = SubResource( 6 )
+expand = true
+stretch_mode = 3
 
 [connection signal="priceChanged" from="Panel/sold/sold/soldSlot" to="." method="_on_soldSlot_priceChanged"]
 [connection signal="priceChanged" from="Panel/sold/sold/soldSlot2" to="." method="_on_soldSlot_priceChanged"]
 [connection signal="priceChanged" from="Panel/sold/sold/soldSlot3" to="." method="_on_soldSlot_priceChanged"]
 [connection signal="priceChanged" from="Panel/sold/sold/soldSlot4" to="." method="_on_soldSlot_priceChanged"]
 [connection signal="pressed" from="lunch" to="." method="_on_lunch_pressed"]
+[connection signal="pressed" from="close" to="." method="close"]

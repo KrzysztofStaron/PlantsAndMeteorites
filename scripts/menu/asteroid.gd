@@ -1,11 +1,5 @@
 extends RigidBody2D
 
-func _input(event):
-	if event is InputEventMouseButton:
-		if event.is_action_pressed("interact_left") and isTouchingMouse():
-#			 destroy()
-			pass
-
 func isTouchingMouse() -> bool:
 	return get_global_mouse_position().distance_to(global_position) < 5
 
@@ -35,7 +29,6 @@ func _on_Timer_timeout():
 	if hasObjectLeftScreen(position):
 		get_node("../../").updateAsteroids()
 		queue_free()
-
 
 func _on_Timer2_timeout():
 	$Timer.start(0.2)

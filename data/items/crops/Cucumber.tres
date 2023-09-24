@@ -5,9 +5,10 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "cucumber"
+name = "Cucumber"
 type = "item"
 texture = ExtResource( 2 )
 sell_price = 50
 buy_price = 0
+droppedScale = 1.0
 quantity = 1

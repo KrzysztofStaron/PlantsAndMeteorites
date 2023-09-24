@@ -66,3 +66,9 @@ func _process(delta):
 
 func _on_death_animation_finished():
 	get_tree().change_scene("res://scenes/deathScreen/DeathScreen.tscn")
+
+func getData() -> Dictionary:
+	return  {
+		"position": position,
+		"oxygen": oxygen,
+	}

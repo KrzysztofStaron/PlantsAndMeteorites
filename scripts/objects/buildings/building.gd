@@ -2,13 +2,17 @@ extends object
 class_name Building
 signal build
 
+export var scenePath := ""
 export var builded := false
-export var path := "../"
+export var path := "../structures"
 export var isFloor : bool
 export var collisionPath : NodePath 
 
 var lights : Array
 export var energies : PoolRealArray
+
+func getData() -> Array:
+	return [scenePath, position]
 
 func enableOutline():
 	$Sprite.material = preload("res://assets/objects/outline.tres").duplicate()
@@ -24,7 +28,7 @@ func instanceLoot(droppedItem : InventoryItem, particle : PackedScene = null) ->
 	var dropScene : Node = load("res://scenes/droppedItem.tscn").instance()
 	dropScene.position = position
 	dropScene.item = droppedItem.duplicate()
-	get_parent().add_child(dropScene)
+	get_node("/root/main/items").add_child(dropScene).add_child(dropScene)
 	queue_free()
 
 func _process(delta):

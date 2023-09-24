@@ -1,13 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/ui/m3x6.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/items/material/stone.png" type="Texture" id=2]
 [ext_resource path="res://scripts/economy/buyItem.gd" type="Script" id=3]
+[ext_resource path="res://assets/ui/economy/shopUI/trading_Ui_2_parts_8.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
 use_mipmaps = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 12, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 41, 36, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 41, 12, 24, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 36, 24, 24 )
 
 [node name="butItem" type="Control"]
 margin_right = 96.0
@@ -32,12 +49,13 @@ text = "200"
 align = 1
 valign = 1
 
-[node name="buy" type="Button" parent="."]
+[node name="buy" type="TextureButton" parent="."]
 margin_left = 56.0
-margin_right = 92.0
+margin_right = 80.0
 margin_bottom = 24.0
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Buy"
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 4 )
+texture_hover = SubResource( 3 )
+texture_disabled = SubResource( 5 )
 
 [connection signal="pressed" from="buy" to="." method="_on_buy_pressed"]

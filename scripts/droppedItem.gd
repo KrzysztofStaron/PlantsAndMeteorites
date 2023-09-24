@@ -7,6 +7,7 @@ var spawnDate : int
 func _ready():
 	spawnDate = OS.get_unix_time()
 	$Sprite.texture = item.texture
+	scale = Vector2(item.droppedScale, item.droppedScale)
 
 func _on_DroppedItem_area_entered(area):
 	if area.item is CountableItem:

@@ -11,6 +11,8 @@ var inventory := [
 	null
 ]
 
+onready var gridContainer := $GridContainer
+
 func order(item : InventoryItem):
 	var exist := false
 	if item is CountableItem:
@@ -32,5 +34,5 @@ func order(item : InventoryItem):
 			return
 	
 func update():
-	for index in len($GridContainer.get_children()):
-		$GridContainer.get_children()[index].setItem(inventory[index])
+	for index in len(gridContainer.get_children()):
+		gridContainer.get_children()[index].setItem(inventory[index])

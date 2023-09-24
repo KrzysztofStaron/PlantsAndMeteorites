@@ -1,5 +1,15 @@
 extends Control
 signal lunch 
+signal opened
+signal closed
+
+func open():
+	emit_signal("opened")
+	show()
+	
+func close():
+	emit_signal("closed")
+	hide()
 
 func sumUp() -> int:
 	var sum := 0
@@ -12,7 +22,7 @@ func sumUp() -> int:
 	return sum
 
 func _on_soldSlot_priceChanged():
-	$Panel/sold/sum/sum.text = str(sumUp())
+	$Panel/sold/hbox/sum/sum.text = str(sumUp())
 
 func _on_lunch_pressed():
 	GameManager.money += sumUp()
@@ -21,10 +31,9 @@ func _on_lunch_pressed():
 	
 	print("lunch")
 	# lunch logic
-	hide()
+	close()
 	
 	emit_signal("lunch")
-
 
 func _on_rocketUI_visibility_changed():
 	GameManager.canPause = visible

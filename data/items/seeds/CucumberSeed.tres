@@ -11,5 +11,6 @@ type = "seed"
 texture = ExtResource( 2 )
 sell_price = 5
 buy_price = 25
+droppedScale = 1.0
 quantity = 1
 crop = ExtResource( 3 )

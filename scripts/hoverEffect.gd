@@ -4,6 +4,7 @@ export var hoverColor : Color
 export var normalColor : Color
 
 export var transTime := 0.1
+export var selfModulate := false
 
 func _ready():
 	if get_parent().connect("mouse_exited", self, "_mouse_exited"):
@@ -12,13 +13,26 @@ func _ready():
 		print("HoverEffect: failed to connect")
 
 func _mouse_entered():
-	if interpolate_property(get_parent(), "modulate", normalColor, hoverColor, transTime, Tween.TRANS_SINE, Tween.EASE_IN):
-		pass
-	if !start():
-		print("HoverEffect: failed to start")
+	if selfModulate:
+		if interpolate_property(get_parent(), "self_modulate", normalColor, hoverColor, transTime, Tween.TRANS_SINE, Tween.EASE_IN):
+			pass
+		if !start():
+			print("HoverEffect: failed to start")
+	else:
+		if interpolate_property(get_parent(), "modulate", normalColor, hoverColor, transTime, Tween.TRANS_SINE, Tween.EASE_IN):
+			pass
+		if !start():
+			print("HoverEffect: failed to start")
+
 
 func _mouse_exited():
-	if interpolate_property(get_parent(), "modulate",hoverColor, normalColor, transTime, Tween.TRANS_SINE, Tween.EASE_IN):
-		pass
-	if !start():
-		print("HoverEffect: failed to start")
+	if selfModulate:
+		if interpolate_property(get_parent(), "self_modulate",hoverColor, normalColor, transTime, Tween.TRANS_SINE, Tween.EASE_IN):
+			pass
+		if !start():
+			print("HoverEffect: failed to start")
+	else:
+		if interpolate_property(get_parent(), "modulate", normalColor, hoverColor, transTime, Tween.TRANS_SINE, Tween.EASE_IN):
+			pass
+		if !start():
+			print("HoverEffect: failed to start")

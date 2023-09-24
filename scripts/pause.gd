@@ -1,5 +1,8 @@
 extends TextureRect
 
+func _ready():
+	_on_resume_pressed()
+
 func _input(event):
 	if event is InputEventKey:
 		if event.is_action_pressed("pause"):
@@ -18,3 +21,6 @@ func _on_settings_pressed():
 
 func _on_home_pressed():
 	print("home")
+
+func _on_save_pressed():
+	GameManager.saveGame()

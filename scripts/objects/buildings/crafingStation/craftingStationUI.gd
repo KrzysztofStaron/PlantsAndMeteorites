@@ -43,9 +43,6 @@ func _on_craft_pressed():
 		child.pressed = false
 
 func _process(delta):
-	get_node("../addictionalSlot/buildingSlot/area").monitoring = owner.visible
-	get_node("../addictionalSlot/buildingSlot/area").monitorable = owner.visible
-	
 	if Input.is_action_just_pressed("pause") and owner.visible:
 		if !procesing:
 			$back.hide()
@@ -64,7 +61,6 @@ func _process(delta):
 		if $hammer.frame == 3:
 			if !used:
 				used = true
-				print(makingCounter)
 				var percent := 1.0/makingTime
 				var tween : Tween = get_node("processTween")
 				tween.interpolate_property($slider/fill.get_material(), "shader_param/persent", percent * makingCounter, percent * (makingCounter+1), 0.3, Tween.TRANS_EXPO, Tween.EASE_OUT)
@@ -89,7 +85,7 @@ func _on_hammer_animation_finished():
 			var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
 			dropScene.position = owner.get_parent().position + Vector2(0,12)
 			dropScene.item = $"../addictionalSlot/buildingSlot".item.duplicate()
-			owner.get_node("../../").add_child(dropScene)
+			get_node("/root/main/items").add_child(dropScene)
 		
 		$"../addictionalSlot/buildingSlot".setItem(oldSelected)
 		
@@ -125,3 +121,7 @@ func _on_back_pressed():
 	
 	for child in $items.get_children():
 		child.pressed = false
+
+func _on_ui_visibility_changed():
+	get_node("../addictionalSlot/buildingSlot/area").monitoring = owner.visible
+	get_node("../addictionalSlot/buildingSlot/area").monitorable = owner.visible
