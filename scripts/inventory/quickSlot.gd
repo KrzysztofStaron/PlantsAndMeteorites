@@ -14,6 +14,17 @@ func getItem() -> InventoryItem:
 func setItem(item : InventoryItem):
 	Inventory.inventory[index] = item
 
+func update():
+	if getItem() == null:
+		get_node("icon").texture = Texture
+	else:
+		get_node("icon").texture = getItem().texture
+
+	if getItem() is CountableItem and getItem().quantity > 1:
+		get_node("amount").text = str(getItem().quantity)
+	else:
+		get_node("amount").text = ""
+
 func _input(event):
 	if not event is InputEventMouseMotion:
 		pass

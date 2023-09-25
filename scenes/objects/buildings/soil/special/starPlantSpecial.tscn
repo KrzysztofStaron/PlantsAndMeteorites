@@ -16,9 +16,7 @@ glowEnergy = PoolRealArray( 0, 0, 0, 0.35, 0.4, 0.5 )
 glowOffset = PoolVector2Array( 0, 0, 0, 0, 0, 0, -0.5, 0, 0.5, 0, 0, -0.5 )
 
 [node name="light" type="Light2D" parent="."]
-visible = false
 color = Color( 0.9, 0.8736, 0.702, 1 )
 
 [node name="glowLight" type="Light2D" parent="."]
-visible = false
 range_item_cull_mask = 2

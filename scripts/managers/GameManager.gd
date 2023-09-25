@@ -7,7 +7,7 @@ export var money : int
 export var ordered : Array
 export var cloningStations : Array
 export var overallBrightness : float
-var time := 200.0
+var time := 400.0
 const dayLenght := 900.0 #900.0
 var owners : PoolStringArray
 
@@ -38,12 +38,18 @@ func calcEvent() -> void:
 func loadGame():
 	var data : GameData = load("user://save_game.tres")
 	if data == null:
+		for x in len(Inventory.inventory):
+			if x < 4:
+				get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)).update()
+			elif x >= 4:
+				get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)).update()
 		return
 	else:
 		var version : int = GameData.new().version
 		print(version != data["version"])
 		if version != data["version"]:
 			return
+	
 	
 	data = data.duplicate()
 	for key in data.player:
@@ -56,12 +62,17 @@ func loadGame():
 		dropNode.position = item[1]
 		get_node("/root/main/items").add_child(dropNode)
 	
-	print(data.inventory)
 	for i in len(Inventory.inventory):
 		if data.inventory[i] != null:
 			Inventory.inventory[i] = data.inventory[i].duplicate()
 		else:
 			Inventory.inventory[i] = null
+	
+	for x in len(Inventory.inventory):
+		if x < 4:
+			get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)).update()
+		elif x >= 4:
+			get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)).update()
 
 func saveGame():
 	var save_data := GameData.new()

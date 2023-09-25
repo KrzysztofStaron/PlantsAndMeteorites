@@ -3,6 +3,14 @@ var block := true
 
 onready var ui := $ui
 
+func _ready():
+	turnAreas(false)
+
+func turnAreas(state : bool):
+	for slot in $ui/CenterContainer/GridContainer.get_children():
+		slot.get_node("area").monitoring = state
+		slot.get_node("area").monitorable = state
+
 func interact_right():
 	$AnimationPlayer.play("open")
 	
@@ -16,15 +24,16 @@ func interact_left():
 	
 func _process(delta):
 	if Input.is_action_pressed("pause") and ui.visible:
+		turnAreas(false)
 		GameManager.canPause = true
 		ui.hide()
 		$AnimationPlayer.play("close")
 	
 
 func open():
+	turnAreas(true)
 	ui.show()
 	GameManager.canPause = false
-
 
 func _on_ui_visibility_changed():
 	for slot in $ui/CenterContainer/GridContainer.get_children():

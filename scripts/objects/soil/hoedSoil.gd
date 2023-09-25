@@ -84,7 +84,7 @@ func destroy():
 	var dropScene : Node = preload("res://scenes/droppedItem.tscn").instance()
 	dropScene.position = position
 	dropScene.item = load("res://data/items/buildings/soil.tres")
-	get_node("/root/main/items").add_child(dropScene).add_child(dropScene)
+	get_node("/root/main/items").add_child(dropScene)
 
 	get_parent().updateTexture(position, true)
 	queue_free()

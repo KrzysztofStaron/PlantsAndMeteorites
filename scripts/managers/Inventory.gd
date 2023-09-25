@@ -55,17 +55,9 @@ func addToinventory(item : InventoryItem, update := true) -> bool:
 				if !update:
 					pass
 				elif x < 4:
-					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/icon").texture = item.texture	
-					if inventory[x].quantity > 1:
-						get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
-					else:
-						get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = ""
-				else:
-					get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)+"/icon").texture = item.texture
-					if inventory[x].quantity > 1:
-						get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
-					else:
-						get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)+"/amount").text = ""
+					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)).update()
+				elif x >= 4:
+					get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)).update()
 
 				return true
 	
@@ -75,18 +67,9 @@ func addToinventory(item : InventoryItem, update := true) -> bool:
 			if !update:
 				pass
 			elif x < 4:
-				get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/icon").texture = item.texture
-				if inventory[x].quantity > 1:
-					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
-				else:
-					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)+"/amount").text = ""
-			else:
-				get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)+"/icon").texture = item.texture	
-				if inventory[x].quantity > 1:
-					get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)+"/amount").text = str(inventory[x].quantity)
-				else:
-					get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)+"/amount").text = ""
-					
+				get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(x)).update()
+			elif x >= 4:
+				get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(x)).update()
 			return true
 	
 	return false
@@ -106,17 +89,13 @@ func removeAmountByName(itemName : String, amount := 1):
 		elif inventory[index].name == itemName:
 			inventory[index].quantity -= amount
 			if index < 4:
-				get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(index)+"/amount").text = str(inventory[index].quantity)
 				if inventory[index].quantity <= 0:
-					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(index)+"/icon").texture = null
-					get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(index)+"/amount").text = ""
 					inventory[index] = null
-			else:
-				get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(index)+"/amount").text = str(inventory[index].quantity)
+				get_tree().get_root().get_node("main/UI/quickInventory/VContainer/slot"+str(index)).update()
+			elif index >= 4:
 				if inventory[index].quantity <= 0:
-					get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(index)+"/icon").texture = null
-					get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(index)+"/amount").text = ""
 					inventory[index] = null
+				get_tree().get_root().get_node("main/UI/mainInventory/slots/slot"+str(index)).update()
 
 func removeAmount(amount := 1, index := selectedItemIndex):
 	inventory[index].quantity -= amount

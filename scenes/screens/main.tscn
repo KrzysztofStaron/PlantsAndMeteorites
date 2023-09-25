@@ -2032,5 +2032,7 @@ position = Vector2( 240, 120 )
 [connection signal="visibility_changed" from="UI/rocketUI" to="UI/rocketUI" method="_on_rocketUI_visibility_changed"]
 [connection signal="pressed" from="UI/ShopButton" to="UI/shop" method="_on_Button_pressed"]
 [connection signal="ItemChanged" from="UI/quickInventory" to="pointer" method="_on_quickInventory_ItemChanged"]
+[connection signal="closed" from="UI/mainInventory" to="UI/ShopButton" method="_on_mainInventory_closed"]
+[connection signal="opened" from="UI/mainInventory" to="UI/ShopButton" method="_on_mainInventory_opened"]
 
 [editable path="Debug/rocket"]
