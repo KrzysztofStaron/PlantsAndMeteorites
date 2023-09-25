@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://cutomResources/plant.gd" type="Script" id=1]
 [ext_resource path="res://data/items/crops/Potato.tres" type="Resource" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/plants/potato/potato2.tres" type="Texture" id=4]
 [ext_resource path="res://assets/plants/potato/potato3.tres" type="Texture" id=5]
 [ext_resource path="res://assets/plants/potato/potato0.tres" type="Texture" id=6]
+[ext_resource path="res://assets/plants/potato/potato4.tres" type="Texture" id=7]
 
 [resource]
 script = ExtResource( 1 )
@@ -14,4 +15,4 @@ growthTime = 4
 harvestAmount = 1
 harvest = ExtResource( 2 )
 specialHarvests = [  ]
-textures = [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 5 ) ]
+textures = [ ExtResource( 6 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ) ]

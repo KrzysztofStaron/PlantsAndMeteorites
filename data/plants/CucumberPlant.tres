@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=7 format=2]
+[gd_resource type="Resource" load_steps=9 format=2]
 
 [ext_resource path="res://cutomResources/plant.gd" type="Script" id=1]
 [ext_resource path="res://assets/plants/cucumber/cucumber0.tres" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://assets/plants/cucumber/cucumber3.tres" type="Texture" id=4]
 [ext_resource path="res://assets/plants/cucumber/cucumber2.tres" type="Texture" id=5]
 [ext_resource path="res://data/items/crops/Cucumber.tres" type="Resource" id=6]
+[ext_resource path="res://assets/plants/cucumber/cucumber4.tres" type="Texture" id=7]
+[ext_resource path="res://assets/plants/cucumber/cucumber5.tres" type="Texture" id=8]
 
 [resource]
 script = ExtResource( 1 )
@@ -14,4 +16,4 @@ growthTime = 5
 harvestAmount = 1
 harvest = ExtResource( 6 )
 specialHarvests = [  ]
-textures = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 4 ) ]
+textures = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ) ]

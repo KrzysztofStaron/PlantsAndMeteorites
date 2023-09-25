@@ -1,4 +1,5 @@
 extends quickInventorySlot
+class_name buildingSlot
 signal itemChanged
 
 export var item : Resource

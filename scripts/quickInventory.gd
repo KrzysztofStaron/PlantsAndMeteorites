@@ -36,7 +36,7 @@ func _ready():
 
 func _input(event):
 	if event is InputEventKey:
-		for slot in range(1,len(Inventory.inventory)+1):
+		for slot in range(1,5):
 			if event.is_action_pressed("slot"+str(slot)):
 				updateSelection(slot - 1)
 				# Label Position
@@ -68,7 +68,7 @@ func _process(delta):
 			emit_signal("ItemChanged")
 			oldSelected = null
 
-	for slot in range(1,len(Inventory.inventory)+1):
+	for slot in range(1,5):
 		if Input.is_action_just_pressed("slot"+str(slot)):
 			Inventory.selectedItemIndex = slot - 1
 

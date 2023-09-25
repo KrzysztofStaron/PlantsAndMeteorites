@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/ui/inventory/buildingSlot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/ui/mainInventory.png" type="Texture" id=2]
+[ext_resource path="res://scripts/inventory/mainInventory.gd" type="Script" id=3]
+[ext_resource path="res://scripts/inventory/mainInventorySlot.gd" type="Script" id=4]
+
+[node name="backpack" type="TextureRect"]
+margin_right = 219.0
+margin_bottom = 180.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 3
+script = ExtResource( 3 )
+
+[node name="slots" type="GridContainer" parent="."]
+margin_left = 116.0
+margin_top = 106.0
+margin_right = 206.0
+margin_bottom = 157.0
+custom_constants/hseparation = 11
+columns = 3
+
+[node name="slot4" parent="slots" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 22.0
+margin_bottom = 23.0
+toggle_mode = false
+texture_pressed = null
+texture_disabled = null
+script = ExtResource( 4 )
+index = 4
+
+[node name="slot5" parent="slots" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 33.0
+margin_right = 55.0
+margin_bottom = 23.0
+toggle_mode = false
+texture_pressed = null
+texture_disabled = null
+script = ExtResource( 4 )
+index = 5
+
+[node name="slot6" parent="slots" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 66.0
+margin_right = 88.0
+margin_bottom = 23.0
+toggle_mode = false
+texture_pressed = null
+texture_disabled = null
+script = ExtResource( 4 )
+index = 6
+
+[node name="slot7" parent="slots" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 27.0
+margin_right = 22.0
+margin_bottom = 50.0
+toggle_mode = false
+texture_pressed = null
+texture_disabled = null
+script = ExtResource( 4 )
+index = 7
+
+[node name="slot8" parent="slots" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 33.0
+margin_top = 27.0
+margin_right = 55.0
+margin_bottom = 50.0
+toggle_mode = false
+texture_pressed = null
+texture_disabled = null
+script = ExtResource( 4 )
+index = 8
+
+[node name="slot9" parent="slots" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 66.0
+margin_top = 27.0
+margin_right = 88.0
+margin_bottom = 50.0
+toggle_mode = false
+texture_pressed = null
+texture_disabled = null
+script = ExtResource( 4 )
+index = 9
+
+[connection signal="itemChanged" from="slots/slot4" to="." method="itemChanged"]
+[connection signal="itemChanged" from="slots/slot5" to="." method="itemChanged"]
+[connection signal="itemChanged" from="slots/slot6" to="." method="itemChanged"]
+[connection signal="itemChanged" from="slots/slot7" to="." method="itemChanged"]
+[connection signal="itemChanged" from="slots/slot8" to="." method="itemChanged"]
+[connection signal="itemChanged" from="slots/slot9" to="." method="itemChanged"]

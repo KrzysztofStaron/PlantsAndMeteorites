@@ -36,10 +36,16 @@ func calcEvent() -> void:
 			break
 
 func loadGame():
-	var data : GameData = load("user://save_game.tres").duplicate()
+	var data : GameData = load("user://save_game.tres")
 	if data == null:
 		return
+	else:
+		var version : int = GameData.new().version
+		print(version != data["version"])
+		if version != data["version"]:
+			return
 	
+	data = data.duplicate()
 	for key in data.player:
 		player[key] = data.player[key]
 	
@@ -49,7 +55,8 @@ func loadGame():
 		dropNode.item = item[0]
 		dropNode.position = item[1]
 		get_node("/root/main/items").add_child(dropNode)
-		
+	
+	print(data.inventory)
 	for i in len(Inventory.inventory):
 		if data.inventory[i] != null:
 			Inventory.inventory[i] = data.inventory[i].duplicate()
@@ -61,5 +68,6 @@ func saveGame():
 	save_data["player"] = player.getData()
 	save_data["itemsOnFloor"] = get_node("../main/items").getData()
 	save_data["inventory"] = Inventory.inventory
+	print(Inventory.inventory)
 	
 	ResourceSaver.save("user://save_game.tres", save_data)
