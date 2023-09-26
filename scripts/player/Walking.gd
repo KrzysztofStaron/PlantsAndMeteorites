@@ -14,6 +14,9 @@ func enter(_data := {}) -> void:
 	pass
 
 func update(_delta : float) -> void:
+	if !owner.canMove:
+		return
+	
 	var dir : Vector2 = InputManager.vector("move_left", "move_right", "move_up", "move_down")
 
 	if dir:

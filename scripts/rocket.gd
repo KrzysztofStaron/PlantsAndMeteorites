@@ -2,6 +2,7 @@ extends object
 
 func interact_right():
 	GameManager.canPause = false
+	print("rocket - false")
 	get_tree().get_root().get_node("main/UI/rocketUI").open()
 
 func _ready():
@@ -9,6 +10,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("pause") and get_tree().get_root().get_node("main/UI/rocketUI").visible:
+		print("rocket - true")
 		GameManager.canPause = true
 		get_tree().get_root().get_node("main/UI/rocketUI").close()
 

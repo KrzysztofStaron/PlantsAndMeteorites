@@ -37,3 +37,4 @@ func _on_lunch_pressed():
 
 func _on_rocketUI_visibility_changed():
 	GameManager.canPause = visible
+	print("rocket: " + str(GameManager.canPause))

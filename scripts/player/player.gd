@@ -12,6 +12,7 @@ export var soundCurve : Curve
 var hiden := false
 export var stopSound := false
 export var sound : float
+var canMove := true
 
 func _ready():
 	GameManager.player = self

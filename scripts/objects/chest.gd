@@ -12,7 +12,8 @@ func turnAreas(state : bool):
 		slot.get_node("area").monitorable = state
 
 func interact_right():
-	$AnimationPlayer.play("open")
+	if GameManager.canPause:
+		$AnimationPlayer.play("open")
 	
 func interact_left():
 	var item = Inventory.getSelectedItem()
@@ -26,6 +27,8 @@ func _process(delta):
 	if Input.is_action_pressed("pause") and ui.visible:
 		turnAreas(false)
 		GameManager.canPause = true
+		GameManager.player.canMove = true
+		print("chest - true")
 		ui.hide()
 		$AnimationPlayer.play("close")
 	
@@ -34,6 +37,8 @@ func open():
 	turnAreas(true)
 	ui.show()
 	GameManager.canPause = false
+	GameManager.player.canMove = false
+	print("chest - false")
 
 func _on_ui_visibility_changed():
 	for slot in $ui/CenterContainer/GridContainer.get_children():

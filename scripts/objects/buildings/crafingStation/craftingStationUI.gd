@@ -54,6 +54,7 @@ func _process(delta):
 			child.pressed = false
 		procesing = true
 		GameManager.canPause = true
+		print("crafting - true")
 		get_parent().hide()
 	
 
@@ -125,3 +126,4 @@ func _on_back_pressed():
 func _on_ui_visibility_changed():
 	get_node("../addictionalSlot/buildingSlot/area").monitoring = owner.visible
 	get_node("../addictionalSlot/buildingSlot/area").monitorable = owner.visible
+	GameManager.player.canMove = !owner.visible

@@ -6,6 +6,7 @@
 [ext_resource path="res://scripts/inventory/mainInventorySlot.gd" type="Script" id=4]
 
 [node name="backpack" type="TextureRect"]
+pause_mode = 2
 margin_right = 219.0
 margin_bottom = 180.0
 texture = ExtResource( 2 )

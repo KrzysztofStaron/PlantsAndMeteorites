@@ -9,20 +9,28 @@ func _input(event):
 			if visible:
 				emit_signal("closed")
 				close()
-			else:
+			elif GameManager.canPause:
 				emit_signal("opened")
-				show()
+				open()
+
+func _process(delta):
+	#print(GameManager.canPause)
+	pass
 
 func _ready():
 	hide()
 
 func open():
+	GameManager.player.canMove = false
 	show()
 	GameManager.canPause = false
+	print("inv - false")
 
 func close():
+	GameManager.player.canMove = true
 	hide()
 	GameManager.canPause = true
+	print("inv - true")
 
 func itemChanged():
 	pass
