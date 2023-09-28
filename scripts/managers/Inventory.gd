@@ -9,7 +9,7 @@ onready var inventory := [
 	# Main
 	null,
 	null,
-	null,
+	preload("res://data/items/buildings/lightCable.tres"),
 	preload("res://data/items/buildings/soil.tres"),
 	null,
 	null

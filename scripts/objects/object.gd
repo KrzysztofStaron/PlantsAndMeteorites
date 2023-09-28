@@ -7,7 +7,11 @@ export var drawOutline : bool
 var outlineEnabled := false
 export var outlineWidth := 0.5
 
-onready var sprite := $Sprite
+var sprite : Sprite
+
+func _ready():
+	sprite = get_node_or_null("Sprite")
+
 func outline(flag : bool):
 	if !drawOutline:
 		return

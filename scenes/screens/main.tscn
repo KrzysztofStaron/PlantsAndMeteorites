@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=2]
+[gd_scene load_steps=170 format=2]
 
 [ext_resource path="res://scenes/objects/pebbles/pebble2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/pointer.tscn" type="PackedScene" id=2]
@@ -70,6 +70,8 @@
 [ext_resource path="res://scripts/getBuildings.gd" type="Script" id=68]
 [ext_resource path="res://scripts/economy/shopButton.gd" type="Script" id=69]
 [ext_resource path="res://scenes/ui/inventory/mainInventory.tscn" type="PackedScene" id=70]
+[ext_resource path="res://assets/objects/buildings/lightCable.png" type="Texture" id=71]
+[ext_resource path="res://scripts/objects/buildings/cables.gd" type="Script" id=72]
 
 [sub_resource type="Gradient" id=104]
 offsets = PoolRealArray( 0, 0.224599, 0.582888, 0.839572 )
@@ -1439,6 +1441,36 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 1/shapes = [  ]
 1/z_index = -1
 
+[sub_resource type="TileSet" id=122]
+0/name = "lightCable.png 0"
+0/texture = ExtResource( 71 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 65, 124, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "lightCable.png 1"
+1/texture = ExtResource( 71 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 64, 80, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
 [sub_resource type="AtlasTexture" id=60]
 atlas = ExtResource( 41 )
 region = Rect2( 1, 84, 27, 43 )
@@ -1801,6 +1833,7 @@ tile_data = PoolIntArray( -5177430, 0, 0, -5177428, 0, 0, -5177426, 0, 0, -51774
 [node name="pointer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
 z_index = 2
+frame = 1
 tooFar = Color( 0.635294, 0.635294, 0.635294, 0.588235 )
 avalible = Color( 1, 1, 1, 1 )
 gridPath = NodePath("../grid")
@@ -1888,6 +1921,12 @@ collision_layer = 8
 collision_mask = 0
 format = 1
 script = ExtResource( 68 )
+
+[node name="cables" type="TileMap" parent="."]
+tile_set = SubResource( 122 )
+cell_size = Vector2( 16, 16 )
+format = 1
+script = ExtResource( 72 )
 
 [node name="items" type="Node" parent="."]
 script = ExtResource( 67 )
