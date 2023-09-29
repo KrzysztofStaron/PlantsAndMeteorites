@@ -1,16 +1,23 @@
-extends Area2D
+extends Building
+
+export var powered := false
+
+func interact_right():
+	powered = !powered
+	update()
+	
+
+func update():
+	for obj in $cableDetector.get_overlapping_areas():
+		if obj is preload("res://scripts/objects/buildings/lightCable.gd"):
+			if !powered:
+				obj.powered = false
+				obj.update()
+			elif not obj.powered:
+				obj.powered = true
+				obj.update()
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_cableDetector_body_entered(body):
+	if body is preload("res://scripts/objects/buildings/lightCable.gd"):
+		update()
