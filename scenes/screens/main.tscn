@@ -1842,7 +1842,7 @@ playerPath = NodePath("../player")
 [node name="player" parent="." groups=["player"] instance=ExtResource( 3 )]
 position = Vector2( 192, 192 )
 z_index = 3
-oxygen = 180.0
+oxygen = 5.0
 sound = 0.5
 
 [node name="gasping" type="AudioStreamPlayer" parent="player"]

@@ -12,12 +12,11 @@ func update():
 		if obj is preload("res://scripts/objects/buildings/lightCable.gd"):
 			if !powered:
 				obj.powered = false
-				obj.update()
 			elif not obj.powered:
 				obj.powered = true
-				obj.update()
 
 
 func _on_cableDetector_body_entered(body):
 	if body is preload("res://scripts/objects/buildings/lightCable.gd"):
 		update()
+		body.level = 0
